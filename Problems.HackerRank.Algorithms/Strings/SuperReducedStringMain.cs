@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Problems.HackerRank.Algorithms.Strings
 {
+    /// <summary>
+    /// https://www.hackerrank.com/challenges/reduced-string
+    /// </summary>
     public class Solution
     {
         public static void Main(string[] args)
