@@ -23,12 +23,24 @@ namespace Problems.HackerRank.Algorithms.WarmUp
                 indexes[a0] = m;
             }
 
-            a = RotateRightNTimes(a, k);
+            a = RotateRightNTimes2(a, k);
 
             for (int i = 0; i < q; i++)
             {
                 Console.WriteLine(a[indexes[i]]);
             }
+        }
+
+        private static int[] RotateRightNTimes2(int[] a, int rotateCount)
+        {
+            int[] result = new int[a.Length];
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                result[(i + rotateCount) % a.Length] = a[i];
+            }
+
+            return result;
         }
 
         private static int[] RotateRightNTimes(int[] a, int k)
