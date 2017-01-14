@@ -20,11 +20,55 @@ namespace Problems.HackerRank.Algorithms.Implementation
             // output = 20 20
 
 
-            Tuple<BigInteger, BigInteger> sums = GetSums(input);
+            //Tuple<BigInteger, BigInteger> sums = GetSums(input);
+            Tuple<BigInteger, BigInteger> sums = GetSums2(input);
             var minSum = sums.Item1;
             var maxSum = sums.Item2;
 
             Console.WriteLine("{0} {1}", minSum, maxSum);
+        }
+
+        private static Tuple<BigInteger, BigInteger> GetSums2(List<BigInteger> values)
+        {
+            BigInteger minValue = new BigInteger(long.MaxValue);
+            BigInteger maxValue = new BigInteger(long.MinValue);
+
+            // Get min/max values in one loop instead of two loops using LINQ.
+            foreach (BigInteger value in values)
+            {
+                if (value < minValue) minValue = value;
+                if (value > maxValue) maxValue = value;
+            }
+
+            var minValuesOnly = new List<BigInteger>(values.Count - 1);
+            var maxValuesOnly = new List<BigInteger>(values.Count - 1);
+            foreach (var value in values)
+            {
+                if (value != maxValue) minValuesOnly.Add(value);
+                if (value != minValue) maxValuesOnly.Add(value);
+            }
+
+            Func<BigInteger, BigInteger, BigInteger> sum = (accum, value) => accum + value;
+
+            BigInteger minSum = new BigInteger(0);
+            BigInteger maxSum = new BigInteger(0);
+
+            // if all values in a list is same; e.g.) 5 5 5 5 5
+            if (minValuesOnly.Count == 0)
+            {
+                minSum = values.Skip(1).ToList().Aggregate(sum);
+                maxSum = minSum;
+            }
+            else
+            {
+                for (int i = 0; i < minValuesOnly.Count; i++)
+                {
+                    minSum += minValuesOnly[i];
+                    maxSum += maxValuesOnly[i];
+                }
+            }
+
+            return Tuple.Create(minSum, maxSum);
         }
 
         private static Tuple<BigInteger, BigInteger> GetSums(List<BigInteger> input)
