@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.DivisibleSumPairs</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Strings.MarsExploration</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,6 +53,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings\CamelCaseMain.cs" />
+    <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
     <Compile Include="WarmUp\CircularArrayRotationMain.cs" />
   </ItemGroup>
