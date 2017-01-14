@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Strings.MarsExploration</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.MiniMaxSum</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

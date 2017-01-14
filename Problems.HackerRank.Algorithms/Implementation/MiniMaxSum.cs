@@ -20,20 +20,29 @@ namespace Problems.HackerRank.Algorithms.Implementation
             // output = 20 20
 
 
+            Tuple<BigInteger, BigInteger> sums = GetSums(input);
+            var minSum = sums.Item1;
+            var maxSum = sums.Item2;
+
+            Console.WriteLine("{0} {1}", minSum, maxSum);
+        }
+
+        private static Tuple<BigInteger, BigInteger> GetSums(List<BigInteger> input)
+        {
             BigInteger maxValue = input.Max(value => value);
             BigInteger minValue = input.Min(value => value);
 
             Func<BigInteger, BigInteger, BigInteger> sum = (accum, value) => accum + value;
 
             var maxValuesOnly = input.Where(value => value != minValue).ToList();
-            BigInteger maxSum = 
+            BigInteger maxSum =
                 maxValuesOnly.Count == 0 ? input.Skip(1).Aggregate(sum) : maxValuesOnly.Aggregate(sum);
 
             var minValuesOnly = input.Where(value => value != maxValue).ToList();
             BigInteger minSum =
                 minValuesOnly.Count == 0 ? input.Skip(1).Aggregate(sum) : minValuesOnly.Aggregate(sum);
 
-            Console.WriteLine("{0} {1}", minSum, maxSum);
+            return Tuple.Create(minSum, maxSum);
         }
     }
 }
