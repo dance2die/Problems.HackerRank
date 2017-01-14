@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 
@@ -19,13 +20,23 @@ namespace Problems.HackerRank.Algorithms.Implementation
             // input = 5 5 5 5 5
             // output = 20 20
 
+            Stopwatch watch =  new Stopwatch();
+            watch.Start();
 
-            //Tuple<BigInteger, BigInteger> sums = GetSums(input);
-            Tuple<BigInteger, BigInteger> sums = GetSums2(input);
-            var minSum = sums.Item1;
-            var maxSum = sums.Item2;
+            Tuple<BigInteger, BigInteger> sums1 = GetSums(input);
+            var minSum1 = sums1.Item1;
+            var maxSum1 = sums1.Item2;
+            watch.Stop();
+            Console.WriteLine("GetSums took {0}", watch.Elapsed);
 
-            Console.WriteLine("{0} {1}", minSum, maxSum);
+            watch.Start();
+            Tuple<BigInteger, BigInteger> sums2 = GetSums2(input);
+            var minSum2 = sums2.Item1;
+            var maxSum2 = sums2.Item2;
+            watch.Stop();
+            Console.WriteLine("GetSums2 took {0}", watch.Elapsed);
+
+            Console.WriteLine("{0} {1}", minSum2, maxSum2);
         }
 
         private static Tuple<BigInteger, BigInteger> GetSums2(List<BigInteger> values)
