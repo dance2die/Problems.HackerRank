@@ -20,13 +20,25 @@ namespace Problems.HackerRank.Algorithms.Implementation
             // input 0 2 5 3 output NO
 
             // NO case
-            if (x1 + v1 < x2 + v2)
+            if (v1 < v2 && x1 < x2)
             {
                 Console.WriteLine("NO");
                 return;
             }
 
-
+            // YES cases
+            int distance1 = x1;
+            int distance2 = x2;
+            while (true)
+            {
+                distance1 += v1;
+                distance2 += v2;
+                if (distance1 == distance2)
+                {
+                    Console.WriteLine("YES");
+                    return;
+                }
+            }
         }
     }
 }
