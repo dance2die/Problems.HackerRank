@@ -26,7 +26,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
             const double maxVelocity = 1E4;
 
             // Obvious case
-            if (x1 == x2 && v1 == v2)
+            if ((x1 == x2 && v1 == v2) || (x1 + v1 == x2 + v2))
             {
                 Console.WriteLine("YES");
                 return;
