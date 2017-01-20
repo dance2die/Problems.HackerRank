@@ -18,6 +18,8 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
             // input 0 3 4 2 output YES
             // input 0 2 5 3 output NO
+            // case#23 1817 9931 8417 190 => NO
+
 
             // NO case
             if (v1 < v2 && x1 < x2)
@@ -33,6 +35,14 @@ namespace Problems.HackerRank.Algorithms.Implementation
             {
                 distance1 += v1;
                 distance2 += v2;
+
+                const double maxDistance = 1E5;
+                if (distance1 > maxDistance || distance2 > maxDistance)
+                {
+                    Console.WriteLine("NO");
+                    return;
+                }
+
                 if (distance1 == distance2)
                 {
                     Console.WriteLine("YES");
