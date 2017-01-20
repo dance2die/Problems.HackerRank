@@ -18,6 +18,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
             // input 0 3 4 2 output YES
             // input 0 2 5 3 output NO
+            // case#18 2564 5393 5121 2836 => YES
             // case#22 23 9867 9814 5861 => NO
             // case#23 1817 9931 8417 190 => NO
             // case#29 1571 4240 9023 4234 => YES
