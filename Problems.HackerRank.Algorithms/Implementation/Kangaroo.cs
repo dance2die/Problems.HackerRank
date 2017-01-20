@@ -18,27 +18,41 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
             // input 0 3 4 2 output YES
             // input 0 2 5 3 output NO
+            // case#22 23 9867 9814 5861 => NO
             // case#23 1817 9931 8417 190 => NO
+            // case#29 1571 4240 9023 4234 => YES
 
-            const double maxDistance = 1E5;
-            const double maxVelocity = 1E5;
+            const double maxVelocity = 1E4;
+
+            // Obvious case
+            if (x1 == x2 && v1 == v2)
+            {
+                Console.WriteLine("YES");
+                return;
+            }
+
+            
 
             // NO case
-            if ((v1 < v2 && x1 < x2) || (v1 > maxVelocity || v2 > maxVelocity))
+            if ((x1 + v1 >= x2 + v2 && v1 >= v2) ||
+                (x1 + v1 <= x2 + v2 && v1 <= v2) ||
+                (v1 < v2 && x1 <= x2) || 
+                (v1 >= v2 && x1 > x2) || 
+                (v1 > maxVelocity || v2 > maxVelocity))
             {
                 Console.WriteLine("NO");
                 return;
             }
 
             // YES cases
-            int distance1 = x1;
-            int distance2 = x2;
+            long distance1 = x1;
+            long distance2 = x2;
             while (true)
             {
                 distance1 += v1;
                 distance2 += v2;
 
-                if (distance1 > maxDistance || distance2 > maxDistance)
+                if (distance1 > int.MaxValue || distance2 > int.MaxValue)
                 {
                     Console.WriteLine("NO");
                     return;
