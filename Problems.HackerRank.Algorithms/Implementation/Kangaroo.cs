@@ -16,6 +16,16 @@ namespace Problems.HackerRank.Algorithms.Implementation
             int x2 = Convert.ToInt32(tokens_x1[2]);
             int v2 = Convert.ToInt32(tokens_x1[3]);
 
+            // input 0 3 4 2 output YES
+            // input 0 2 5 3 output NO
+
+            // NO case
+            if (x1 + v1 < x2 + v2)
+            {
+                Console.WriteLine("NO");
+                return;
+            }
+
 
         }
     }
