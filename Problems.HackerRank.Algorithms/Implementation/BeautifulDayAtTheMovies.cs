@@ -19,8 +19,12 @@ namespace Problems.HackerRank.Algorithms.Implementation
             // output: 2
             // input: 1 2000000 1000000000
             // output: 2998
+            // test case #6
             // input: 1 123456 13
             // output: 9657
+            // test case #7
+            // input: 123 456789 189
+            // output: 21841
 
             int counter = 0;
             for (int a = i; a <= j; a++)
@@ -44,9 +48,9 @@ namespace Problems.HackerRank.Algorithms.Implementation
             double quotient = (double)(value - reversedValue) / divisor;
             double remainder = quotient % 2;
 
-            const double tolerance = 0.000000001;
-            //return Math.Abs(remainder - 1) < tolerance || Math.Abs(remainder) < tolerance;
-            return remainder == 1 || remainder == 0;
+            const double tolerance = 0.01;
+            return Math.Abs(remainder - 1) < tolerance || Math.Abs(remainder) < tolerance;
+            //return remainder == 1 || remainder == 0;
         }
 
         private static int GetReversed(int value)
