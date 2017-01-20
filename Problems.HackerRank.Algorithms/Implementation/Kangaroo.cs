@@ -20,9 +20,11 @@ namespace Problems.HackerRank.Algorithms.Implementation
             // input 0 2 5 3 output NO
             // case#23 1817 9931 8417 190 => NO
 
+            const double maxDistance = 1E5;
+            const double maxVelocity = 1E5;
 
             // NO case
-            if (v1 < v2 && x1 < x2)
+            if ((v1 < v2 && x1 < x2) || (v1 > maxVelocity || v2 > maxVelocity))
             {
                 Console.WriteLine("NO");
                 return;
@@ -36,7 +38,6 @@ namespace Problems.HackerRank.Algorithms.Implementation
                 distance1 += v1;
                 distance2 += v2;
 
-                const double maxDistance = 1E5;
                 if (distance1 > maxDistance || distance2 > maxDistance)
                 {
                     Console.WriteLine("NO");
