@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Problems.HackerRank.Algorithms.Implementation
@@ -9,6 +10,9 @@ namespace Problems.HackerRank.Algorithms.Implementation
     /// </summary>
     public class BeautifulDayAtTheMovies
     {
+        private static readonly Dictionary<Tuple<int, int, int>, double> _remainders = new Dictionary<Tuple<int, int, int>, double>();
+        private const double TOLERANCE = 1E-9;
+
         public static void Main(string[] args)
         {
             string[] ijk = Console.ReadLine().Split(' ');
@@ -45,12 +49,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         private static bool IsEvenlyDivisible(int value, int reversedValue, int divisor)
         {
-            double quotient = (double)(value - reversedValue) / divisor;
-            double remainder = quotient % 2;
-
-            const double tolerance = 0.01;
-            return Math.Abs(remainder - 1) < tolerance || Math.Abs(remainder) < tolerance;
-            //return remainder == 1 || remainder == 0;
+            return (double) (value - reversedValue) % divisor == 0;
         }
 
         private static int GetReversed(int value)
