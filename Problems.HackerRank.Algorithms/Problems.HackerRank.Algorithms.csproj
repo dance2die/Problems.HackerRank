@@ -52,6 +52,7 @@
     <Compile Include="Implementation\DivisibleSumPairs.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
+    <Compile Include="Implementation\Kangaroo.cs" />
     <Compile Include="Implementation\MiniMaxSum.cs" />
     <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\RepeatedString.cs" />
