@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.BeautifulDayAtTheMovies</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.MinimumDistances</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,6 +53,7 @@
     <Compile Include="Implementation\EqualizeTheArray.cs" />
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
     <Compile Include="Implementation\MiniMaxSum.cs" />
+    <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\RepeatedString.cs" />
     <Compile Include="Implementation\SockMerchant.cs" />
     <Compile Include="Implementation\ViralAdvertising.cs" />
