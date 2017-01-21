@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Sorting.InsertionSortPart1</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Sorting.InsertionSortPart2</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
