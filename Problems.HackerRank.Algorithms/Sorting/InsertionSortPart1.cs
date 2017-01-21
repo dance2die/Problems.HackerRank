@@ -8,7 +8,7 @@ namespace Problems.HackerRank.Algorithms.Sorting
     /// https://www.hackerrank.com/challenges/insertionsort1
     /// from https://www.hackerrank.com/challenges/tutorial-intro
     /// </summary>
-    public class InsertionSortPart1
+    public class InsertionSortPart1 : BaseSorting
     {
         public static void Main(string[] args)
         {
@@ -88,11 +88,6 @@ namespace Problems.HackerRank.Algorithms.Sorting
                 a[0] = value;
                 PrintArray(a);
             }
-        }
-
-        private static void PrintArray(int[] a)
-        {
-            Console.WriteLine(string.Join(" ", a));
         }
     }
 }
