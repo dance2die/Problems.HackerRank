@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.Kangaroo</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.DynamicProgramming.FibonacciModified</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
