@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Sorting.RunningTimeOfAlgorithms</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Sorting.QuickSort1Partition</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
