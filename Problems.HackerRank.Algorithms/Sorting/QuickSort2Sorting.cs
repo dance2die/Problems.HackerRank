@@ -99,31 +99,6 @@ OUTPUT:
             Console.WriteLine(string.Join(" ", list));
         }
 
-        private static Tuple<List<int>, int, List<int>> PartitionSort2(Tuple<List<int>, int, List<int>> partition)
-        {
-            var pivot = partition.Item2;
-            if (pivot == END_NUMBER)
-                return partition;
-
-            if (partition.Item1.Count <= 1 && partition.Item3.Count <= 1)
-                return partition;
-
-            var left = partition.Item1;
-            var right = partition.Item3;
-
-            var leftPartition = Partition(left);
-            var leftResult = PartitionSort2(leftPartition);
-
-            var rightPartition = Partition(left);
-            var rightResult = PartitionSort2(rightPartition);
-
-            Func<List<int>, string> toString = list => string.Join(" ", list.Select(c => c.ToString()).ToArray());
-            Console.WriteLine("{0}{1}{2}", toString(leftResult.Item1), leftResult.Item2, toString(leftResult.Item3));
-            Console.WriteLine("{0}{1}{2}", toString(rightResult.Item1), rightResult.Item2, toString(rightResult.Item3));
-
-            return Tuple.Create(new List<int>(0), END_NUMBER, new List<int>(0));
-        }
-
         private static void PrintPartition(Tuple<List<int>, int, List<int>> partition)
         {
             var pivot = partition.Item2;
@@ -134,42 +109,6 @@ OUTPUT:
             var pivotValue = right.Count >= 1 ? pivot + " " : pivot.ToString();
             var rightValue = right.Count < 1 ? "" : right[0].ToString();
             Console.WriteLine("{0}{1}{2}", leftValue, pivotValue, rightValue);
-        }
-
-        private static void PartitionSort(Tuple<List<int>, int, List<int>> partition)
-        {
-            if (partition.Item2 == END_NUMBER)
-                return;
-
-            var pivot = partition.Item2;
-            var left = partition.Item1;
-            var right = partition.Item3;
-
-            var a = ConvertToArray(partition).ToArray();
-
-            var partitioned = Partition(a);
-            var l = partitioned.Item1;
-            var p = partitioned.Item2;
-            var r = partitioned.Item3;
-
-            var leftPartition = Partition(l);
-            PartitionSort(leftPartition);
-
-            var rightPartition = Partition(r);
-            PartitionSort(rightPartition);
-        }
-
-        private static List<int> ConvertToArray(Tuple<List<int>, int, List<int>> partition)
-        {
-            var pivot = partition.Item2;
-            var left = partition.Item1;
-            var right = partition.Item3;
-
-            var list = new List<int> { pivot };
-            list.AddRange(left);
-            list.AddRange(right);
-
-            return list;
         }
 
         private static Tuple<List<int>, int, List<int>> Partition(IList<int> a)
