@@ -55,10 +55,5 @@ OUTPUT:
 
             Console.WriteLine("{0} {1} {2}", string.Join(" ", left.ToArray()), p, string.Join(" ", right.ToArray()));
         }
-
-        private static void PrintArray(int[] a)
-        {
-            Console.WriteLine(string.Join(" ", a));
-        }
     }
 }
