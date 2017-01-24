@@ -6,30 +6,7 @@ namespace Problems.HackerRank.Algorithms.Sorting
 {
     public class QuickSort2Sorting
     {
-        private static Tuple<List<int>, int, List<int>> PartitionSort2(Tuple<List<int>, int, List<int>> partition)
-        {
-            var pivot = partition.Item2;
-            if (pivot == END_NUMBER)
-                return partition;
-
-            if (partition.Item1.Count <= 1 && partition.Item3.Count <= 1)
-                return partition;
-
-            var left = partition.Item1;
-            var right = partition.Item3;
-
-            var leftPartition = Partition(left);
-            var leftResult = PartitionSort2(leftPartition);
-
-            var rightPartition = Partition(left);
-            var rightResult = PartitionSort2(rightPartition);
-
-            Func<List<int>, string> toString = list => string.Join(" ", list.Select(c => c.ToString()).ToArray());
-            Console.WriteLine("{0}{1}{2}", toString(leftResult.Item1), leftResult.Item2, toString(leftResult.Item3));
-            Console.WriteLine("{0}{1}{2}", toString(rightResult.Item1), rightResult.Item2, toString(rightResult.Item3));
-
-            return Tuple.Create(new List<int>(0), END_NUMBER, new List<int>(0));
-        }
+        private const int END_NUMBER = int.MinValue;
 
         /// <summary>
         /// Quicksort 2 - Sorting
@@ -61,11 +38,6 @@ namespace Problems.HackerRank.Algorithms.Sorting
             QuickSort(a);
         }
 
-        private static void QuickSort(int[] a)
-        {
-            PartitionSort3(Partition(a));
-        }
-
         private static Tuple<List<int>, int, List<int>> PartitionSort3(Tuple<List<int>, int, List<int>> partition)
         {
             var pivot = partition.Item2;
@@ -87,9 +59,37 @@ namespace Problems.HackerRank.Algorithms.Sorting
             return Tuple.Create(left, pivot, right);
         }
 
-        private const int END_NUMBER = int.MinValue;
+        private static Tuple<List<int>, int, List<int>> PartitionSort2(Tuple<List<int>, int, List<int>> partition)
+        {
+            var pivot = partition.Item2;
+            if (pivot == END_NUMBER)
+                return partition;
+
+            if (partition.Item1.Count <= 1 && partition.Item3.Count <= 1)
+                return partition;
+
+            var left = partition.Item1;
+            var right = partition.Item3;
+
+            var leftPartition = Partition(left);
+            var leftResult = PartitionSort2(leftPartition);
+
+            var rightPartition = Partition(left);
+            var rightResult = PartitionSort2(rightPartition);
+
+            Func<List<int>, string> toString = list => string.Join(" ", list.Select(c => c.ToString()).ToArray());
+            Console.WriteLine("{0}{1}{2}", toString(leftResult.Item1), leftResult.Item2, toString(leftResult.Item3));
+            Console.WriteLine("{0}{1}{2}", toString(rightResult.Item1), rightResult.Item2, toString(rightResult.Item3));
+
+            return Tuple.Create(new List<int>(0), END_NUMBER, new List<int>(0));
+        }
 
         //private static Tuple<List<int>, int, List<int>> PartitionSort(List<int> left, int pivot, List<int> right)
+        private static void QuickSort(int[] a)
+        {
+            PartitionSort3(Partition(a));
+        }
+
         private static void PartitionSort(Tuple<List<int>, int, List<int>> partition)
         {
             if (partition.Item2 == END_NUMBER)
