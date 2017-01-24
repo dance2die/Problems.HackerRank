@@ -58,18 +58,10 @@ OUTPUT:
             var left = partition.Item1;
             var right = partition.Item3;
 
-            //PrintPartition(Partition(accum));
-
             var result = Tuple.Create(left, pivot, right);
-            //if (left.Count <= 1 || right.Count <= 1)
             if (left.Count == 0 && right.Count == 0)
             {
-                //if (left.Count == 1) accum.Add(left[0]);
                 accum.Add(pivot);
-                //if (right.Count == 1) accum.Add(left[0]);
-                //accum.AddRange(ConvertToArray(result));
-
-                PrintPartition(result);
                 return result;
             }
 
@@ -77,7 +69,6 @@ OUTPUT:
             {
                 var leftPartition = Partition(left);
                 Tuple<List<int>, int, List<int>> leftSorted = PartitionSort3(leftPartition, accum);
-                PrintPartition(leftSorted);
             }
             accum.Add(pivot);
 
@@ -85,7 +76,6 @@ OUTPUT:
             {
                 var rightPartition = Partition(right);
                 Tuple<List<int>, int, List<int>> rightSorted = PartitionSort3(rightPartition, accum);
-                PrintPartition(rightSorted);
             }
 
             PrintPartition(result);
