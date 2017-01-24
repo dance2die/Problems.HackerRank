@@ -66,25 +66,25 @@ namespace Problems.HackerRank.Algorithms.Sorting
             PartitionSort3(Partition(a));
         }
 
-        private static int PartitionSort3(Tuple<List<int>, int, List<int>> partition)
+        private static Tuple<List<int>, int, List<int>> PartitionSort3(Tuple<List<int>, int, List<int>> partition)
         {
             var pivot = partition.Item2;
             var left = partition.Item1;
             var right = partition.Item3;
 
-            if (left.Count == 1) return left[0];
-            if (right.Count == 1) return right[0];
+            if (left.Count <= 1 && right.Count <= 1)
+            {
+                var leftValue = left.Count < 1 ? "" : left[0] + " ";
+                var pivotValue = right.Count >= 1 ? pivot + " " : pivot.ToString();
+                var rightValue = right.Count < 1 ? "" : right[0].ToString();
+                Console.WriteLine("{0}{1}{2}", leftValue, pivotValue, rightValue);
+                return Tuple.Create(left, pivot, right);
+            }
 
-            if (pivot == END_NUMBER)
-                return pivot;
+            PartitionSort3(Partition(left));
+            PartitionSort3(Partition(right));
 
-
-            int leftResult = PartitionSort3(Partition(left));
-            int rightResult = PartitionSort3(Partition(right));
-
-            Console.WriteLine("{0}{1}{2}", leftResult, pivot, rightResult);
-
-            return END_NUMBER;
+            return Tuple.Create(left, pivot, right);
         }
 
         private const int END_NUMBER = int.MinValue;
