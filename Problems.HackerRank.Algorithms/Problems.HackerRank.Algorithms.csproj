@@ -66,6 +66,7 @@
     <Compile Include="Sorting\InsertionSortPart1.cs" />
     <Compile Include="Sorting\InsertionSortPart2.cs" />
     <Compile Include="Sorting\QuickSort1Partition.cs" />
+    <Compile Include="Sorting\QuickSort2Sorting.cs" />
     <Compile Include="Sorting\RunningTimeOfAlgorithms.cs" />
     <Compile Include="Strings\CamelCaseMain.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
