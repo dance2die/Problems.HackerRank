@@ -4,6 +4,11 @@ using System.Linq;
 
 namespace Problems.HackerRank.Algorithms.Sorting
 {
+    /// <summary>
+    /// Quicksort 2 - Sorting
+    /// https://www.hackerrank.com/challenges/quicksort2
+    /// from https://www.hackerrank.com/challenges/tutorial-intro
+    /// </summary>
     public class QuickSort2Sorting
     {
         private const int END_NUMBER = int.MinValue;
@@ -24,39 +29,68 @@ namespace Problems.HackerRank.Algorithms.Sorting
                 a[i] = Convert.ToInt32(elementsSplit[i]);
             }
             /*
-            INPUT:
-            7
-            5 8 1 3 7 9 2 
+INPUT:
+7
+5 8 1 3 7 9 2 
 
-            OUTPUT:
-            2 3
-            1 2 3
-            7 8 9
-            1 2 3 5 7 8 9
+OUTPUT:
+2 3
+1 2 3
+7 8 9
+1 2 3 5 7 8 9
             */
 
             QuickSort(a);
         }
 
-        private static Tuple<List<int>, int, List<int>> PartitionSort3(Tuple<List<int>, int, List<int>> partition)
+        //private static Tuple<List<int>, int, List<int>> PartitionSort(List<int> left, int pivot, List<int> right)
+        private static void QuickSort(int[] a)
+        {
+            var accum = new List<int>();
+            PartitionSort3(Partition(a), accum);
+            Console.WriteLine(accum);
+        }
+
+        private static Tuple<List<int>, int, List<int>> PartitionSort3(
+            Tuple<List<int>, int, List<int>> partition, List<int> accum)
         {
             var pivot = partition.Item2;
             var left = partition.Item1;
             var right = partition.Item3;
 
-            if (left.Count <= 1 && right.Count <= 1)
+            //PrintPartition(Partition(accum));
+
+            var result = Tuple.Create(left, pivot, right);
+            //if (left.Count <= 1 || right.Count <= 1)
+            if (left.Count == 0 && right.Count == 0)
             {
-                var leftValue = left.Count < 1 ? "" : left[0] + " ";
-                var pivotValue = right.Count >= 1 ? pivot + " " : pivot.ToString();
-                var rightValue = right.Count < 1 ? "" : right[0].ToString();
-                Console.WriteLine("{0}{1}{2}", leftValue, pivotValue, rightValue);
-                return Tuple.Create(left, pivot, right);
+                //if (left.Count == 1) accum.Add(left[0]);
+                accum.Add(pivot);
+                //if (right.Count == 1) accum.Add(left[0]);
+                //accum.AddRange(ConvertToArray(result));
+
+                PrintPartition(result);
+                return result;
             }
 
-            PartitionSort3(Partition(left));
-            PartitionSort3(Partition(right));
+            if (left.Count > 0)
+            {
+                var leftPartition = Partition(left);
+                Tuple<List<int>, int, List<int>> leftSorted = PartitionSort3(leftPartition, accum);
+                PrintPartition(leftSorted);
+            }
+            accum.Add(pivot);
 
-            return Tuple.Create(left, pivot, right);
+            if (right.Count > 0)
+            {
+                var rightPartition = Partition(right);
+                Tuple<List<int>, int, List<int>> rightSorted = PartitionSort3(rightPartition, accum);
+                PrintPartition(rightSorted);
+            }
+
+            PrintPartition(result);
+
+            return Tuple.Create(left, END_NUMBER, right);
         }
 
         private static Tuple<List<int>, int, List<int>> PartitionSort2(Tuple<List<int>, int, List<int>> partition)
@@ -84,10 +118,16 @@ namespace Problems.HackerRank.Algorithms.Sorting
             return Tuple.Create(new List<int>(0), END_NUMBER, new List<int>(0));
         }
 
-        //private static Tuple<List<int>, int, List<int>> PartitionSort(List<int> left, int pivot, List<int> right)
-        private static void QuickSort(int[] a)
+        private static void PrintPartition(Tuple<List<int>, int, List<int>> partition)
         {
-            PartitionSort3(Partition(a));
+            var pivot = partition.Item2;
+            var left = partition.Item1;
+            var right = partition.Item3;
+
+            var leftValue = left.Count < 1 ? "" : left[0] + " ";
+            var pivotValue = right.Count >= 1 ? pivot + " " : pivot.ToString();
+            var rightValue = right.Count < 1 ? "" : right[0].ToString();
+            Console.WriteLine("{0}{1}{2}", leftValue, pivotValue, rightValue);
         }
 
         private static void PartitionSort(Tuple<List<int>, int, List<int>> partition)
