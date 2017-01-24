@@ -59,9 +59,20 @@ OUTPUT:
             var right = partition.Item3;
 
             var result = Tuple.Create(left, pivot, right);
+            //if (left.Count == 0 && right.Count == 0)
             if (left.Count == 0 && right.Count == 0)
             {
                 accum.Add(pivot);
+
+                return result;
+            }
+
+            if (left.Count <= 1 && right.Count <= 1)
+            {
+                if (left.Count == 1) accum.Add(left[0]);
+                accum.Add(pivot);
+                if (right.Count == 1) accum.Add(right[0]);
+
                 return result;
             }
 
@@ -78,9 +89,14 @@ OUTPUT:
                 Tuple<List<int>, int, List<int>> rightSorted = PartitionSort3(rightPartition, accum);
             }
 
-            PrintPartition(result);
+            PrintList(accum);
 
             return Tuple.Create(left, END_NUMBER, right);
+        }
+
+        private static void PrintList(IEnumerable<int> list)
+        {
+            Console.WriteLine(string.Join(" ", list));
         }
 
         private static Tuple<List<int>, int, List<int>> PartitionSort2(Tuple<List<int>, int, List<int>> partition)
