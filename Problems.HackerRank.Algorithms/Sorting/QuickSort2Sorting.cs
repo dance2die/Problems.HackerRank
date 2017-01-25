@@ -48,7 +48,6 @@ OUTPUT:
         {
             var accum = new List<int>();
             PartitionSort3(Partition(a), accum);
-            Console.WriteLine(accum);
         }
 
         private static Tuple<List<int>, int, List<int>> PartitionSort3(
@@ -57,21 +56,33 @@ OUTPUT:
             var pivot = partition.Item2;
             var left = partition.Item1;
             var right = partition.Item3;
-
             var result = Tuple.Create(left, pivot, right);
-            //if (left.Count == 0 && right.Count == 0)
+
             if (left.Count == 0 && right.Count == 0)
             {
                 accum.Add(pivot);
-
                 return result;
             }
 
             if (left.Count <= 1 && right.Count <= 1)
             {
-                if (left.Count == 1) accum.Add(left[0]);
+                List<int> toPrint = new List<int>(3);
+                if (left.Count == 1)
+                {
+                    accum.Add(left[0]);
+                    toPrint.Add(left[0]);
+                }
+
                 accum.Add(pivot);
-                if (right.Count == 1) accum.Add(right[0]);
+                toPrint.Add(pivot);
+
+                if (right.Count == 1)
+                {
+                    accum.Add(right[0]);
+                    toPrint.Add(right[0]);
+                }
+
+                PrintList(toPrint);
 
                 return result;
             }
