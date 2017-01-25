@@ -90,14 +90,14 @@ OUTPUT:
             if (left.Count > 0)
             {
                 var leftPartition = Partition(left);
-                Tuple<List<int>, int, List<int>> leftSorted = PartitionSort3(leftPartition, accum);
+                PartitionSort3(leftPartition, accum);
             }
             accum.Add(pivot);
 
             if (right.Count > 0)
             {
                 var rightPartition = Partition(right);
-                Tuple<List<int>, int, List<int>> rightSorted = PartitionSort3(rightPartition, accum);
+                PartitionSort3(rightPartition, accum);
             }
 
             PrintList(accum);
