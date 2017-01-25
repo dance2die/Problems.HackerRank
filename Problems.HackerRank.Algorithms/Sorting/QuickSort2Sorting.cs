@@ -50,6 +50,7 @@ OUTPUT:
         {
             var accum = new List<int>();
             PartitionSort3(Partition(a), accum);
+            PrintList(accum);
         }
 
         private static Tuple<List<int>, int, List<int>> PartitionSort3(
@@ -89,20 +90,28 @@ OUTPUT:
                 return result;
             }
 
+            var localAccum = new List<int>();
+
+            var leftPartition = Partition(left);
             if (left.Count > 0)
             {
-                var leftPartition = Partition(left);
-                PartitionSort3(leftPartition, accum);
+                var leftPartitioned = PartitionSort3(leftPartition, accum);
+                if (leftPartitioned.Item1.Count > 0 && leftPartitioned.Item3.Count > 0 && leftPartitioned.Item2 != END_NUMBER)
+                {
+                    localAccum.AddRange(new [] { leftPartitioned.Item1[0], leftPartitioned.Item2, leftPartitioned.Item3[0] });
+                    localAccum.Add(pivot);
+                    PrintList(localAccum);
+                }
             }
             accum.Add(pivot);
 
+            var rightPartition = Partition(right);
             if (right.Count > 0)
             {
-                var rightPartition = Partition(right);
                 PartitionSort3(rightPartition, accum);
             }
 
-            PrintList(accum);
+            
 
             return Tuple.Create(left, END_NUMBER, right);
         }
