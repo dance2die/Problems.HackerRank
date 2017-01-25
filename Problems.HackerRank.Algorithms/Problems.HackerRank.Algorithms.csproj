@@ -64,6 +64,7 @@
     <Compile Include="Sorting\BaseSorting.cs" />
     <Compile Include="Sorting\CorrectnessAndTheLoopInvariant.cs" />
     <Compile Include="Sorting\CountingSort1.cs" />
+    <Compile Include="Sorting\CountingSort2.cs" />
     <Compile Include="Sorting\InsertionSortPart1.cs" />
     <Compile Include="Sorting\InsertionSortPart2.cs" />
     <Compile Include="Sorting\QuickSort1Partition.cs" />
