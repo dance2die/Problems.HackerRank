@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Sorting.CountingSort2</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Sorting.CountingSort3</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -65,6 +65,7 @@
     <Compile Include="Sorting\CorrectnessAndTheLoopInvariant.cs" />
     <Compile Include="Sorting\CountingSort1.cs" />
     <Compile Include="Sorting\CountingSort2.cs" />
+    <Compile Include="Sorting\CountingSort3.cs" />
     <Compile Include="Sorting\InsertionSortPart1.cs" />
     <Compile Include="Sorting\InsertionSortPart2.cs" />
     <Compile Include="Sorting\QuickSort1Partition.cs" />
