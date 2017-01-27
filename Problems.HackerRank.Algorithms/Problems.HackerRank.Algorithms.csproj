@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Sorting.IntroToTutorialChallenges</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Sorting.ClosestNumbers</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
