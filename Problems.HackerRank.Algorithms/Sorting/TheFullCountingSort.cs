@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Problems.HackerRank.Algorithms.Sorting
 {
@@ -25,30 +26,29 @@ namespace Problems.HackerRank.Algorithms.Sorting
                 values.Add(i, new Line(int.Parse(split[0]), text));
             }
 
-            //Console.WriteLine(values);
-
             var countTable = GetCountTable(values);
             PrintCountTable(countTable);
         }
 
         private static void PrintCountTable(IOrderedEnumerable<KeyValuePair<int, Line>> countTable)
         {
+            StringBuilder builder = new StringBuilder();
             foreach (KeyValuePair<int, Line> pair in countTable)
             {
-                Console.Write("{0} ", pair.Value.Text);
+                builder.AppendFormat("{0} ", pair.Value.Text);
             }
+
+            Console.Write(builder.ToString());
         }
 
         /// <summary>
         /// Cheating with LINQ.
         /// </summary>
-        //private static Dictionary<int, Line> GetCountTable(Dictionary<int, Line> values)
         private static IOrderedEnumerable<KeyValuePair<int, Line>> GetCountTable(Dictionary<int, Line> values)
         {
             return values
                 .OrderBy(pair => pair.Value.Position)
                 .ThenBy(pair => pair.Key);
-            //.ToDictionary(pair => pair.Key, pair => pair.Value);
         }
     }
 
