@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Problems.HackerRank.Algorithms.Sorting
 {
@@ -15,7 +12,29 @@ namespace Problems.HackerRank.Algorithms.Sorting
     {
         public static void Main(string[] args)
         {
+            var lineCount = int.Parse(Console.ReadLine());
 
+            Dictionary<int, Line> values = new Dictionary<int, Line>(lineCount);
+            for (int i = 0; i < lineCount; i++)
+            {
+                var line = Console.ReadLine();
+                string[] split = line.Split(' ');
+                values.Add(i, new Line(int.Parse(split[0]), split[1]));
+            }
+
+            //Console.WriteLine(values);
+        }
+    }
+
+    public class Line
+    {
+        public int Position { get; set; }
+        public string Text { get; set; }
+
+        public Line(int position, string text)
+        {
+            Position = position;
+            Text = text;
         }
     }
 }
