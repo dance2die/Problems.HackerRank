@@ -94,9 +94,14 @@ namespace Problems.HackerRank.Algorithms.Sorting
             IEnumerable<Tuple<int, int, int>> differences)
         {
             int minimumValue = differences.Last().Item3;
-            var minimumDifferencePairs = differences.Where(tuple => tuple.Item3 == minimumValue && tuple.Item1 != PLACE_HOLDER);
+            //var minimumDifferencePairs = differences.Where(tuple => tuple.Item3 == minimumValue && tuple.Item1 != PLACE_HOLDER);
+            //return minimumDifferencePairs.Select(tuple => Tuple.Create(tuple.Item1, tuple.Item2));
 
-            return minimumDifferencePairs.Select(tuple => Tuple.Create(tuple.Item1, tuple.Item2));
+            foreach (Tuple<int, int, int> tuple in differences)
+            {
+                if (tuple.Item3 == minimumValue && tuple.Item1 != PLACE_HOLDER)
+                    yield return Tuple.Create(tuple.Item1, tuple.Item2);
+            }
         }
 
         private static void PrintDifferences(IEnumerable<int> values)
