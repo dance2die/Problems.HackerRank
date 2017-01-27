@@ -71,6 +71,7 @@
     <Compile Include="Sorting\QuickSort1Partition.cs" />
     <Compile Include="Sorting\QuickSort2Sorting.cs" />
     <Compile Include="Sorting\RunningTimeOfAlgorithms.cs" />
+    <Compile Include="Sorting\TheFullCountingSort.cs" />
     <Compile Include="Strings\CamelCaseMain.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
