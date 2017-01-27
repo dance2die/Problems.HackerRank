@@ -23,8 +23,8 @@ namespace Problems.HackerRank.Algorithms.Sorting
             }
 
 
-            //Console.WriteLine(values);
-
+            var countTable = GetCountTable(values);
+            PrintCountTable(countTable);
 
 /*
 INPUT:
@@ -44,5 +44,39 @@ OUTPUT:
 1 3 5 6 9 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 
 */   
         }
+
+        private static void PrintCountTable(Dictionary<int, int> countTable)
+        {
+            int accum = 0;
+            for (int i = 0; i < countTable.Count; i++)
+            {
+                accum += countTable[i];
+                Console.Write("{0} ", accum);
+            }
+        }
+
+        private const int OUTPUT_SIZE = 100;
+
+        private static Dictionary<int, int> GetCountTable(IEnumerable<int> values)
+        {
+            Dictionary<int, int> lookup = new Dictionary<int, int>(OUTPUT_SIZE);
+            for (int i = 0; i < OUTPUT_SIZE; i++)
+            {
+                lookup.Add(i, 0);
+            }
+
+            var valueList = values as IList<int> ?? values.ToList();
+            for (int i = 0; i < valueList.Count; i++)
+            {
+                int value = valueList[i];
+                if (lookup.ContainsKey(value))
+                    lookup[value]++;
+                else
+                    lookup.Add(value, 1);
+            }
+
+            return lookup.OrderBy(pair => pair.Key).ToDictionary(pair => pair.Key, pair => pair.Value);
+        }
+
     }
 }
