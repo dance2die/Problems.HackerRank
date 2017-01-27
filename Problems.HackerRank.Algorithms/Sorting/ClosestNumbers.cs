@@ -64,12 +64,10 @@ namespace Problems.HackerRank.Algorithms.Sorting
 
         /// <summary>
         /// Tuple contains two numbers compared.
-        /// Second type parameter, int, contains difference value
+        /// third type parameter, int, contains difference value
         /// </summary>
-        private static Dictionary<Tuple<int, int>, int> GetDifferences(int[] values)
+        private static IEnumerable<Tuple<int, int, int>> GetDifferences(int[] values)
         {
-            Dictionary<Tuple<int, int>, int> result = new Dictionary<Tuple<int, int>, int>(values.Length);
-
             for (int i = 0; i < values.Length - 1; i++)
             {
                 for (int j = i + 1; j < values.Length; j++)
@@ -78,20 +76,18 @@ namespace Problems.HackerRank.Algorithms.Sorting
                     var right = values[j];
                     var difference = Math.Abs(left - right);
 
-                    result.Add(Tuple.Create(left, right), difference);
+                    yield return Tuple.Create(left, right, difference);
                 }
             }
-
-            return result;
         }
 
         private static IEnumerable<Tuple<int, int>> GetLowestDifferences(
-            Dictionary<Tuple<int, int>, int> differences)
+            IEnumerable<Tuple<int, int, int>> differences)
         {
-            int minimumValue = differences.Min(pair => pair.Value);
-            var minimumDifferencePairs = differences.Where(pair => pair.Value == minimumValue);
+            int minimumValue = differences.Min(tuple => tuple.Item3);
+            var minimumDifferencePairs = differences.Where(tuple => tuple.Item3 == minimumValue);
 
-            return minimumDifferencePairs.Select(pair => pair.Key);
+            return minimumDifferencePairs.Select(tuple => Tuple.Create(tuple.Item1, tuple.Item2));
         }
 
         private static void PrintDifferences(IEnumerable<int> values)
