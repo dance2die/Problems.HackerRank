@@ -19,10 +19,12 @@ namespace Problems.HackerRank.Algorithms.Sorting
             {
                 var line = Console.ReadLine();
                 string[] split = line.Split(' ');
-                values.Add(i, new Line(int.Parse(split[0]), split[1]));
+
+                var text = i < lineCount / 2 ? "-" : split[1];
+                values.Add(i, new Line(int.Parse(split[0]), text));
             }
 
-            //Console.WriteLine(values);
+            Console.WriteLine(values);
         }
     }
 
