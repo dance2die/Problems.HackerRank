@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Sorting.TheFullCountingSort</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Sorting.IntroToTutorialChallenges</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -68,6 +68,7 @@
     <Compile Include="Sorting\CountingSort3.cs" />
     <Compile Include="Sorting\InsertionSortPart1.cs" />
     <Compile Include="Sorting\InsertionSortPart2.cs" />
+    <Compile Include="Sorting\IntroToTutorialChallenges.cs" />
     <Compile Include="Sorting\QuickSort1Partition.cs" />
     <Compile Include="Sorting\QuickSort2Sorting.cs" />
     <Compile Include="Sorting\RunningTimeOfAlgorithms.cs" />
