@@ -31,19 +31,6 @@ OUTPUT: 3
             Console.WriteLine(partition.Item2);
         }
 
-        private static int[] ConvertPartitionToArray(Tuple<List<int>, int, List<int>> partition)
-        {
-            const int pivotSize = 1;
-            var newSize = partition.Item1.Count + pivotSize + partition.Item3.Count;
-
-            List<int> result = new List<int>(newSize);
-            result.AddRange(partition.Item1);
-            result.Add(partition.Item2);
-            result.AddRange(partition.Item3);
-
-            return result.ToArray();
-        }
-
         private static Tuple<List<int>, int, List<int>> Partition(int[] a, int pivotIndex)
         {
             int partitionSize = a.Length / 2;
