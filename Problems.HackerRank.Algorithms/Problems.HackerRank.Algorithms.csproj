@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Sorting.LilysHomework</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Sorting.FraudulentActivityNotifications</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -67,6 +67,7 @@
     <Compile Include="Sorting\CountingSort1.cs" />
     <Compile Include="Sorting\CountingSort2.cs" />
     <Compile Include="Sorting\CountingSort3.cs" />
+    <Compile Include="Sorting\FraudulentActivityNotifications.cs" />
     <Compile Include="Sorting\Later\FindTheMedian.cs" />
     <Compile Include="Sorting\InsertionSortPart1.cs" />
     <Compile Include="Sorting\InsertionSortPart2.cs" />
