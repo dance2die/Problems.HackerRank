@@ -22,6 +22,10 @@ namespace Problems.HackerRank.Algorithms.Sorting
             var expenditures = Array.ConvertAll(split, int.Parse);
 
 
+            // check out http://www.cs.miami.edu/home/burt/learning/Csc517.091/workbook/countingsort.html
+            // for counting sort.
+            // Need to utilize "Counting Array" and update only count instead of sorting from begnning
+
 /*
 INPUT:
 9 5
