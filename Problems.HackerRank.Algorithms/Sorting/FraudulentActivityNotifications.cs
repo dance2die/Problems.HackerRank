@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Problems.HackerRank.Algorithms.Sorting
 {
@@ -41,12 +42,12 @@ OUTPUT: 0
         {
             int fraudulentCount = 0;
 
+            List<int> expenditureList = expenditures.ToList();
+
             for (int i = days; i < expenditures.Length; i++)
             {
                 var sourceIndex = i - days;
-                //int[] lastNDayExpenditures = GetLastNDayExpenditures(days, expenditures, sourceIndex);
-                //double median = GetMedian(lastNDayExpenditures);
-                double median = CalculateMedian(expenditures, sourceIndex, days);
+                double median = GetMedian(expenditureList.GetRange(sourceIndex, days));
 
                 if (2 * median <= expenditures[i])
                     fraudulentCount++;
@@ -55,23 +56,14 @@ OUTPUT: 0
             return fraudulentCount;
         }
 
-        private static double CalculateMedian(int[] expenditures, int fromIndex, int days)
+        private static double GetMedian(IList<int> list)
         {
-            int[] subArray = new int[days];
-            Array.Copy(expenditures, fromIndex, subArray, 0, days);
-
-            return GetMedian(subArray);
-        }
-
-        private static double GetMedian(int[] a)
-        {
-            var copy = a.Clone() as int[];
-            Array.Sort(copy);
+            var copy = list.OrderBy(value => value).ToList();
 
             Func<int, bool> isOdd = value => value % 2 == 1;
-            var halfIndex = copy.Length / 2;
+            var halfIndex = copy.Count / 2;
 
-            if (isOdd(copy.Length))
+            if (isOdd(copy.Count))
             {
                 return copy[halfIndex];
             }
