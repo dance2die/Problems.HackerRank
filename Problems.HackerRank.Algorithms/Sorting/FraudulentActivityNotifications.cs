@@ -38,11 +38,12 @@ INPUT:
 OUTPUT: 0
 */
 
-            //int count = GetFraudulentActivityCounts3(days, expenditures);
-            //Console.WriteLine(count);
 
             //MedianCalculator calculator = new MedianCalculator(new List<int> {2, 5, 4, 1, 4, 0, 4, 3, 4, 5, 2, 5, 4, 0, 1, 1});
-            MedianCalculator calculator = new MedianCalculator(expenditures.ToList().GetRange(0, days - 1));
+            //MedianCalculator calculator = new MedianCalculator(expenditures.ToList().GetRange(0, days - 1));
+
+            int count = GetFraudulentActivityCounts3(days, expenditures);
+            Console.WriteLine(count);
         }
 
         private static int GetFraudulentActivityCounts3(int days, int[] expenditures)
@@ -54,19 +55,20 @@ OUTPUT: 0
             //  if 2 x median <= current element, then increase counter++
 
 
-            MedianCalculator calculator = new MedianCalculator(expenditures.ToList().GetRange(0, days - 1));
+            MedianCalculator calculator = new MedianCalculator(expenditures.ToList().GetRange(0, days));
 
             int fraudulentCount = 0;
-            for (int i = days - 1; i < expenditures.Length; i++)
+            for (int i = days; i < expenditures.Length; i++)
             {
                 var currentValue = expenditures[i];
-                calculator.Add(currentValue);
                 double median = calculator.GetMedian();
 
                 if (2 * median <= currentValue)
                 {
                     fraudulentCount++;
                 }
+
+                calculator.Add(currentValue);
             }
 
             return fraudulentCount;
@@ -195,9 +197,10 @@ OUTPUT: 0
         {
             _outputArray = new int[_queue.Count];
 
-            var queueArray = _queue.Reverse().ToArray();
+            //var queueArray = _queue.Reverse().ToArray();
+            var queueArray = _queue.ToArray();
             var countingArrayCopy = _countingArray.ToDictionary(pair => pair.Key, pair => pair.Value);
-            for (int i = 0; i < queueArray.Length; i++)
+            for (int i = queueArray.Length - 1; i >= 0; i--)
             {
                 var value = queueArray[i];
                 var outputIndex = countingArrayCopy[value] - 1;
@@ -222,7 +225,7 @@ OUTPUT: 0
             }
 
             // Accumulate the count.
-            for (int i = 1; i < _queue.Count; i++)
+            for (int i = 1; i < _countingArray.Count; i++)
             {
                 _countingArray[queueArray[i]] += _countingArray[queueArray[i - 1]];
             }
@@ -230,8 +233,7 @@ OUTPUT: 0
 
         private void InitializeQueue(List<int> list)
         {
-            // list contains expenditure day - 1 records so we need one more space by adding one.
-            _queue = new Queue<int>(list.Count + 1);
+            _queue = new Queue<int>(list.Count);
             foreach (int value in list)
             {
                 _queue.Enqueue(value);
@@ -241,15 +243,44 @@ OUTPUT: 0
         internal void Add(int value)
         {
             // Dequeue the first element,then enqueue the value.
-            _queue.Dequeue();
+            var removedValue = _queue.Dequeue();
             _queue.Enqueue(value);
-            //RefreshCountingArray(_countingArray);
-            //RefreshOutputArray(_outputArray);
+            //RefreshCountingArray(removedValue, value);
+            InitializeCountingArray();
+            InitializeOutputArray();
+        }
+
+        private void RefreshCountingArray(int removedValue, int addedValue)
+        {
+            if (_countingArray.ContainsKey(removedValue))
+                _countingArray[removedValue]--;
+
+            if (_countingArray.ContainsKey(addedValue))
+                _countingArray[addedValue]++;
+            else
+                _countingArray.Add(addedValue, 1);
         }
 
         internal double GetMedian()
         {
-            return -1;
+            var copy = _outputArray.ToList();
+
+            Func<int, bool> isOdd = value => value % 2 == 1;
+            var halfIndex = copy.Count / 2;
+
+            if (isOdd(copy.Count))
+            {
+                return copy[halfIndex];
+            }
+            else
+            {
+                // array size is even!
+                // get average of two middle values!
+                // 1 2 3 4 => (a[halfIndex - 1] + a[halfIndex]) / 2 => (2 + 3) / 2 => 2
+                var left = copy[halfIndex - 1];
+                var right = copy[halfIndex];
+                return (double)(left + right) / 2;
+            }
         }
     }
 }
