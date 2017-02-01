@@ -38,48 +38,66 @@ INPUT:
 OUTPUT: 0
 */
 
-            int count = GetFraudulentActivityCounts2(days, expenditures);
-            Console.WriteLine(count);
+            //int count = GetFraudulentActivityCounts3(days, expenditures);
+            //Console.WriteLine(count);
+
+            MedianCalculator calculator = new MedianCalculator(new List<int> {2, 5, 4, 1, 4, 0, 4, 3, 4, 5, 2, 5, 4, 0, 1, 1});
         }
 
-        private static int GetFraudulentActivityCounts2(int days, int[] expenditures)
+        private static int GetFraudulentActivityCounts3(int days, int[] expenditures)
         {
-            // Enqueue last N day expenditures.
-            Queue<int> lastNDayExpenditures = GetInitialQueue(days, expenditures);
-            int[] countingArray = GetInitialCountingArray(lastNDayExpenditures);
+            // Create a calculator by initializing it with seed expenditures for last N days - 1.
+            // for each expenditure starting after Nth day - 1,
+            //  Get current element and insert to the calculator queue.
+            //  Calculate the median.
+            //  if 2 x median <= current element, then increase counter++
 
-            // for expenditure - days count,
-            //   Get median.
-            //   if 2 x median <= money spent, then increase count++
-            //   Refresh the queue
-            // return the count.
 
-            double median = GetMedianFromCountingArray(countingArray);
+            MedianCalculator calculator = new MedianCalculator(expenditures.ToList().GetRange(0, days - 1));
+
             int fraudulentCount = 0;
-            for (int i = days; i < expenditures.Length; i++)
+            for (int i = days - 1; i < expenditures.Length; i++)
             {
-                var currentElement = expenditures[i];
-                if (2 * median <= currentElement)
+                var currentValue = expenditures[i];
+                calculator.Add(currentValue);
+                double median = calculator.GetMedian();
+
+                if (2 * median <= currentValue)
                 {
                     fraudulentCount++;
                 }
-
-                median = GetMedianFromCountingArray(GetCountingArray(countingArray, currentElement));
             }
 
-            return -1;
+            return fraudulentCount;
         }
 
-        private static int[] GetCountingArray(int[] countingArray, int nextElement)
-        {
-            
-        }
+        //private static int GetFraudulentActivityCounts2(int days, int[] expenditures)
+        //{
+        //    // Enqueue last N day expenditures.
+        //    Queue<int> lastNDayExpenditures = GetInitialQueue(days, expenditures);
+        //    int[] countingArray = GetInitialCountingArray(lastNDayExpenditures);
 
-        private static double GetMedianFromCountingArray(int[] countingArray)
-        {
-            
-        }
+        //    // for expenditure - days count,
+        //    //   Get median.
+        //    //   if 2 x median <= money spent, then increase count++
+        //    //   Refresh the queue
+        //    // return the count.
 
+        //    double median = GetMedianFromCountingArray(countingArray);
+        //    int fraudulentCount = 0;
+        //    for (int i = days; i < expenditures.Length; i++)
+        //    {
+        //        var currentElement = expenditures[i];
+        //        if (2 * median <= currentElement)
+        //        {
+        //            fraudulentCount++;
+        //        }
+
+        //        median = GetMedianFromCountingArray(GetCountingArray(countingArray, currentElement));
+        //    }
+
+        //    return -1;
+        //}
 
         private static int[] GetInitialCountingArray(Queue<int> lastNDayExpenditures)
         {
@@ -140,7 +158,7 @@ OUTPUT: 0
             {
                 return copy[halfIndex];
             }
-            else  
+            else
             {
                 // array size is even!
                 // get average of two middle values!
@@ -156,6 +174,77 @@ OUTPUT: 0
             int[] lastNDayExpenditures = new int[days];
             Array.Copy(expenditures, sourceIndex, lastNDayExpenditures, 0, days);
             return lastNDayExpenditures;
+        }
+    }
+
+    internal class MedianCalculator
+    {
+        private Queue<int> _queue;
+        private int[] _countingArray;
+        private int[] _outputArray;
+
+        public MedianCalculator(List<int> list)
+        {
+            InitializeQueue(list);
+            InitializeCountingArray();
+            InitializeOutputArray();
+        }
+
+        private void InitializeOutputArray()
+        {
+            _outputArray = new int[_queue.Count];
+
+            var queueArray = _queue.Reverse().ToArray();
+            var countingArrayCopy = _countingArray.Clone() as int[];
+            for (int i = 0; i < queueArray.Length; i++)
+            {
+                var value = queueArray[i];
+                var outputIndex = countingArrayCopy[value] - 1;
+                countingArrayCopy[value]--;
+                _outputArray[outputIndex] = value;
+            }
+        }
+
+        private void InitializeCountingArray()
+        {
+            _countingArray = Enumerable.Repeat(0, _queue.Count).ToArray();
+            var queueArray = _queue.ToArray();
+
+            // Calculate the number of instances for each number.
+            for (int i = 0; i < _queue.Count; i++)
+            {
+                _countingArray[queueArray[i]]++;
+            }
+
+            // Accumulate the count.
+            for (int i = 1; i < _queue.Count; i++)
+            {
+                _countingArray[i] += _countingArray[i - 1];
+            }
+        }
+
+        private void InitializeQueue(List<int> list)
+        {
+            // list contains expenditure day - 1 records so we need one more space by adding one.
+            _queue = new Queue<int>(list.Count + 1);
+            foreach (int value in list)
+            {
+                _queue.Enqueue(value);
+            }
+        }
+
+        internal void Add(int value)
+        {
+            // Dequeue the first element,then enqueue the value.
+            _queue.Dequeue();
+            _queue.Enqueue(value);
+            //RefreshCountingArray(_countingArray);
+            //RefreshOutputArray(_outputArray);
+        }
+
+        internal double GetMedian()
+        {
+            return -1;
         }
     }
 }
