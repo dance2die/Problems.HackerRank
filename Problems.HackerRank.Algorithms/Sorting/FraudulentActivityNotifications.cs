@@ -41,7 +41,8 @@ OUTPUT: 0
             //int count = GetFraudulentActivityCounts3(days, expenditures);
             //Console.WriteLine(count);
 
-            MedianCalculator calculator = new MedianCalculator(new List<int> {2, 5, 4, 1, 4, 0, 4, 3, 4, 5, 2, 5, 4, 0, 1, 1});
+            //MedianCalculator calculator = new MedianCalculator(new List<int> {2, 5, 4, 1, 4, 0, 4, 3, 4, 5, 2, 5, 4, 0, 1, 1});
+            MedianCalculator calculator = new MedianCalculator(expenditures.ToList().GetRange(0, days - 1));
         }
 
         private static int GetFraudulentActivityCounts3(int days, int[] expenditures)
@@ -180,7 +181,7 @@ OUTPUT: 0
     internal class MedianCalculator
     {
         private Queue<int> _queue;
-        private int[] _countingArray;
+        private Dictionary<int, int> _countingArray;
         private int[] _outputArray;
 
         public MedianCalculator(List<int> list)
@@ -195,7 +196,7 @@ OUTPUT: 0
             _outputArray = new int[_queue.Count];
 
             var queueArray = _queue.Reverse().ToArray();
-            var countingArrayCopy = _countingArray.Clone() as int[];
+            var countingArrayCopy = _countingArray.ToDictionary(pair => pair.Key, pair => pair.Value);
             for (int i = 0; i < queueArray.Length; i++)
             {
                 var value = queueArray[i];
@@ -207,19 +208,23 @@ OUTPUT: 0
 
         private void InitializeCountingArray()
         {
-            _countingArray = Enumerable.Repeat(0, _queue.Count).ToArray();
+            _countingArray = new Dictionary<int, int>();
             var queueArray = _queue.ToArray();
 
             // Calculate the number of instances for each number.
             for (int i = 0; i < _queue.Count; i++)
             {
-                _countingArray[queueArray[i]]++;
+                var key = queueArray[i];
+                if (_countingArray.ContainsKey(key))
+                    _countingArray[key]++;
+                else
+                    _countingArray.Add(key, 1);
             }
 
             // Accumulate the count.
             for (int i = 1; i < _queue.Count; i++)
             {
-                _countingArray[i] += _countingArray[i - 1];
+                _countingArray[queueArray[i]] += _countingArray[queueArray[i - 1]];
             }
         }
 
