@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Problems.HackerRank.Algorithms", "Problems.HackerRank.Algorithms\Problems.HackerRank.Algorithms.csproj", "{57181345-0A09-4E6F-B57E-3A66E0B95139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProblemsHackerRank.Contests.HourRank17", "ProblemsHackerRank.Contests.HourRank17\ProblemsHackerRank.Contests.HourRank17.csproj", "{8B1E61A4-CD24-491B-8AC4-E0E21D30BCA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProblemsHackerRank.Contests", "ProblemsHackerRank.Contests.HourRank17\ProblemsHackerRank.Contests.csproj", "{8B1E61A4-CD24-491B-8AC4-E0E21D30BCA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
