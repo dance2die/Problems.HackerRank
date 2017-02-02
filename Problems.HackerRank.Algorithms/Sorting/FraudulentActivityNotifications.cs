@@ -269,20 +269,35 @@ OUTPUT: 0
                     _countingArray[i]--;
             }
 
+            int lastIndex = addedValue;
             if (addedValue > _countingArray.Count - 1)
             {
-                for (int i = _countingArray.Count; i <= addedValue; i++)
+                lastIndex = _countingArray.Count - 1;
+
+                for (int i = _countingArray.Count; i < addedValue; i++)
                 {
                     _countingArray.Add(0);
                 }
                 _countingArray.Insert(addedValue, 1);
+
+                // cascade increasing count up to added value index
+                int total = _countingArray[lastIndex];
+                for (int i = lastIndex + 1; i < _countingArray.Count; i++)
+                {
+                    int oldCount = _countingArray[i];
+                    _countingArray[i] += total;
+                    total += oldCount;
+                }
+            }
+            else
+            {
+                // cascade increasing count up to added value index
+                for (int i = addedValue; i < _countingArray.Count; i++)
+                {
+                    _countingArray[i]++;
+                }
             }
 
-            // cascade increasing addedValue count
-            for (int i = addedValue; i < _countingArray.Count; i++)
-            {
-                _countingArray[i]++;
-            }
         }
 
         internal double GetMedian()
