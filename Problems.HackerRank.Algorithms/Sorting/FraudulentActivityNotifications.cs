@@ -211,9 +211,9 @@ OUTPUT: 0
 
         private void InitializeCountingArray()
         {
-            var queueArray = _queue.ToArray();
+            var queueArray = _queue.ToList();
             //_countingArray = new int[queueArray.Length];
-            _countingArray = Enumerable.Repeat(0, queueArray.Length).ToList();
+            _countingArray = Enumerable.Repeat(0, queueArray.Max(value => value) + 1).ToList();
 
             // Calculate the histogram of key frequencies:
             for (int i = 0; i < _queue.Count; i++)
