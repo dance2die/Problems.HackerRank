@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Schema;
 
 namespace Problems.HackerRank.Algorithms.Sorting
 {
@@ -184,7 +183,7 @@ OUTPUT: 0
     internal class MedianCalculator
     {
         private Queue<int> _queue;
-        private int[] _countingArray;
+        private List<int> _countingArray;
         private int[] _outputArray;
 
         public MedianCalculator(List<int> list)
@@ -200,7 +199,7 @@ OUTPUT: 0
 
             //var queueArray = _queue.Reverse().ToArray();
             var queueArray = _queue.ToArray();
-            var countingArrayCopy = _countingArray.Clone() as int[];
+            var countingArrayCopy = _countingArray.ToArray();
             for (int i = queueArray.Length - 1; i >= 0; i--)
             {
                 var value = queueArray[i];
@@ -214,7 +213,7 @@ OUTPUT: 0
         {
             var queueArray = _queue.ToArray();
             //_countingArray = new int[queueArray.Length];
-            _countingArray = Enumerable.Repeat(0, queueArray.Length).ToArray();
+            _countingArray = Enumerable.Repeat(0, queueArray.Length).ToList();
 
             // Calculate the histogram of key frequencies:
             for (int i = 0; i < _queue.Count; i++)
@@ -225,7 +224,7 @@ OUTPUT: 0
 
             // Calculate the starting index for each key:
             int total = 0;
-            for (int i = 0; i < _countingArray.Length; i++)
+            for (int i = 0; i < _countingArray.Count; i++)
             {
                 //_countingArray[queueArray[i]] += _countingArray[queueArray[i - 1]];
                 var oldCount = _countingArray[i];
@@ -248,8 +247,8 @@ OUTPUT: 0
             // Dequeue the first element,then enqueue the value.
             var removedValue = _queue.Dequeue();
             _queue.Enqueue(value);
-            //RefreshCountingArray(removedValue, value);
-            InitializeCountingArray();
+            RefreshCountingArray(removedValue, value);
+            //InitializeCountingArray();
             InitializeOutputArray();
         }
 
@@ -262,6 +261,28 @@ OUTPUT: 0
             //    _countingArray[addedValue]++;
             //else
             //    _countingArray.Add(addedValue, 1);
+
+            // decrease removedValue count
+            for (int i = removedValue; i < _countingArray.Count; i++)
+            {
+                if (_countingArray[i] > 0)
+                    _countingArray[i]--;
+            }
+
+            if (addedValue > _countingArray.Count - 1)
+            {
+                for (int i = _countingArray.Count; i <= addedValue; i++)
+                {
+                    _countingArray.Add(0);
+                }
+                _countingArray.Insert(addedValue, 1);
+            }
+
+            // cascade increasing addedValue count
+            for (int i = addedValue; i < _countingArray.Count; i++)
+            {
+                _countingArray[i]++;
+            }
         }
 
         internal double GetMedian()
