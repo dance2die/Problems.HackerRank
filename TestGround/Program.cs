@@ -8,7 +8,8 @@ namespace TestGround
     {
         public static void Main(string[] args)
         {
-            Queue<int> q = new Queue<int>(new[] {10, 20, 40, 600, 80, 10, 20});
+            //Queue<int> q = new Queue<int>(new[] {10, 20, 40, 600, 80, 10, 20});
+            Queue<int> q = new Queue<int>(new[] {2,3,4,2,3});
             int[] values = q.ToArray();
             SortedDictionary<int, int> countingArray = new SortedDictionary<int, int>();
 
@@ -38,7 +39,8 @@ namespace TestGround
             Console.WriteLine(countingArray);
 
             int removedValue = q.Dequeue();
-            int addedValue = 1;
+            //int addedValue = 1;
+            int addedValue = 6;
             q.Enqueue(addedValue);
 
             UpdateCountingArray(countingArray, removedValue, addedValue);
@@ -82,10 +84,23 @@ namespace TestGround
                 else
                 {
                     countingArray.Add(addedValue, 1);
-                    int startIndex = countingArray[addedValue];
-
                     var nextKeys = countingArray.Keys.ToList();
-                    for (int k = startIndex; k < nextKeys.Count; k++)
+
+                    int addedIndex = 0;
+                    for (int x = 0; x < nextKeys.Count; x++)
+                    {
+                        if (nextKeys[x] == addedValue)
+                        {
+                            addedIndex = x;
+                            break;
+                        }
+                    }
+
+                    int previousValue = addedIndex == 0 ? 0 : countingArray[nextKeys[addedIndex - 1]];
+                    int startValue = previousValue + 1;
+                    countingArray[nextKeys[addedIndex]] = startValue;
+
+                    for (int k = addedIndex + 1; k < nextKeys.Count; k++)
                     {
                         countingArray[nextKeys[k]]++;
                     }
