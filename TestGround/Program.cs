@@ -10,17 +10,29 @@ namespace TestGround
         {
             Queue<int> q = new Queue<int>(new[] {0, 2, 4, 60, 8, 0, 2});
             int[] values = q.ToArray();
-            List<Pair> countingArray = new List<Pair>();
+            SortedDictionary<int, int> countingArray = new SortedDictionary<int, int>();
 
             for (int i = 0; i < values.Length; i++)
             {
                 var key = values[i];
 
-                var pair = countingArray.FirstOrDefault(p => p.Key == key);
-                if (pair == null)
-                    countingArray.Add(new Pair(key, 1));
+                if (countingArray.Keys.Contains(key))
+                    countingArray[key]++;
                 else
-                    pair.Value++;
+                    countingArray.Add(key, 1);
+            }
+
+            Console.WriteLine(countingArray);
+
+            // Accumulate
+            int total = countingArray[0];
+            var keys = countingArray.Keys.ToList();
+            for (int i = 1; i < countingArray.Count; i++)
+            {
+                int key = keys[i];
+                int oldCount = countingArray[key];
+                countingArray[key] += total;
+                total += oldCount;
             }
 
             Console.WriteLine(countingArray);
@@ -33,25 +45,15 @@ namespace TestGround
             Console.WriteLine(countingArray);
         }
 
-        private static void UpdateCountingArray(Queue<int> q, List<Pair> map, int removedValue, int addedValue)
+        private static void UpdateCountingArray(Queue<int> q, SortedDictionary<int, int> map, int removedValue, int addedValue)
         {
             var valueList = q.ToList();
             for (int i = 0; i < valueList.Count; i++)
             {
                 // deal with removed value
-                if (map[i].Key == removedValue)
-                {
-                    if (map[removedValue].Value == 0)
-                        map.RemoveAt(i);
-                    else
-                        map[removedValue].Value--;
-                }
+                //if ()
 
                 // deal with Added Value
-                if (map.Any(pair => pair.Key == addedValue))
-                    map[addedValue].Value++;
-                else
-                    map.Add(new Pair(addedValue, 1));
             }
 
             // Accumulate
