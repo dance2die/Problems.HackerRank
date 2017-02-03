@@ -8,7 +8,7 @@ namespace TestGround
     {
         public static void Main(string[] args)
         {
-            Queue<int> q = new Queue<int>(new[] {0, 2, 4, 60, 8, 0, 2});
+            Queue<int> q = new Queue<int>(new[] {10, 20, 40, 600, 80, 10, 20});
             int[] values = q.ToArray();
             SortedDictionary<int, int> countingArray = new SortedDictionary<int, int>();
 
@@ -25,8 +25,8 @@ namespace TestGround
             Console.WriteLine(countingArray);
 
             // Accumulate
-            int total = countingArray[0];
             var keys = countingArray.Keys.ToList();
+            int total = countingArray[keys[0]];
             for (int i = 1; i < countingArray.Count; i++)
             {
                 int key = keys[i];
@@ -41,27 +41,57 @@ namespace TestGround
             int addedValue = 1;
             q.Enqueue(addedValue);
 
-            UpdateCountingArray(q, countingArray, removedValue, addedValue);
+            UpdateCountingArray(countingArray, removedValue, addedValue);
             Console.WriteLine(countingArray);
         }
 
-        private static void UpdateCountingArray(Queue<int> q, SortedDictionary<int, int> map, int removedValue, int addedValue)
+        private static void UpdateCountingArray(SortedDictionary<int, int> countingArray, int removedValue, int addedValue)
         {
-            var valueList = q.ToList();
-            for (int i = 0; i < valueList.Count; i++)
+            var previousKeys = countingArray.Keys.ToList();
+
+            for (int i = 0; i < countingArray.Count; i++)
             {
                 // deal with removed value
-                //if ()
+                if (countingArray.ContainsKey(removedValue))
+                {
+                    if (countingArray[removedValue] == 0)
+                        countingArray.Remove(removedValue);
+                    else
+                    {
+                        for (int j = i; j < previousKeys.Count; j++)
+                        {
+                            countingArray[previousKeys[j]]--;
+                        }
+                    }
 
-                // deal with Added Value
+                    break;
+                }
             }
 
-            // Accumulate
-            for (int i = 0; i < map.Count; i++)
+            for (int i = 0; i < countingArray.Count; i++)
             {
-                
-            }
+                // deal with Added Value
+                if (countingArray.ContainsKey(addedValue))
+                {
+                    for (int k = i; k < previousKeys.Count; k++)
+                    {
+                        countingArray[previousKeys[k]]++;
+                    }
+                    break;
+                }
+                else
+                {
+                    countingArray.Add(addedValue, 1);
+                    int startIndex = countingArray[addedValue];
 
+                    var nextKeys = countingArray.Keys.ToList();
+                    for (int k = startIndex; k < nextKeys.Count; k++)
+                    {
+                        countingArray[nextKeys[k]]++;
+                    }
+                    break;
+                }
+            }
         }
     }
 
