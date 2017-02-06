@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.BitManipulation.LonelyInteger</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.BitManipulation.MaximizingXor</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
