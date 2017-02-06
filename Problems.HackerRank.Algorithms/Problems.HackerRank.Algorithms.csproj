@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.BitManipulation.MaximizingXor</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.BitManipulation.SumVsXor</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BitManipulation\LonelyInteger.cs" />
     <Compile Include="BitManipulation\MaximizingXor.cs" />
+    <Compile Include="BitManipulation\SumVsXor.cs" />
     <Compile Include="DynamicProgramming\FibonacciModified.cs" />
     <Compile Include="Implementation\BeautifulDayAtTheMovies.cs" />
     <Compile Include="Implementation\BonAppetit.cs" />
