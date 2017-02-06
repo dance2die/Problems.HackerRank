@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitManipulation\FlippingBits.cs" />
     <Compile Include="BitManipulation\LonelyInteger.cs" />
     <Compile Include="BitManipulation\MaximizingXor.cs" />
     <Compile Include="BitManipulation\SumVsXor.cs" />
