@@ -13,7 +13,7 @@ namespace Problems.HackerRank.Algorithms.BitManipulation
         public static void Main(String[] args)
         {
             int arraySize = Convert.ToInt32(Console.ReadLine());
-            List<int> numbers = GetNumbers(arraySize).ToList();
+            List<uint> numbers = GetNumbers(arraySize).ToList();
 
 /*
 INPUT:
@@ -26,13 +26,32 @@ OUTPUT:
 4294967294 
 4294967295
 */
+
+            var output = GetFlippedNumbers(numbers);
+            PrintUnsignedNumbers(output);
         }
 
-        private static IEnumerable<int> GetNumbers(int arraySize)
+        private static IEnumerable<uint> GetFlippedNumbers(List<uint> numbers)
+        {
+            foreach (uint number in numbers)
+            {
+                yield return ~number;
+            }
+        }
+
+        private static void PrintUnsignedNumbers(IEnumerable<uint> output)
+        {
+            foreach (var number in output)
+            {
+                Console.WriteLine(number);
+            }
+        }
+
+        private static IEnumerable<uint> GetNumbers(int arraySize)
         {
             for (int i = 0; i < arraySize; i++)
             {
-                yield return Convert.ToInt32(Console.ReadLine());
+                yield return Convert.ToUInt32(Console.ReadLine());
             }
         }
     }

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.BitManipulation.SumVsXor</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.BitManipulation.FlippingBits</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
