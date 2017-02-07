@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.BitManipulation.FlippingBits</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Strings.TwoCharacters</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -84,6 +84,7 @@
     <Compile Include="Strings\CamelCaseMain.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
+    <Compile Include="Strings\TwoCharacters.cs" />
     <Compile Include="WarmUp\CircularArrayRotationMain.cs" />
   </ItemGroup>
   <ItemGroup>
