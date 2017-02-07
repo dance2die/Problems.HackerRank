@@ -11,7 +11,21 @@ namespace Problems.HackerRank.Algorithms.Strings
         public static void Main(String[] args)
         {
             int len = Convert.ToInt32(Console.ReadLine());
-            string s = Console.ReadLine();
+            string text = Console.ReadLine();
+/*
+INPUT:
+10
+beabeefeab
+OUTPUT: 5
+*/
+
+            int result = GetLongestSequence(text);
+            Console.WriteLine(result);
+        }
+
+        private static int GetLongestSequence(string text)
+        {
+            return -1;
         }
     }
 }
