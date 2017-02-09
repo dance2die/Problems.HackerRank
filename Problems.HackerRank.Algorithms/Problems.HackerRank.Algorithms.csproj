@@ -82,6 +82,7 @@
     <Compile Include="Sorting\RunningTimeOfAlgorithms.cs" />
     <Compile Include="Sorting\TheFullCountingSort.cs" />
     <Compile Include="Strings\CamelCaseMain.cs" />
+    <Compile Include="Strings\FunnyString.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
     <Compile Include="Strings\Later\TwoCharacters.cs" />
