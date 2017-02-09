@@ -33,14 +33,15 @@ OUTPUT: 2
 
         private static int GetLongestSequence(string text)
         {
-            List<char> alreadyChecked = new List<char>();
-
             int maxCount = 0;
-            foreach (char c1 in text)
+
+            var distinctText = text.Distinct().ToList();
+
+            foreach (char c1 in distinctText)
             {
-                foreach (var c2 in text.Where(c => c != c1))
+                foreach (var c2 in distinctText)
                 {
-                    if (alreadyChecked.Contains(c1)) continue;
+                    if (c1 == c2) continue;
 
                     var alternatingCharacterCount = GetAlternatingCharacterCount(text, c1, c2);
                     if (alternatingCharacterCount > maxCount)
