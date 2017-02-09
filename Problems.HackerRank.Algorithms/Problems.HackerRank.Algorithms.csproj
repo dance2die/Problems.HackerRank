@@ -84,7 +84,7 @@
     <Compile Include="Strings\CamelCaseMain.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
-    <Compile Include="Strings\TwoCharacters.cs" />
+    <Compile Include="Strings\Later\TwoCharacters.cs" />
     <Compile Include="WarmUp\CircularArrayRotationMain.cs" />
   </ItemGroup>
   <ItemGroup>
