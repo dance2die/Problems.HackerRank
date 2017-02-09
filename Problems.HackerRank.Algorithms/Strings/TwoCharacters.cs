@@ -20,6 +20,11 @@ INPUT:
 10
 beabeefeab
 OUTPUT: 5
+
+INPUT:
+2
+ab
+OUTPUT: 2
 */
 
             int result = GetLongestSequence(text);
@@ -51,7 +56,7 @@ OUTPUT: 5
             int result = int.MinValue;
             var charsToRemove = text.Where(c => c != c1 && c != c2);
 
-            int max = 0;
+            int max = 2;
             List<char> removedChars = new List<char>();
             foreach (var removeChar in charsToRemove)
             {
