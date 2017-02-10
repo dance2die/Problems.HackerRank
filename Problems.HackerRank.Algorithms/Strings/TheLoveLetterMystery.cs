@@ -27,7 +27,21 @@ OUTPUT:
 4
 2
 */
-            
+            PrintTestCases(testCases);
+        }
+
+        private static void PrintTestCases(List<string> testCases)
+        {
+            foreach (string testCase in testCases)
+            {
+                int count = GetPalindromeConversionCount(testCase);
+                Console.WriteLine(count);
+            }
+        }
+
+        private static int GetPalindromeConversionCount(string testCase)
+        {
+            return -1;
         }
 
         private static IEnumerable<string> GetTestCases(int testCaseCount)
