@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Strings.TheLoveLetterMystery</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.DesignerPdfViewer</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +54,7 @@
     <Compile Include="DynamicProgramming\FibonacciModified.cs" />
     <Compile Include="Implementation\BeautifulDayAtTheMovies.cs" />
     <Compile Include="Implementation\BonAppetit.cs" />
+    <Compile Include="Implementation\DesignerPdfViewer.cs" />
     <Compile Include="Implementation\DivisibleSumPairs.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
