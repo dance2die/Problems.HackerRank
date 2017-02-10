@@ -87,6 +87,7 @@
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
     <Compile Include="Strings\Later\TwoCharacters.cs" />
+    <Compile Include="Strings\TheLoveLetterMystery.cs" />
     <Compile Include="WarmUp\CircularArrayRotationMain.cs" />
   </ItemGroup>
   <ItemGroup>
