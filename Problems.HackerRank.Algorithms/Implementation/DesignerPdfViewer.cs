@@ -37,13 +37,13 @@ OUTPUT: 70
         private static int GetArea(int[] heights, string word)
         {
             // (int)'a' - 96 = 1, (int)'b' - 96 = 2, etc.
-            const int positionOffset = 96;
+            const int positionOffset = (int)'a';
 
             // Fill the look up table for ascii mapping
             Dictionary<char, int> map = new Dictionary<char, int>(heights.Length);
-            for (int i = 1; i <= heights.Length; i++)
+            for (int i = 0; i < heights.Length; i++)
             {
-                map.Add((char)(i + positionOffset), heights[i - 1]);
+                map.Add((char)(i + positionOffset), heights[i]);
             }
 
             int maxHeight = 0;
