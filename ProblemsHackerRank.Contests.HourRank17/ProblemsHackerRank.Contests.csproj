@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.RookieRank.BirthdayCakeCandles</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.RookieRank.CountingValleys</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,6 +46,7 @@
     <Compile Include="HourRank17\TheHurdleRace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RookieRank\BirthdayCakeCandles.cs" />
+    <Compile Include="RookieRank\CountingValleys.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
