@@ -36,25 +36,36 @@ OUTPUT: 70
 
         private static int GetArea(int[] heights, string word)
         {
+            var asciiLookup = GetAsciiLookup(heights);
+            var maxHeight = GetMaxHeight(word, asciiLookup);
+
+            return maxHeight * word.Length;
+        }
+
+        private static Dictionary<char, int> GetAsciiLookup(int[] heights)
+        {
             // (int)'a' - 96 = 1, (int)'b' - 96 = 2, etc.
-            const int positionOffset = (int)'a';
+            const int positionOffset = 'a';
 
             // Fill the look up table for ascii mapping
-            Dictionary<char, int> map = new Dictionary<char, int>(heights.Length);
+            Dictionary<char, int> asciiLookup = new Dictionary<char, int>(heights.Length);
             for (int i = 0; i < heights.Length; i++)
             {
-                map.Add((char)(i + positionOffset), heights[i]);
+                asciiLookup.Add((char) (i + positionOffset), heights[i]);
             }
+            return asciiLookup;
+        }
 
+        private static int GetMaxHeight(string word, Dictionary<char, int> asciiLookup)
+        {
             int maxHeight = 0;
             for (int i = 0; i < word.Length; i++)
             {
-                int height = map[word[i]];
+                int height = asciiLookup[word[i]];
                 if (height > maxHeight)
                     maxHeight = height;
             }
-
-            return maxHeight * word.Length;
+            return maxHeight;
         }
     }
 }
