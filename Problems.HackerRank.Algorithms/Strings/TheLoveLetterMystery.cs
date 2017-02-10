@@ -41,7 +41,35 @@ OUTPUT:
 
         private static int GetPalindromeConversionCount(string testCase)
         {
-            return -1;
+            int middleIndex = testCase.Length / 2;
+            Func<string, bool> hasEvenLength = str => str.Length % 2 == 0;
+
+            var left = testCase.Substring(0, middleIndex);
+            var right = testCase.Substring(hasEvenLength(testCase) ? middleIndex : middleIndex + 1).Reverse().ToArray();
+
+            int countTotal = 0;
+            for (int i = 0; i < middleIndex; i++)
+            {
+                char leftChar = left[i];
+                char rightChar = right[i];
+
+                if (leftChar == rightChar) continue;
+
+                if (leftChar > rightChar)
+                    countTotal += DecreaseCharUntil(leftChar, rightChar);
+                else
+                    countTotal += DecreaseCharUntil(rightChar, leftChar);
+            }
+
+            return countTotal;
+        }
+
+        /// <summary>
+        /// Decrease c1 until c2
+        /// </summary>
+        private static int DecreaseCharUntil(char c1, char c2)
+        {
+            return c1 - c2;
         }
 
         private static IEnumerable<string> GetTestCases(int testCaseCount)
