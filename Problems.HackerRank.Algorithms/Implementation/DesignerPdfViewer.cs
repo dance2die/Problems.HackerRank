@@ -59,9 +59,9 @@ OUTPUT: 70
         private static int GetMaxHeight(string word, Dictionary<char, int> asciiLookup)
         {
             int maxHeight = 0;
-            for (int i = 0; i < word.Length; i++)
+            foreach (char character in word)
             {
-                int height = asciiLookup[word[i]];
+                int height = asciiLookup[character];
                 if (height > maxHeight)
                     maxHeight = height;
             }
