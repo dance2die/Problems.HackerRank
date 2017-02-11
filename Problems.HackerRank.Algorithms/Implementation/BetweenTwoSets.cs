@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Problems.HackerRank.Algorithms.Implementation
@@ -43,6 +42,19 @@ INPUT:
 3 9 6
 36 72
 OUTPUT: 2
+
+INPUT:
+1 1
+1
+100
+OUTPUT: 9
+
+INPUT:
+1 2
+1
+72 48
+OUTPUT: 8
+
 */
 
             var count = GetBetweenNumberCount(a, b);
@@ -56,21 +68,13 @@ OUTPUT: 2
             int aMax = a.Max();
             int bMin = b.Min();
 
-            //// check if all numbers except aMax are factors of aMax.
-            //bool isMaxOK = CheckIfRestAreFactorsOfMax(a, aMax);
-            //if (!isMaxOK) return 0;
-            
-            //// check if bMin is a factor of all other numbers
-            //bool isMinOK = CheckIfMinIsFactorOfRest(b, bMin);
-            //if (!isMinOK) return 0;
-
             int count = CheckIfRestAreFactorsOfMax(a, aMax) && CheckIfMinIsFactorOfRest(b, aMax) ? 1 : 0;
 
             //foreach (int aValue in a)
-            for (int i = 1; i < bMin; i++)
+            for (int i = 1; i <= bMin; i++)
             {
                 var aMulti = i * aMax;
-                if (aMulti == aMax) continue;
+                if (aMulti == aMax && aMax >= 1) continue;
 
                 if (CheckIfRestAreFactorsOfMax(a, aMulti) && CheckIfMinIsFactorOfRest(b, aMulti))
                     count++;
@@ -98,63 +102,5 @@ OUTPUT: 2
             }
             return true;
         }
-
-        private static int Gcd(int x, int y)
-        {
-            while (y != 0)
-            {
-                var temp = y;
-                y = x % y;
-                x = temp;
-            }
-            return x;
-        }
-        //private static int GetBetweenNumberCount2(int[] a, int[] b)
-        //{
-        //    List<int> commonFactors = new List<int>();
-        //    var aFactors = GetFactorsIn(a);
-        //    var bFactors = GetFactorsIn(b);
-        //    commonFactors.AddRange(aFactors);
-        //    commonFactors.AddRange(bFactors);
-        //    commonFactors = commonFactors.Distinct().ToList();
-
-        //    for (int i = 0; i < commonFactors.Count; i++)
-        //    {
-
-        //    }
-        //}
-
-        //private static List<int> GetFactorsIn(int[] a)
-        //{
-        //    List<int> factors = new List<int>();
-        //    foreach (int number in a)
-        //    {
-        //        var tempFactors = GetFactors(number);
-        //        factors.AddRange(tempFactors);
-        //    }
-
-        //    return factors.Distinct().ToList();
-        //}
-
-        ///// <summary>
-        ///// http://stackoverflow.com/a/239877/4035
-        ///// </summary>
-        //public static List<int> GetFactors(int number)
-        //{
-        //    List<int> factors = new List<int>();
-        //    int max = (int)Math.Sqrt(number);  //round down
-        //    for (int factor = 1; factor <= max; ++factor)
-        //    { //test from 1 to the square root, or the int below it, inclusive.
-        //        if (number % factor == 0)
-        //        {
-        //            factors.Add(factor);
-        //            if (factor != number / factor)
-        //            { // Don't add the square root twice!  Thanks Jon
-        //                factors.Add(number / factor);
-        //            }
-        //        }
-        //    }
-        //    return factors;
-        //}
     }
 }
