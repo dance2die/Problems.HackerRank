@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.UtopianTree</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.SaveThePrisoner</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,6 +64,7 @@
     <Compile Include="Implementation\MiniMaxSum.cs" />
     <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\RepeatedString.cs" />
+    <Compile Include="Implementation\SaveThePrisoner.cs" />
     <Compile Include="Implementation\SockMerchant.cs" />
     <Compile Include="Implementation\UtopianTree.cs" />
     <Compile Include="Implementation\ViralAdvertising.cs" />
