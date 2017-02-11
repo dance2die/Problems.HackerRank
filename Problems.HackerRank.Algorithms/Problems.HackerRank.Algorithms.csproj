@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.BetweenTwoSets</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.AngryProfessor</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -52,6 +52,7 @@
     <Compile Include="BitManipulation\MaximizingXor.cs" />
     <Compile Include="BitManipulation\SumVsXor.cs" />
     <Compile Include="DynamicProgramming\FibonacciModified.cs" />
+    <Compile Include="Implementation\AngryProfessor.cs" />
     <Compile Include="Implementation\BeautifulDayAtTheMovies.cs" />
     <Compile Include="Implementation\BetweenTwoSets.cs" />
     <Compile Include="Implementation\BonAppetit.cs" />
