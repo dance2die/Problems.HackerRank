@@ -64,7 +64,7 @@
     <Compile Include="Implementation\MiniMaxSum.cs" />
     <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\RepeatedString.cs" />
-    <Compile Include="Implementation\SaveThePrisoner.cs" />
+    <Compile Include="Implementation\Cheated\SaveThePrisoner.cs" />
     <Compile Include="Implementation\SockMerchant.cs" />
     <Compile Include="Implementation\UtopianTree.cs" />
     <Compile Include="Implementation\ViralAdvertising.cs" />
