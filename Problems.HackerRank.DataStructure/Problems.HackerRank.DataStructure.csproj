@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.DataStructure.Arrays.ArraysDS</StartupObject>
+    <StartupObject>Problems.HackerRank.DataStructure.Arrays.TwoDArrayDS</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arrays\TwoDArrayDS.cs" />
     <Compile Include="Arrays\ArraysDS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
