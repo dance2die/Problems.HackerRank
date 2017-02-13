@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /*
 INPUT:
@@ -18,9 +19,21 @@ namespace Problems.HackerRank.DataStructure.Arrays
         {
             int n = Convert.ToInt32(Console.ReadLine());
             string[] arr_temp = Console.ReadLine().Split(' ');
-            int[] arr = Array.ConvertAll(arr_temp, Int32.Parse);
+            int[] a = Array.ConvertAll(arr_temp, Int32.Parse);
 
+            PrintArrayInReverseOrder(a);
+        }
 
+        private static void PrintArrayInReverseOrder(int[] a)
+        {
+            Stack<int> stack = new Stack<int>(a.Length);
+            foreach (int value in a)
+            {
+                stack.Push(value);
+            }
+
+            string result = string.Join(" ", stack.ToArray());
+            Console.WriteLine(result);
         }
     }
 }
