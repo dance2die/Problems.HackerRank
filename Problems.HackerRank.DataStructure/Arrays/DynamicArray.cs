@@ -172,7 +172,9 @@ namespace Problems.HackerRank.DataStructure.Arrays
 
                 if (query.Type == 2)
                 {
-                    lastAnswer = seq[seqIndex].Last();
+                    //lastAnswer = seq[seqIndex].Last();
+                    var lastAnswerIndex = query.X % seq[seqIndex].Count;
+                    lastAnswer = seq[lastAnswerIndex].Last();
                     Console.WriteLine(lastAnswer);
                 }
 
