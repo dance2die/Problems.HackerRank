@@ -150,41 +150,47 @@ namespace Problems.HackerRank.DataStructure.Arrays
         public static void Main(string[] args)
         {
             var firstLineInputs = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-            //int sequenceCount = firstLineInputs[0];
+            int sequenceCount = firstLineInputs[0];
             int queryCount = firstLineInputs[1];
 
             List<Query> queries = GetQueries(queryCount).ToList();
-            PrintQueries(queries);
+            PrintQueries(sequenceCount, queries);
         }
 
-        private static void PrintQueries(List<Query> queries)
+        private static void PrintQueries(int sequenceCount, List<Query> queries)
         {
-            List<List<int>> seq = new List<List<int>>(2)
-            {
-                new List<int>(),
-                new List<int>()
-            };
+            List<List<int>> seq = GetInitializedSequences(sequenceCount);
             int lastAnswer = 0;
 
             foreach (Query query in queries)
             {
-                int seqIndex = GetSequenceIndex(query.X, lastAnswer);
+                int seqIndex = GetSequenceIndex(query.X, lastAnswer, sequenceCount);
 
-                if (query.Type == 2)
+                if (query.Type == 1)
                 {
-                    //lastAnswer = seq[seqIndex].Last();
-                    var lastAnswerIndex = query.X % seq[seqIndex].Count;
-                    lastAnswer = seq[lastAnswerIndex].Last();
+                    seq[seqIndex].Add(query.Y);
+                }
+                else if (query.Type == 2)
+                {
+                    lastAnswer = seq[seqIndex][query.Y % seq[seqIndex].Count];
                     Console.WriteLine(lastAnswer);
                 }
-
-                seq[seqIndex].Add(query.Y);
             }
         }
 
-        private static int GetSequenceIndex(int x, int lastAnswer)
+        private static int GetSequenceIndex(int x, int lastAnswer, int sequenceCount)
         {
-            return (x ^ lastAnswer) % 2;
+            return (x ^ lastAnswer) % sequenceCount;
+        }
+
+        private static List<List<int>> GetInitializedSequences(int queriesCount)
+        {
+            List<List<int>> seq = new List<List<int>>(queriesCount);
+            for (int i = 0; i < queriesCount; i++)
+            {
+                seq.Add(new List<int>());
+            }
+            return seq;
         }
 
         private static IEnumerable<Query> GetQueries(int queryCount)
