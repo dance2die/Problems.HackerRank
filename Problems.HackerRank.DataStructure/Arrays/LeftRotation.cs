@@ -30,11 +30,11 @@ namespace Problems.HackerRank.DataStructure.Arrays
             int rotationCount = firstLine[1];
             var a = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
 
-            int[] output = GetLeftRotationText(a, rotationCount);
+            int[] output = RotateLeft(a, rotationCount);
             PrintOutput(output);
         }
 
-        private static int[] GetLeftRotationText(int[] a, int rotationCount)
+        private static int[] RotateLeft(int[] a, int rotationCount)
         {
             int[] result = new int[a.Length];
 
