@@ -40,8 +40,7 @@ namespace Problems.HackerRank.DataStructure.Arrays
 
             for (int i = 0; i < a.Length; i++)
             {
-                //result[(a.Length + i - rotationCount + 1) % a.Length] = a[i];
-                result[(a.Length + i - 1) % a.Length] = a[i];
+                result[(a.Length + i - rotationCount) % a.Length] = a[i];
             }
 
             return result;
