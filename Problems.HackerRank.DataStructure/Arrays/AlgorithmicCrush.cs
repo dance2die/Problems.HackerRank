@@ -27,13 +27,29 @@ namespace Problems.HackerRank.DataStructure.Arrays
             int operationCount = line[1];
             List<Operation> operations = GetOperations(operationCount).ToList();
 
-            int max = GetMaximumAfterOperations(operations);
+            int max = GetMaximumAfterOperations(arraySize, operations);
             Console.WriteLine(max);
         }
 
-        private static int GetMaximumAfterOperations(List<Operation> operations)
+        private static int GetMaximumAfterOperations(int arraySize, List<Operation> operations)
         {
-            return -1;
+            // initialize array to 0
+            int[] a = Enumerable.Repeat(0, arraySize).ToArray();
+
+            foreach (var operation in operations)
+            {
+                OperateOn(a, operation);
+            }
+
+            return a.Max();
+        }
+
+        private static void OperateOn(int[] a, Operation operation)
+        {
+            for (int i = operation.A - 1; i < operation.B - 1; i++)
+            {
+                a[i] += operation.Value;
+            }
         }
 
         private static IEnumerable<Operation> GetOperations(int operationCount)
