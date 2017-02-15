@@ -33,11 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.DataStructure.Arrays.SparseArrays</StartupObject>
+    <StartupObject>Problems.HackerRank.DataStructure.Arrays.AlgorithmicCrush</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arrays\AlgorithmicCrush.cs" />
     <Compile Include="Arrays\DynamicArray.cs" />
     <Compile Include="Arrays\LeftRotation.cs" />
     <Compile Include="Arrays\SparseArrays.cs" />
