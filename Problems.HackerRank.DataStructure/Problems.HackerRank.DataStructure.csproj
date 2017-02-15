@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.DataStructure.Arrays.LeftRotation</StartupObject>
+    <StartupObject>Problems.HackerRank.DataStructure.Arrays.SparseArrays</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
