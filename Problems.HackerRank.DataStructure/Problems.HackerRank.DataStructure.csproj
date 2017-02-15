@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Arrays\DynamicArray.cs" />
     <Compile Include="Arrays\LeftRotation.cs" />
+    <Compile Include="Arrays\SparseArrays.cs" />
     <Compile Include="Arrays\TwoDArrayDS.cs" />
     <Compile Include="Arrays\ArraysDS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
