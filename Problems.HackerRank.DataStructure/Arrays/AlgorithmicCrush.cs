@@ -17,6 +17,7 @@ OUTPUT: 882
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Problems.HackerRank.DataStructure.Arrays
@@ -43,8 +44,9 @@ namespace Problems.HackerRank.DataStructure.Arrays
             // initialize array to 0
             long[] a = Enumerable.Repeat(0, arraySize).Select(value => (long) value).ToArray();
 
-            foreach (var operation in operations)
+            for (var i = 0; i < operations.Count; i++)
             {
+                var operation = operations[i];
                 OperateOn(a, operation);
             }
 
@@ -61,9 +63,14 @@ namespace Problems.HackerRank.DataStructure.Arrays
 
         private static IEnumerable<Operation> GetOperations(int operationCount)
         {
+            var path = @".\Arrays\AlgorithmicCrushTestCase7.txt";
+            // skip header
+            string[] lines = File.ReadAllLines(path).Skip(1).ToArray();
+
             for (int i = 0; i < operationCount; i++)
             {
-                var line = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+                //var line = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+                var line = Array.ConvertAll(lines[i].Split(' '), int.Parse);
                 int a = line[0];
                 int b = line[1];
                 int value = line[2];
