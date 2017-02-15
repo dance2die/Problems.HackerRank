@@ -33,6 +33,44 @@ namespace Problems.HackerRank.DataStructure.Arrays
             List<string> texts = GetTexts(textCount).ToList();
             int queryCount = int.Parse(Console.ReadLine());
             List<string> queries = GetTexts(queryCount).ToList();
+
+            IEnumerable<int> output = GetOutput(texts, queries);
+            PrintOutput(output);
+        }
+
+        private static IEnumerable<int> GetOutput(List<string> texts, List<string> queries)
+        {
+            Dictionary<string, int> textMap = GetTextMap(texts);
+            foreach (string query in queries)
+            {
+                if (textMap.ContainsKey(query))
+                    yield return textMap[query];
+                else
+                    yield return 0;
+            }
+        }
+
+        private static Dictionary<string, int> GetTextMap(List<string> texts)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>(texts.Count);
+
+            foreach (string text in texts)
+            {
+                if (result.ContainsKey(text))
+                    result[text]++;
+                else
+                    result.Add(text, 1);
+            }
+
+            return result;
+        }
+
+        private static void PrintOutput(IEnumerable<int> output)
+        {
+            foreach (int value in output)
+            {
+                Console.WriteLine(value);
+            }
         }
 
         private static IEnumerable<string> GetTexts(int textCount)
