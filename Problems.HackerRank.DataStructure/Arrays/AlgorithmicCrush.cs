@@ -4,8 +4,15 @@ INPUT:
 1 2 100
 2 5 100
 3 4 100
-OUTPUT:
-200
+OUTPUT: 200
+
+INPUT:
+4 3
+2 3 603
+1 1 286
+4 4 882
+OUTPUT: 882
+
  */
 
 using System;
@@ -46,7 +53,7 @@ namespace Problems.HackerRank.DataStructure.Arrays
 
         private static void OperateOn(int[] a, Operation operation)
         {
-            for (int i = operation.A - 1; i < operation.B - 1; i++)
+            for (int i = operation.A - 1; i < operation.B; i++)
             {
                 a[i] += operation.Value;
             }
