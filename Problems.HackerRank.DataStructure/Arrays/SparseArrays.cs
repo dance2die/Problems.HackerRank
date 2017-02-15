@@ -34,8 +34,16 @@ namespace Problems.HackerRank.DataStructure.Arrays
             int queryCount = int.Parse(Console.ReadLine());
             List<string> queries = GetTexts(queryCount).ToList();
 
-            IEnumerable<int> output = GetOutput(texts, queries);
+            IEnumerable<int> output = GetOutput2(texts, queries);
             PrintOutput(output);
+        }
+
+        private static IEnumerable<int> GetOutput2(List<string> texts, List<string> queries)
+        {
+            foreach (string query in queries)
+            {
+                yield return texts.Count(text => text == query);
+            }
         }
 
         private static IEnumerable<int> GetOutput(List<string> texts, List<string> queries)
