@@ -4,9 +4,16 @@ INPUT:
 1 2 3 4 5
 OUTPUT:
 5 1 2 3 4
+
+INPUT:
+5 3
+1 2 3 4 5
+OUTPUT:
+4 5 1 2 3
  */
 
 using System;
+using System.Linq;
 
 namespace Problems.HackerRank.DataStructure.Arrays
 {
@@ -23,13 +30,26 @@ namespace Problems.HackerRank.DataStructure.Arrays
             int rotationCount = firstLine[1];
             var a = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
 
-            string output = GetLeftRotationText(a, rotationCount);
-            Console.WriteLine(output);
+            int[] output = GetLeftRotationText(a, rotationCount);
+            PrintOutput(output);
         }
 
-        private static string GetLeftRotationText(int[] a, int rotationCount)
+        private static int[] GetLeftRotationText(int[] a, int rotationCount)
         {
-            return "";
+            int[] result = new int[a.Length];
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                //result[(a.Length + i - rotationCount + 1) % a.Length] = a[i];
+                result[(a.Length + i - 1) % a.Length] = a[i];
+            }
+
+            return result;
+        }
+
+        private static void PrintOutput(int[] output)
+        {
+            Console.WriteLine(string.Join(" ", output.ToArray()));
         }
     }
 }
