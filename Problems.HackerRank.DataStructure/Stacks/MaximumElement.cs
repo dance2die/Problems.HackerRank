@@ -36,7 +36,44 @@ namespace Problems.HackerRank.DataStructure.Stacks
             int queryCount = int.Parse(Console.ReadLine());
             List<Query> queries = GetQueries(queryCount).ToList();
 
-            PrintMaximums2(queries);
+            PrintMaximums3(queries);
+        }
+
+        /// <summary>
+        /// Uses Java implementation in Discussion section.
+        /// </summary>
+        private static void PrintMaximums3(List<Query> queries)
+        {
+            const int lowestMaxValue = 1;
+            int maxValue = lowestMaxValue;
+            Stack<StackNode> valueStack = new Stack<StackNode>();
+
+            foreach (Query query in queries)
+            {
+                switch (query.Type)
+                {
+                    case QueryType.Push:
+                        if (!query.Value.HasValue)
+                            throw new ArgumentNullException();
+                        var value = query.Value.Value;
+                        maxValue = Math.Max(value, maxValue);
+
+                        valueStack.Push(new StackNode(value, maxValue));
+                        break;
+                    case QueryType.Pop:
+                        valueStack.Pop();
+
+                        if (valueStack.Count == 0)
+                            maxValue = lowestMaxValue;
+                        else
+                            maxValue = valueStack.Peek().CurrentMaxValue;
+                        break;
+                    case QueryType.Print:
+                        if (valueStack.Count > 0)
+                            Console.WriteLine(valueStack.Peek().CurrentMaxValue);
+                        break;
+                }
+            }
         }
 
         private static void PrintMaximums2(List<Query> queries)
@@ -115,6 +152,18 @@ namespace Problems.HackerRank.DataStructure.Stacks
                 else
                     yield return new Query((QueryType)int.Parse(line[0]), Int32.Parse(line[1]));
             }
+        }
+    }
+
+    public class StackNode
+    {
+        public int Value { get; set; }
+        public int CurrentMaxValue { get; set; }
+
+        public StackNode(int value, int currentMaxValue)
+        {
+            Value = value;
+            CurrentMaxValue = currentMaxValue;
         }
     }
 
