@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.DataStructure.Arrays.AlgorithmicCrush</StartupObject>
+    <StartupObject>Problems.HackerRank.DataStructure.Stacks.MaximumElement</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
