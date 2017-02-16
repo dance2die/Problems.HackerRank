@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arrays\AlgorithmicCrush.cs" />
+    <Compile Include="Arrays\Hard Not Solved\AlgorithmicCrush.cs" />
     <Compile Include="Arrays\DynamicArray.cs" />
     <Compile Include="Arrays\LeftRotation.cs" />
     <Compile Include="Arrays\SparseArrays.cs" />
@@ -59,10 +59,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Arrays\AlgorithmicCrushTestCase7.txt">
+    <Content Include="Arrays\Hard Not Solved\AlgorithmicCrushTestCase7.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Arrays\AlgorithmicCrushTestCase7_Result.txt" />
+    <Content Include="Arrays\Hard Not Solved\AlgorithmicCrushTestCase7_Result.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
