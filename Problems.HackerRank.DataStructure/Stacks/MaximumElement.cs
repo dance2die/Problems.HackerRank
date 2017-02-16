@@ -14,10 +14,12 @@ INPUT:
 OUTPUT:
 26
 91
+
+INPUT:
+
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,7 +36,39 @@ namespace Problems.HackerRank.DataStructure.Stacks
             int queryCount = int.Parse(Console.ReadLine());
             List<Query> queries = GetQueries(queryCount).ToList();
 
-            PrintMaximums(queries);
+            PrintMaximums2(queries);
+        }
+
+        private static void PrintMaximums2(List<Query> queries)
+        {
+            int maxValue = 1;
+            Stack<int> maxValueStack = new Stack<int>(new [] {maxValue});
+            Stack<int> valueStack = new Stack<int>();
+
+            foreach (Query query in queries)
+            {
+                switch (query.Type)
+                {
+                    case QueryType.Push:
+                        if (!query.Value.HasValue)
+                            throw new ArgumentNullException();
+                        var value = query.Value.Value;
+
+                        if (value > maxValueStack.Peek())
+                            maxValueStack.Push(value);
+
+                        valueStack.Push(value);
+                        break;
+                    case QueryType.Pop:
+                        int poppedValue = valueStack.Pop();
+                        if (poppedValue == maxValueStack.Peek())
+                            maxValueStack.Pop();
+                        break;
+                    case QueryType.Print:
+                        Console.WriteLine(maxValueStack.Peek());
+                        break;
+                }
+            }
         }
 
         private static void PrintMaximums(List<Query> queries)
