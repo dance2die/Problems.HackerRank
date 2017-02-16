@@ -61,7 +61,7 @@ namespace Problems.HackerRank.DataStructure.Stacks
                         break;
                     case QueryType.Pop:
                         int poppedValue = valueStack.Pop();
-                        if (poppedValue == maxValueStack.Peek())
+                        if (poppedValue == maxValueStack.Peek() && !valueStack.Contains(poppedValue))
                             maxValueStack.Pop();
                         break;
                     case QueryType.Print:
