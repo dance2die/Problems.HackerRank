@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -54,22 +55,29 @@ namespace Problems.HackerRank.DataStructure.Stacks
             Stopwatch watch = new Stopwatch();
             watch.Start();
 
-            int commonMaximumHeight = GetCommonMaximumHeight(h1, h2, h3);
+            long commonMaximumHeight = GetCommonMaximumHeight(h1, h2, h3);
             Console.WriteLine(commonMaximumHeight);
 
             watch.Stop();
             Console.WriteLine("ellapsed: {0}", watch.Elapsed);
         }
 
-        private static int GetCommonMaximumHeight(int[] h1, int[] h2, int[] h3)
+        private static long GetCommonMaximumHeight(int[] h1, int[] h2, int[] h3)
         {
-            int[] h1Accumulated = Accumulate(h1);
-            int[] h2Accumulated = Accumulate(h2);
-            int[] h3Accumulated = Accumulate(h3);
+            var h1Accumulated = Accumulate(h1);
+            var h2Accumulated = Accumulate(h2);
+            var h3Accumulated = Accumulate(h3);
 
-            for (int i = h1Accumulated.Length - 1; i >= 0; i--)
+            //for (int i = h1Accumulated.Count - 1; i >= 0; i--)
+            //{
+            //    int value = h1Accumulated[i];
+            //    if (h2Accumulated.Contains(value) && h3Accumulated.Contains(value))
+            //        return value;
+            //}
+
+            var sorted = h1Accumulated.ToArray().Reverse();
+            foreach (long value in sorted)
             {
-                int value = h1Accumulated[i];
                 if (h2Accumulated.Contains(value) && h3Accumulated.Contains(value))
                     return value;
             }
@@ -77,15 +85,20 @@ namespace Problems.HackerRank.DataStructure.Stacks
             return 0;
         }
 
-        private static int[] Accumulate(int[] a)
+        private static HashSet<long> Accumulate(int[] a)
         {
-            int[] result = new int[a.Length];
+            HashSet<long> result = new HashSet<long>();
             // accumulate from the beginning in reverse order.
-            for (int i = a.Length - 1, j = 0; i >= 0; i--, j++)
+            long prevValue = 0;
+            //for (int i = a.Length - 1; i >= 0; i--)
+            for (int i = 0; i < a.Length; i++)
             {
-                int nextValue = j - 1 < 0 ? 0 : result[j - 1];
-                result[j] += a[i] + nextValue;
+                long accumulation = a[i] + prevValue;
+                result.Add(accumulation);
+
+                prevValue = accumulation;
             }
+
             return result;
         }
     }
