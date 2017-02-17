@@ -65,6 +65,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Arrays\Hard Not Solved\AlgorithmicCrushTestCase7_Result.txt" />
+    <Content Include="Stacks\EqualStacks_TestCase04.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Stacks\EqualStacks_TestCase04_Answer.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
