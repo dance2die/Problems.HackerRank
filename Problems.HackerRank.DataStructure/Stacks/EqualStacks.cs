@@ -59,7 +59,7 @@ namespace Problems.HackerRank.DataStructure.Stacks
             Console.WriteLine(commonMaximumHeight);
 
             watch.Stop();
-            Console.WriteLine("ellapsed: {0}", watch.Elapsed);
+            //Console.WriteLine("ellapsed: {0}", watch.Elapsed);
         }
 
         private static long GetCommonMaximumHeight(int[] h1, int[] h2, int[] h3)
@@ -83,8 +83,8 @@ namespace Problems.HackerRank.DataStructure.Stacks
             HashSet<long> result = new HashSet<long>();
             // accumulate from the beginning in reverse order.
             long prevValue = 0;
-            //for (int i = a.Length - 1; i >= 0; i--)
-            for (int i = 0; i < a.Length; i++)
+            for (int i = a.Length - 1; i >= 0; i--)
+            //for (int i = 0; i < a.Length; i++)
             {
                 long accumulation = a[i] + prevValue;
                 result.Add(accumulation);
