@@ -8,6 +8,13 @@ INPUT:
 4 3 2
 1 1 4 1
 OUTPUT: 5
+
+INPUT:
+5 2 3
+1 1 1 1 1
+3 2
+1 3 1
+OUTPUT: 5
  */
 namespace Problems.HackerRank.DataStructure.Stacks
 {
@@ -40,7 +47,8 @@ namespace Problems.HackerRank.DataStructure.Stacks
             int[] h2Accumulated = Accumulate(h2);
             int[] h3Accumulated = Accumulate(h3);
 
-            foreach (int value in h1Accumulated.Reverse())
+            var reversed = h1Accumulated.Reverse();
+            foreach (int value in reversed)
             {
                 if (h2Accumulated.Contains(value) && h3Accumulated.Contains(value))
                     return value;
@@ -51,12 +59,11 @@ namespace Problems.HackerRank.DataStructure.Stacks
 
         private static int[] Accumulate(int[] a)
         {
-            // reverse,
             int[] result = new int[a.Length];
             // accumulate from the beginning in reverse order.
             for (int i = a.Length - 1, j = 0; i >= 0; i--, j++)
             {
-                int nextValue = i + 1 >= a.Length ? 0 : a[i + 1];
+                int nextValue = j - 1 < 0 ? 0 : result[j - 1];
                 result[j] += a[i] + nextValue;
             }
             return result;
