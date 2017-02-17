@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.DataStructure.Stacks.MaximumElement</StartupObject>
+    <StartupObject>Problems.HackerRank.DataStructure.Stacks.EqualStacks</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

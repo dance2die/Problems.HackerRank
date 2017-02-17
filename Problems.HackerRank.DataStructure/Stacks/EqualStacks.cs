@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 /*
 INPUT:
@@ -28,6 +29,37 @@ namespace Problems.HackerRank.DataStructure.Stacks
             int[] h2 = Array.ConvertAll(h2_temp, int.Parse);
             string[] h3_temp = Console.ReadLine().Split(' ');
             int[] h3 = Array.ConvertAll(h3_temp, int.Parse);
+
+            int commonMaximumHeight = GetCommonMaximumHeight(h1, h2, h3);
+            Console.WriteLine(commonMaximumHeight);
+        }
+
+        private static int GetCommonMaximumHeight(int[] h1, int[] h2, int[] h3)
+        {
+            int[] h1Accumulated = Accumulate(h1);
+            int[] h2Accumulated = Accumulate(h2);
+            int[] h3Accumulated = Accumulate(h3);
+
+            foreach (int value in h1Accumulated.Reverse())
+            {
+                if (h2Accumulated.Contains(value) && h3Accumulated.Contains(value))
+                    return value;
+            }
+
+            return 0;
+        }
+
+        private static int[] Accumulate(int[] a)
+        {
+            // reverse,
+            int[] result = new int[a.Length];
+            // accumulate from the beginning in reverse order.
+            for (int i = a.Length - 1, j = 0; i >= 0; i--, j++)
+            {
+                int nextValue = i + 1 >= a.Length ? 0 : a[i + 1];
+                result[j] += a[i] + nextValue;
+            }
+            return result;
         }
     }
 }
