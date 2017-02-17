@@ -55,7 +55,11 @@
     <Compile Include="Arrays\ArraysDS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stacks\EqualStacks.cs" />
+    <Content Include="Stacks\EqualStacks_TestCase06.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Stacks\MaximumElement.cs" />
+    <Content Include="Stacks\EqualStacks_TestCase06_Answer.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
