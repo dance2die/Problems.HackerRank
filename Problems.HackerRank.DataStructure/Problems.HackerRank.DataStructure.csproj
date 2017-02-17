@@ -60,6 +60,10 @@
     </Content>
     <Compile Include="Stacks\MaximumElement.cs" />
     <Content Include="Stacks\EqualStacks_TestCase06_Answer.txt" />
+    <Content Include="Stacks\EqualStacks_TestCase30.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Stacks\EqualStacks_TestCase30_Answer.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
