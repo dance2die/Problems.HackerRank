@@ -59,30 +59,35 @@ namespace Problems.HackerRank.DataStructure.Stacks
             Func<string, bool> hasOddLength = text => text.Length % 2 == 1;
             if (hasOddLength(testCase)) return false;
 
-            var stackSize = testCase.Length / 2;
-            Stack<char> stack = new Stack<char>(stackSize);
             var openingBracketMap = GetOpeningBracketMap();
             var closingBracketMap = GetClosingBracketMap();
 
             Func<char, bool> isOpeningBracket = c => openingBracketMap.Keys.Contains(c);
             Func<char, bool> isClosingBracket = c => closingBracketMap.Keys.Contains(c);
-            Func<char, bool> isLastOneInStackMatching = c => stack.Peek() == closingBracketMap[c];
 
+            var stackSize = testCase.Length / 2;
+            Stack<char> stack = new Stack<char>(stackSize);
+            Func<char, bool> isLastOneInStackMatching = c => stack.Peek() == closingBracketMap[c];
+            
             foreach (char c in testCase)
             {
                 if (isOpeningBracket(c))
                     stack.Push(c);
 
-                if (stack.Count == 0 && isClosingBracket(c))
+                if (IsStackEmpty(stack) && isClosingBracket(c))
                     return false;
 
                 if (isClosingBracket(c) && isLastOneInStackMatching(c))
                     stack.Pop();
             }
 
-            return stack.Count == 0;
+            return IsStackEmpty(stack);
         }
 
+        private static bool IsStackEmpty(Stack<char> stack)
+        {
+            return stack.Count == 0;
+        }
 
         private static Dictionary<char, char> GetOpeningBracketMap()
         {
