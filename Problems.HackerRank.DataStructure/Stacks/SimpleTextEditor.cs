@@ -42,6 +42,9 @@ namespace Problems.HackerRank.DataStructure.Stacks
     /// </summary>
     public class SimpleTextEditor
     {
+        /// <summary>
+        /// "Client" in command pattern.
+        /// </summary>
         public static void Main()
         {
             int commandCount = int.Parse(Console.ReadLine());
@@ -144,6 +147,9 @@ namespace Problems.HackerRank.DataStructure.Stacks
         string Undo();
     }
 
+    /// <summary>
+    /// "Receiver" in Command Pattern
+    /// </summary>
     public abstract class TextEditorQuery : ICommand
     {
         public string Text { get; set; }
