@@ -13,6 +13,21 @@ OUTPUT:
 c
 y
 a
+
+INPUT:
+10
+1 ewcgpjfh
+1 igqsbqyp
+1 qsdliigcj
+4
+3 15
+1 iilmgp
+2 8
+4
+2 18
+1 scwhors
+OUTPUT:
+y
  */
 
 using System;
@@ -153,6 +168,7 @@ namespace Problems.HackerRank.DataStructure.Stacks
 
         public override string Execute(string text)
         {
+            Text = text;
             PreviousText = text;
             return Text + Value;
         }
