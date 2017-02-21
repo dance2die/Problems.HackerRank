@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.DataStructure.Stacks.BalancedBrackets</StartupObject>
+    <StartupObject>Problems.HackerRank.DataStructure.Stacks.SimpleTextEditor</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
