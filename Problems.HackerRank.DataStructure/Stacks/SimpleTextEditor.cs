@@ -17,7 +17,6 @@ a
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace Problems.HackerRank.DataStructure.Stacks
@@ -54,7 +53,10 @@ namespace Problems.HackerRank.DataStructure.Stacks
         {
             var split = line.Split(' ');
             Operator op = (Operator) int.Parse(split[0]);
-            string value = split[1];
+
+            string value = string.Empty;
+            if (op != Operator.Undo)
+                value = split[1];
 
             TextEditorQuery query = null;
             switch (op)
@@ -247,35 +249,6 @@ namespace Problems.HackerRank.DataStructure.Stacks
         public string Undo()
         {
             return Query.Undo();
-        }
-    }
-
-    public class Editor
-    {
-        public string Text { get; set; }
-
-        public Editor(string text)
-        {
-            Text = text;
-        }
-
-        public void Do(int op, string value)
-        {
-            Debug.Assert(op != 4);  // not an Undo operation.
-            switch (op)
-            {
-                case 1: // Append
-                    break;
-                case 2: // Delete
-                    break;
-                case 3: // Print
-                    break;
-            }
-        }
-
-        public void Undo()
-        {
-            
         }
     }
 }
