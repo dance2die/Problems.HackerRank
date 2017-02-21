@@ -93,17 +93,21 @@ namespace Problems.HackerRank.DataStructure.Stacks
         public void ExecuteCommands()
         {
             string text = string.Empty;
-            foreach (Command command in Commands)
+            for (int i = 0; i < Commands.Count; i++)
             {
+                Command command = Commands[i];
+
                 if (!(command.Query is NullQuery))
                 {
                     text = command.Execute(text);
-                    UndoCommands.Push(command);
+
+                    if (!(command.Query is PrintQuery))
+                        UndoCommands.Push(command);
                 }
                 else
                 {
                     var undoCommand = UndoCommands.Pop();
-                    undoCommand.Undo();
+                    text = undoCommand.Undo();
                 }
             }
         }
@@ -205,7 +209,7 @@ namespace Problems.HackerRank.DataStructure.Stacks
 
         public override string Undo()
         {
-            return Text;
+            return string.Empty;
         }
     }
 
