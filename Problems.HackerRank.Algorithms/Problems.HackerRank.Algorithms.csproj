@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.SaveThePrisoner</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Strings.Pangrams</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -90,6 +90,7 @@
     <Compile Include="Strings\CamelCaseMain.cs" />
     <Compile Include="Strings\FunnyString.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
+    <Compile Include="Strings\Pangrams.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
     <Compile Include="Strings\Later\TwoCharacters.cs" />
     <Compile Include="Strings\TheLoveLetterMystery.cs" />
