@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Strings.Gemstones</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Strings.PalindromeIndex</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -92,6 +92,7 @@
     <Compile Include="Strings\FunnyString.cs" />
     <Compile Include="Strings\Gemstones.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
+    <Compile Include="Strings\PalindromeIndex.cs" />
     <Compile Include="Strings\Pangrams.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
     <Compile Include="Strings\Later\TwoCharacters.cs" />
