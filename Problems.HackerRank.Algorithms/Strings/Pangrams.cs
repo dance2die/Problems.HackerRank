@@ -39,9 +39,8 @@ namespace Problems.HackerRank.Algorithms.Strings
             HashSet<char> map = GetAlphabetMap();
             bool[] flags = Enumerable.Repeat(false, ALPHABET_COUNT).ToArray();
 
-            for (int i = 0; i < text.Length; i++)
+            foreach (var c in text)
             {
-                var c = text[i];
                 if (map.Contains(c))
                 {
                     int flagIndex = GetFlagIndex(c);
@@ -54,7 +53,7 @@ namespace Problems.HackerRank.Algorithms.Strings
 
         private static int GetFlagIndex(char c)
         {
-            return Char.ToUpper(c) % (int) 'A';
+            return char.ToUpper(c) % 'A';
         }
 
         private static HashSet<char> GetAlphabetMap()
@@ -62,7 +61,7 @@ namespace Problems.HackerRank.Algorithms.Strings
             // offset between lower case letter and a capital one
             // 'a' - 'A' = 32
             const int offset = 32;
-            int firstValue = (int) 'A';
+            int firstValue = 'A';
             HashSet<char> result = new HashSet<char>();
 
             for (int i = 0; i < ALPHABET_COUNT; i++)
