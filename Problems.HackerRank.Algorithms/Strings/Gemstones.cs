@@ -31,19 +31,14 @@ namespace Problems.HackerRank.Algorithms.Strings
         {
             if (rocks.Count == 1) return rocks[0].Distinct().Count();
 
-            HashSet<char> gems = GetDistinctLetters(rocks[0]);
+            HashSet<char> gems = new HashSet<char>(rocks[0]);
             for (int i = 1; i < rocks.Count; i++)
             {
-                var nextGem = GetDistinctLetters(rocks[i]);
+                var nextGem = new HashSet<char>(rocks[i]);
                 gems.IntersectWith(nextGem);
             }
 
-            return gems.Count;
-        }
-
-        private static HashSet<char> GetDistinctLetters(string text)
-        {
-            return new HashSet<char>(text.Distinct());
+            return gems.Distinct().Count();
         }
 
         private static IEnumerable<string> GetRocks(int rockCount)
