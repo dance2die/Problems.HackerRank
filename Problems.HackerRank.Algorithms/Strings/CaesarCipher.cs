@@ -24,8 +24,22 @@ namespace Problems.HackerRank.Algorithms.Strings
             var text = Console.ReadLine();
             var shiftCount = int.Parse(Console.ReadLine());
 
-            var cipherText = new string(CipherText(text, shiftCount).ToArray());
+            var cipherText = new string(CipherText2(text, shiftCount).ToArray());
             Console.WriteLine(cipherText);
+        }
+
+        private static IEnumerable<char> CipherText2(string text, int shiftCount)
+        {
+            foreach (char c in text)
+            {
+                if (!char.IsLetter(c))
+                    yield return c;
+                else
+                {
+                    int a = char.IsUpper(c) ? 'A' : 'a';
+                    yield return (char)(a + (c - a + shiftCount) % ALPHABET_COUNT);
+                }
+            }
         }
 
         private static IEnumerable<char> CipherText(string text, int shiftCount)
