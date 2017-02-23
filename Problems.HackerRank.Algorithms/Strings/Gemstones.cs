@@ -20,6 +20,13 @@ namespace Problems.HackerRank.Algorithms.Strings
     {
         public static void Main()
         {
+            // answer in discussion
+            Console.WriteLine(
+                Enumerable.Range(0, int.Parse(Console.ReadLine()))
+                    .Select(_ => Console.ReadLine().AsEnumerable())
+                    .Aggregate(Enumerable.Intersect).Count());
+
+            return;
             int rockCount = int.Parse(Console.ReadLine());
             List<string> rocks = GetRocks(rockCount).ToList();
 
