@@ -31,7 +31,14 @@ namespace Problems.HackerRank.Algorithms.Strings
 
         private static void PrintPangramness(string text)
         {
-            Console.WriteLine(IsPangram(text) ? "pangram" : "not pangram");
+            Console.WriteLine(IsPangram2(text) ? "pangram" : "not pangram");
+        }
+
+        private static bool IsPangram2(string text)
+        {
+            List<char> characters = new List<char>(text.Length);
+            characters.AddRange(text.Select(char.ToLower).Where(c => c != ' '));
+            return characters.Distinct().Count() == ALPHABET_COUNT;
         }
 
         private static bool IsPangram(string text)
