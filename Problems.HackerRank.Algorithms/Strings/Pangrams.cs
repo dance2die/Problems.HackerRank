@@ -36,12 +36,12 @@ namespace Problems.HackerRank.Algorithms.Strings
 
         private static bool IsPangram(string text)
         {
-            HashSet<char> map = GetAlphabetMap();
+            HashSet<char> map = GetCapitalLetterMap();
             bool[] flags = Enumerable.Repeat(false, ALPHABET_COUNT).ToArray();
 
             foreach (var c in text)
             {
-                if (map.Contains(c))
+                if (map.Contains(char.ToUpper(c)))
                 {
                     int flagIndex = GetFlagIndex(c);
                     flags[flagIndex] = true;
@@ -56,20 +56,15 @@ namespace Problems.HackerRank.Algorithms.Strings
             return char.ToUpper(c) % 'A';
         }
 
-        private static HashSet<char> GetAlphabetMap()
+        private static HashSet<char> GetCapitalLetterMap()
         {
-            // offset between lower case letter and a capital one
-            // 'a' - 'A' = 32
-            const int offset = 32;
             int firstValue = 'A';
             HashSet<char> result = new HashSet<char>();
 
             for (int i = 0; i < ALPHABET_COUNT; i++)
             {
                 char capitalLetter = (char) (firstValue + i);
-                char lowerCaseLetter = (char) (firstValue + i + offset);
                 result.Add(capitalLetter);
-                result.Add(lowerCaseLetter);
             }
 
             return result;
