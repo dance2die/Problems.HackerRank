@@ -59,12 +59,14 @@ namespace Problems.HackerRank.Algorithms.Strings
 
         private static bool IsPalindrome(string testCase)
         {
-            int middleIndex = testCase.Length / 2;
-            Func<string, bool> hasEvenLength = str => str.Length % 2 == 0;
-            var left = testCase.Substring(0, middleIndex);
-            var right = new string(testCase.Substring(hasEvenLength(testCase) ? middleIndex : middleIndex + 1).Reverse().ToArray());
+            //int middleIndex = testCase.Length / 2;
+            //Func<string, bool> hasEvenLength = str => str.Length % 2 == 0;
+            //var left = testCase.Substring(0, middleIndex);
+            //var right = new string(testCase.Substring(hasEvenLength(testCase) ? middleIndex : middleIndex + 1).Reverse().ToArray());
 
-            return left == right;
+            //return left == right;
+
+            return testCase.SequenceEqual(testCase.Reverse());
         }
     }
 }
