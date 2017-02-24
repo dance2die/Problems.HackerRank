@@ -70,6 +70,7 @@ namespace Problems.HackerRank.Algorithms.Strings
             int middleIndex = testCase.Length / 2;
             Func<string, bool> hasEvenLength = str => str.Length % 2 == 0;
 
+            int removedIndex = -1;
             for (int i = 0; i < middleIndex; i++)
             {
                 string left = testCase.Substring(0, middleIndex);
@@ -78,6 +79,8 @@ namespace Problems.HackerRank.Algorithms.Strings
                 var rightIndex = middleIndex - i - 1;
                 if (left[i] != right[rightIndex])
                 {
+
+
                     //if (rightIndex - 1 >= 0 
                     //    && left[i] == right[rightIndex - 1]
                     //    && left[i + 1] == right[rightIndex])
@@ -99,7 +102,7 @@ namespace Problems.HackerRank.Algorithms.Strings
                 }
             }
 
-            return -1;
+            return removedIndex;
         }
 
         //private static bool IsRestPalindrome(string left, string right)
