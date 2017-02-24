@@ -14,6 +14,30 @@ OUTPUT:
 3
 0
 -1
+
+INPUT:
+10
+quyjjdcgsvvsgcdjjyq
+hgygsvlfwcwnswtuhmyaljkqlqjjqlqkjlaymhutwsnwcflvsgygh
+fgnfnidynhxebxxxfmxixhsruldhsaobhlcggchboashdlurshxixmfxxxbexhnydinfngf
+bsyhvwfuesumsehmytqioswvpcbxyolapfywdxeacyuruybhbwxjmrrmjxwbhbyuruycaexdwyfpaloyxbcpwsoiqtymhesmuseufwvhysb
+fvyqxqxynewuebtcuqdwyetyqqisappmunmnldmkttkmdlnmnumppasiqyteywdquctbeuwenyxqxqyvf
+mmbiefhflbeckaecprwfgmqlydfroxrblulpasumubqhhbvlqpixvvxipqlvbhqbumusaplulbrxorfdylqmgfwrpceakceblfhfeibmm
+tpqknkmbgasitnwqrqasvolmevkasccsakvemlosaqrqwntisagbmknkqpt
+lhrxvssvxrhl
+prcoitfiptvcxrvoalqmfpnqyhrubxspplrftomfehbbhefmotfrlppsxburhyqnpfmqlaorxcvtpiftiocrp
+kjowoemiduaaxasnqghxbxkiccikxbxhgqnsaxaaudimeowojk
+OUTPUT:
+1
+8
+33
+23
+25
+44
+20
+-1
+14
+-1
  */
 namespace Problems.HackerRank.Algorithms.Strings
 {
@@ -37,8 +61,30 @@ namespace Problems.HackerRank.Algorithms.Strings
         {
             foreach (string testCase in testCases)
             {
-                Console.WriteLine(GetRemovedIndex(testCase));
+                Console.WriteLine(GetRemovedIndex2(testCase));
             }
+        }
+
+        private static int GetRemovedIndex2(string testCase)
+        {
+            int middleIndex = testCase.Length / 2;
+            Func<string, bool> hasEvenLength = str => str.Length % 2 == 0;
+
+            for (int i = 0; i < middleIndex; i++)
+            {
+                string left = testCase.Substring(0, middleIndex);
+                //string right = new string(testCase.Substring(hasEvenLength(testCase) ? middleIndex : middleIndex + 1).Reverse().ToArray());
+                string right = testCase.Substring(hasEvenLength(testCase) ? middleIndex : middleIndex + 1);
+
+                var rightIndex = middleIndex - i - 1;
+                if (left[i] != right[rightIndex])
+                {
+                    if (rightIndex - 1 >= 0 && left[i] == right[rightIndex - 1]) return right.Length + rightIndex;
+                    else return i;
+                }
+            }
+
+            return -1;
         }
 
         /// <remarks>
@@ -47,10 +93,18 @@ namespace Problems.HackerRank.Algorithms.Strings
         private static int GetRemovedIndex(string testCase)
         {
             if (IsPalindrome(testCase)) return -1;
-            
+
+            char removedChar = '\0';
+            var buffer = new StringBuilder(testCase);
             for (int i = 0; i < testCase.Length; i++)
             {
-                if (IsPalindrome(new StringBuilder(testCase).Remove(i, 1)))
+                if (i > 0)
+                {
+                    buffer.Insert(i - 1, removedChar);
+                }
+
+                removedChar = buffer[i];
+                if (IsPalindrome(buffer.Remove(i, 1)))
                     return i;
             }
 
@@ -76,12 +130,12 @@ namespace Problems.HackerRank.Algorithms.Strings
             return true;
         }
 
-        public static string Reverse(StringBuilder buffer)
+        private static string Reverse(StringBuilder buffer)
         {
-            return Reverse(buffer);
+            return Reverse(buffer.ToString());
         }
 
-        public static string Reverse(string str)
+        private static string Reverse(string str)
         {
             char[] array = str.ToCharArray();
             Array.Reverse(array);
