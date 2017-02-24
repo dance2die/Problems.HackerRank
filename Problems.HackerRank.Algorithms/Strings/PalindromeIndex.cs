@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 /*
@@ -23,13 +24,15 @@ namespace Problems.HackerRank.Algorithms.Strings
     {
         public static void Main()
         {
-            List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
-                .Select(_ => Console.ReadLine()).ToList();
+            //List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
+            //    .Select(_ => Console.ReadLine()).ToList();
 
-            PrintPalindromeIndexes(testCases);
+            var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
+
+            PrintPalindromeIndexes(testCases.Skip(1).ToList());
         }
 
-        private static void PrintPalindromeIndexes(List<string> testCases)
+        private static void PrintPalindromeIndexes(IList<string> testCases)
         {
             foreach (string testCase in testCases)
             {
