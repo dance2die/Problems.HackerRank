@@ -73,14 +73,23 @@ namespace Problems.HackerRank.Algorithms.Strings
             for (int i = 0; i < middleIndex; i++)
             {
                 string left = testCase.Substring(0, middleIndex);
-                //string right = new string(testCase.Substring(hasEvenLength(testCase) ? middleIndex : middleIndex + 1).Reverse().ToArray());
                 string right = testCase.Substring(hasEvenLength(testCase) ? middleIndex : middleIndex + 1);
 
                 var rightIndex = middleIndex - i - 1;
                 if (left[i] != right[rightIndex])
                 {
-                    if (rightIndex - 1 >= 0 && left[i] == right[rightIndex - 1]) return right.Length + rightIndex;
-                    else return i;
+                    //if (rightIndex - 1 >= 0 
+                    //    && left[i] == right[rightIndex - 1]
+                    //    && left[i + 1] == right[rightIndex])
+                    //    return right.Length + rightIndex;
+                    //return i;
+
+                    var rightReversed = new string(right.Reverse().ToArray());
+                    if (rightIndex - 1 >= 0  && i + 1 < middleIndex &&
+                        //left.Substring(i + 1) == new string(right.Substring(rightIndex + 1).Reverse().ToArray()))
+                        left.Substring(i + 1) == rightReversed.Substring(i + 1))
+                        return right.Length + rightIndex;
+                    return i;
                 }
             }
 
