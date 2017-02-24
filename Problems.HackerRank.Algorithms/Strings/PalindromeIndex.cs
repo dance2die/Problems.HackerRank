@@ -49,12 +49,12 @@ namespace Problems.HackerRank.Algorithms.Strings
     {
         public static void Main()
         {
-            List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
-                .Select(_ => Console.ReadLine()).ToList();
-            PrintPalindromeIndexes(testCases);
+            //List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
+            //    .Select(_ => Console.ReadLine()).ToList();
+            //PrintPalindromeIndexes(testCases);
 
-            //var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
-            //PrintPalindromeIndexes(testCases.Skip(1).ToList());
+            var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
+            PrintPalindromeIndexes(testCases.Skip(1).ToList());
         }
 
         private static void PrintPalindromeIndexes(IList<string> testCases)
@@ -84,17 +84,34 @@ namespace Problems.HackerRank.Algorithms.Strings
                     //    return right.Length + rightIndex;
                     //return i;
 
-                    var rightReversed = new string(right.Reverse().ToArray());
-                    if (rightIndex - 1 >= 0  && i + 1 < middleIndex &&
-                        //left.Substring(i + 1) == new string(right.Substring(rightIndex + 1).Reverse().ToArray()))
-                        left.Substring(i + 1) == rightReversed.Substring(i + 1))
-                        return right.Length + rightIndex;
-                    return i;
+                    //var rightReversed = new string(right.Reverse().ToArray());
+                    //if (rightIndex - 1 >= 0  && i + 1 < middleIndex &&
+                    //    //left.Substring(i + 1) == new string(right.Substring(rightIndex + 1).Reverse().ToArray()))
+                    //    left.Substring(i + 1) == rightReversed.Substring(i + 1))
+                    //    return right.Length + rightIndex;
+                    //return i;
+
+                    //if (rightIndex - 1 >= 0 && i + 1 < middleIndex)
+                    //    if (IsRestPalindrome(left.Substring(i), right.Substring(0, middleIndex - i - 1)))
+                    //        return right.Length + rightIndex;
+                    //    if (IsRestPalindrome(left.Substring(i + 1), right.Substring(0, middleIndex - i)))
+                    //        return i;
                 }
             }
 
             return -1;
         }
+
+        //private static bool IsRestPalindrome(string left, string right)
+        //{
+        //    var upto = Math.Min(left.Length, right.Length);
+        //    for (int i = 0; i < upto; i++)
+        //    {
+        //        if (left[i] == right[right.Length - i - 1])
+        //            return false;
+        //    }
+        //    return true;
+        //}
 
         /// <remarks>
         /// Partially copied from TheLoveLetterMystery
