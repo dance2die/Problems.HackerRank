@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 /*
 INPUT:
@@ -24,12 +25,12 @@ namespace Problems.HackerRank.Algorithms.Strings
     {
         public static void Main()
         {
-            //List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
-            //    .Select(_ => Console.ReadLine()).ToList();
+            List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
+                .Select(_ => Console.ReadLine()).ToList();
 
-            var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
-
-            PrintPalindromeIndexes(testCases.Skip(1).ToList());
+            //var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
+            //PrintPalindromeIndexes(testCases.Skip(1).ToList());
+            PrintPalindromeIndexes(testCases);
         }
 
         private static void PrintPalindromeIndexes(IList<string> testCases)
@@ -49,8 +50,8 @@ namespace Problems.HackerRank.Algorithms.Strings
 
             for (int i = 0; i < testCase.Length; i++)
             {
-                var tempCase = testCase.Remove(i, 1);
-                if (IsPalindrome(tempCase))
+                var temp = testCase.Remove(i, 1);
+                if (IsPalindrome(temp))
                     return i;
             }
 
@@ -59,14 +60,14 @@ namespace Problems.HackerRank.Algorithms.Strings
 
         private static bool IsPalindrome(string testCase)
         {
-            //int middleIndex = testCase.Length / 2;
-            //Func<string, bool> hasEvenLength = str => str.Length % 2 == 0;
-            //var left = testCase.Substring(0, middleIndex);
-            //var right = new string(testCase.Substring(hasEvenLength(testCase) ? middleIndex : middleIndex + 1).Reverse().ToArray());
+            return testCase == Reverse(testCase);
+        }
 
-            //return left == right;
-
-            return testCase.SequenceEqual(testCase.Reverse());
+        public static string Reverse(string str)
+        {
+            char[] array = str.ToCharArray();
+            Array.Reverse(array);
+            return new string(array);
         }
     }
 }
