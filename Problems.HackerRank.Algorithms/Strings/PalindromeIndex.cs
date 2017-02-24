@@ -25,12 +25,12 @@ namespace Problems.HackerRank.Algorithms.Strings
     {
         public static void Main()
         {
-            List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
-                .Select(_ => Console.ReadLine()).ToList();
+            //List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
+            //    .Select(_ => Console.ReadLine()).ToList();
+            //PrintPalindromeIndexes(testCases);
 
-            //var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
-            //PrintPalindromeIndexes(testCases.Skip(1).ToList());
-            PrintPalindromeIndexes(testCases);
+            var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
+            PrintPalindromeIndexes(testCases.Skip(1).ToList());
         }
 
         private static void PrintPalindromeIndexes(IList<string> testCases)
@@ -47,20 +47,30 @@ namespace Problems.HackerRank.Algorithms.Strings
         private static int GetRemovedIndex(string testCase)
         {
             if (IsPalindrome(testCase)) return -1;
-
+            
             for (int i = 0; i < testCase.Length; i++)
             {
-                var temp = testCase.Remove(i, 1);
-                if (IsPalindrome(temp))
+                if (IsPalindrome(new StringBuilder(testCase).Remove(i, 1)))
                     return i;
             }
 
             return -1;
         }
 
+        private static bool IsPalindrome(StringBuilder buffer)
+        {
+            var testCase = buffer.ToString();
+            return testCase == Reverse(testCase);
+        }
+
         private static bool IsPalindrome(string testCase)
         {
             return testCase == Reverse(testCase);
+        }
+
+        public static string Reverse(StringBuilder buffer)
+        {
+            return Reverse(buffer);
         }
 
         public static string Reverse(string str)
