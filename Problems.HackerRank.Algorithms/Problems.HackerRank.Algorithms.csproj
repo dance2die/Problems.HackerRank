@@ -93,6 +93,7 @@
     <Compile Include="Strings\Gemstones.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\PalindromeIndex.cs" />
+    <Content Include="Strings\PalindromeIndexes_TestCase05_Answer.txt" />
     <Compile Include="Strings\Pangrams.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
     <Compile Include="Strings\Later\TwoCharacters.cs" />
@@ -109,6 +110,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Strings\PalindromeIndexes_TestCase05.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Strings\PalindromeIndexes_TestCase06.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
