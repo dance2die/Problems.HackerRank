@@ -61,8 +61,39 @@ namespace Problems.HackerRank.Algorithms.Strings
         {
             foreach (string testCase in testCases)
             {
-                Console.WriteLine(GetRemovedIndex3(testCase));
+                Console.WriteLine(GetRemovedIndex4(testCase));
             }
+        }
+
+        private static int GetRemovedIndex4(string testCase)
+        {
+            if (IsPalindrome2(new StringBuilder(testCase))) return -1;
+
+            for (int i = 0; i < testCase.Length; i++)
+            {
+                StringBuilder buffer = new StringBuilder(testCase);
+                if (testCase[i] != testCase[testCase.Length - i - 1])
+                {
+                    if (IsPalindrome2(buffer.Remove(i, 1)))
+                        return i;
+                    return testCase.Length - i - 1;
+                }
+            }
+
+            return -1;
+        }
+
+        private static bool IsPalindrome2(StringBuilder buffer)
+        {
+            int length = buffer.Length;
+
+            for (int i = 0; i < length / 2; i++)
+            {
+                if (buffer[i] != buffer[length - i - 1])
+                    return false;
+            }
+
+            return true;
         }
 
         private static int GetRemovedIndex3(string testCase)
