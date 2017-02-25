@@ -49,20 +49,38 @@ namespace Problems.HackerRank.Algorithms.Strings
     {
         public static void Main()
         {
-            //List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
-            //    .Select(_ => Console.ReadLine()).ToList();
-            //PrintPalindromeIndexes(testCases);
+            List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
+                .Select(_ => Console.ReadLine()).ToList();
+            PrintPalindromeIndexes(testCases);
 
-            var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
-            PrintPalindromeIndexes(testCases.Skip(1).ToList());
+            //var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase06.txt");
+            //PrintPalindromeIndexes(testCases.Skip(1).ToList());
         }
 
         private static void PrintPalindromeIndexes(IList<string> testCases)
         {
             foreach (string testCase in testCases)
             {
-                Console.WriteLine(GetRemovedIndex2(testCase));
+                Console.WriteLine(GetRemovedIndex3(testCase));
             }
+        }
+
+        private static int GetRemovedIndex3(string testCase)
+        {
+            if (IsPalindrome(testCase)) return -1;
+
+            for (int i = 0; i < testCase.Length; i++)
+            {
+                StringBuilder buffer = new StringBuilder(testCase);
+                if (testCase[i] != testCase[testCase.Length - i - 1])
+                {
+                    if (IsPalindrome(buffer.Remove(i, 1).ToString()))
+                        return i;
+                    return testCase.Length - i - 1;
+                }
+            }
+
+            return -1;
         }
 
         private static int GetRemovedIndex2(string testCase)
