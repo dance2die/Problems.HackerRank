@@ -49,12 +49,12 @@ namespace Problems.HackerRank.Algorithms.Strings
     {
         public static void Main()
         {
-            //List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
-            //    .Select(_ => Console.ReadLine()).ToList();
-            //PrintPalindromeIndexes(testCases);
+            List<string> testCases = Enumerable.Range(0, int.Parse(Console.ReadLine()))
+                .Select(_ => Console.ReadLine()).ToList();
+            PrintPalindromeIndexes(testCases);
 
-            var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase05.txt");
-            PrintPalindromeIndexes(testCases.Skip(1).ToList());
+            //var testCases = File.ReadAllLines(@".\Strings\PalindromeIndexes_TestCase05.txt");
+            //PrintPalindromeIndexes(testCases.Skip(1).ToList());
         }
 
         private static void PrintPalindromeIndexes(IList<string> testCases)
@@ -69,9 +69,9 @@ namespace Problems.HackerRank.Algorithms.Strings
         {
             if (IsPalindrome2(new StringBuilder(testCase))) return -1;
 
+            StringBuilder buffer = new StringBuilder(testCase);
             for (int i = 0; i < testCase.Length; i++)
             {
-                StringBuilder buffer = new StringBuilder(testCase);
                 if (testCase[i] != testCase[testCase.Length - i - 1])
                 {
                     if (IsPalindrome2(buffer.Remove(i, 1)))
