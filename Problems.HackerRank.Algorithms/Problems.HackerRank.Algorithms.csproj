@@ -87,6 +87,7 @@
     <Compile Include="Sorting\RunningTimeOfAlgorithms.cs" />
     <Compile Include="Sorting\TheFullCountingSort.cs" />
     <Compile Include="Strings\AlternatingCharacters.cs" />
+    <Compile Include="Strings\Anagram.cs" />
     <Compile Include="Strings\CaesarCipher.cs" />
     <Compile Include="Strings\CamelCaseMain.cs" />
     <Compile Include="Strings\FunnyString.cs" />
