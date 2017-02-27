@@ -51,11 +51,13 @@ namespace Problems.HackerRank.Algorithms.Strings
             if (IsLengthOdd(testCase)) return NOT_POSSIBLE;
 
             // Parse test case for left and right texts
+            int middleIndex = testCase.Length / 2;
+            var left = testCase.Substring(0, middleIndex).Split();
+            var right = testCase.Substring(middleIndex).Split();
 
-            // Get the intersect count between left and right texts
-            // return the left.Length - intersect count
-
-            return NOT_POSSIBLE;
+            // Get the exception from left to right.
+            var exceptions = left.Except(right);
+            return exceptions.Count();
         }
 
         private static bool IsLengthOdd(string text)
