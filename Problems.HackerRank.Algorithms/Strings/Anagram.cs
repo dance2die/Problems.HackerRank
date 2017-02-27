@@ -52,12 +52,21 @@ namespace Problems.HackerRank.Algorithms.Strings
 
             // Parse test case for left and right texts
             int middleIndex = testCase.Length / 2;
-            var left = testCase.Substring(0, middleIndex).Split();
-            var right = testCase.Substring(middleIndex).Split();
+            var left = testCase.Substring(0, middleIndex).ToCharArray();
+            var right = testCase.Substring(middleIndex).ToCharArray();
+
+            Array.Sort(left);
+            Array.Sort(right);
 
             // Get the exception from left to right.
             var exceptions = left.Except(right);
-            return exceptions.Count();
+            int total = 0;
+            foreach (char exception in exceptions)
+            {
+                total += left.Count(c => c == exception);
+            }
+
+            return total;
         }
 
         private static bool IsLengthOdd(string text)
