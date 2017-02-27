@@ -18,6 +18,30 @@ OUTPUT:
 2
 0
 1
+
+INPUT:
+10
+csgokgibmftzeozyadcofpouaerckbbpwhdg
+njdtcezqezsjbgotwjtacwngzecihkxvtaqxepnkqiusoklnvepyceebiijqsinnkfkpu
+bkhxeyirnfycfchjeptphnawckbmbxodkxcoxkiksinxkwjqncgxqgtusxhuuxxeuzvsmfegntdxpmofrwcjexd
+umqrjpxgrsadzejoyompdcwuaydewicsvvjgkhmbbmgbtr
+tgdklhhfhhkndsswpnhwzokbqzjtsdknlqxwxgbhonwtforxdztdpdghcpawsnjdd
+bcrclfpizxyswerphjupqzgtxbghglsinjmbrejsdjkzneqwnkndluwjvesdpkl
+vygmcrefcpgqtwoiicnuykdtqvwihkpcixpmottqk
+ifvznddbxbncu
+zsngccjmzyapttiessjprzvuauvnxrswmgdokodkodbhxjnrczjvyeqaynnxfhurnzhynkkdqlm
+xagzbrwbvmbwcqtjxnanojldwxgmkvbhxjiybfzytcuxsogpdicuspxoogczbfiyqtyta
+OUTPUT:
+8
+-1
+-1
+10
+-1
+-1
+-1
+-1
+-1
+-1
  */
 namespace Problems.HackerRank.Algorithms.Strings
 {
@@ -57,13 +81,13 @@ namespace Problems.HackerRank.Algorithms.Strings
 
             Array.Sort(left);
             Array.Sort(right);
+            if (left == right) return 0;
 
-            // Get the exception from left to right.
-            var exceptions = left.Except(right);
             int total = 0;
-            foreach (char exception in exceptions)
+            for (int i = 0; i < left.Length; i++)
             {
-                total += left.Count(c => c == exception);
+                if (left[i] != right[i])
+                    total++;
             }
 
             return total;
