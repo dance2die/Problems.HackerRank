@@ -65,9 +65,32 @@ namespace Problems.HackerRank.Algorithms.Strings
         {
             foreach (string testCase in testCases)
             {
-                int changeCount = GetChangeCountForAnagram(testCase);
+                int changeCount = GetChangeCountForAnagram2(testCase);
                 Console.WriteLine(changeCount);
             }
+        }
+
+        private static int GetChangeCountForAnagram2(string testCase)
+        {
+            if (IsLengthOdd(testCase)) return NOT_POSSIBLE;
+
+            // Parse test case for left and right texts
+            int middleIndex = testCase.Length / 2;
+            var left = testCase.Substring(0, middleIndex);
+            var right = testCase.Substring(middleIndex);
+
+            int total = 0;
+            foreach (var c in right)
+            {
+                int index = left.IndexOf(c);
+                if (index >= 0)
+                {
+                    left = left.Remove(index, 1);
+                    total++;
+                }
+            }
+
+            return total;
         }
 
         private static int GetChangeCountForAnagram(string testCase)
