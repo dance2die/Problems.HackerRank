@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Strings.MakingAnagrams</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Strings.GameOfThrones1</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -91,6 +91,7 @@
     <Compile Include="Strings\CaesarCipher.cs" />
     <Compile Include="Strings\CamelCaseMain.cs" />
     <Compile Include="Strings\FunnyString.cs" />
+    <Compile Include="Strings\GameOfThrones1.cs" />
     <Compile Include="Strings\Gemstones.cs" />
     <Compile Include="Strings\MakingAnagrams.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
