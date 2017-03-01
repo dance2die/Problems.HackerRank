@@ -79,14 +79,31 @@ namespace Problems.HackerRank.Algorithms.Strings
             var left = testCase.Substring(0, middleIndex);
             var right = testCase.Substring(middleIndex);
 
+            var l1 = (left.Clone() as string).ToCharArray();
+            var l2 = (right.Clone() as string).ToCharArray();
+
+            Array.Sort(l1);
+            Array.Sort(l2);
+
             int total = 0;
-            foreach (var c in right)
+            for (int i = 0; i < right.Length; i++)
             {
+                var c = right[i];
+
                 int index = left.IndexOf(c);
-                if (index >= 0)
+                if (index < 0)
+                {
+                    //Console.WriteLine(right[i]);
+                    //left = left.Remove(i, 1);
+                    right = right.Remove(i, 1);
+                    total++;
+                    i--;
+                }
+                else
                 {
                     left = left.Remove(index, 1);
-                    total++;
+                    right = right.Remove(i, 1);
+                    i--;
                 }
             }
 
