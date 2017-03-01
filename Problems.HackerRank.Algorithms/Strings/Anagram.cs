@@ -79,12 +79,6 @@ namespace Problems.HackerRank.Algorithms.Strings
             var left = testCase.Substring(0, middleIndex);
             var right = testCase.Substring(middleIndex);
 
-            var l1 = (left.Clone() as string).ToCharArray();
-            var l2 = (right.Clone() as string).ToCharArray();
-
-            Array.Sort(l1);
-            Array.Sort(l2);
-
             int total = 0;
             for (int i = 0; i < right.Length; i++)
             {
@@ -93,8 +87,6 @@ namespace Problems.HackerRank.Algorithms.Strings
                 int index = left.IndexOf(c);
                 if (index < 0)
                 {
-                    //Console.WriteLine(right[i]);
-                    //left = left.Remove(i, 1);
                     right = right.Remove(i, 1);
                     total++;
                     i--;
@@ -105,29 +97,6 @@ namespace Problems.HackerRank.Algorithms.Strings
                     right = right.Remove(i, 1);
                     i--;
                 }
-            }
-
-            return total;
-        }
-
-        private static int GetChangeCountForAnagram(string testCase)
-        {
-            if (IsLengthOdd(testCase)) return NOT_POSSIBLE;
-
-            // Parse test case for left and right texts
-            int middleIndex = testCase.Length / 2;
-            var left = testCase.Substring(0, middleIndex).ToCharArray();
-            var right = testCase.Substring(middleIndex).ToCharArray();
-
-            Array.Sort(left);
-            Array.Sort(right);
-            if (left == right) return 0;
-
-            int total = 0;
-            for (int i = 0; i < left.Length; i++)
-            {
-                if (left[i] != right[i])
-                    total++;
             }
 
             return total;
