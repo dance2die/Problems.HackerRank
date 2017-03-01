@@ -89,14 +89,14 @@ namespace Problems.HackerRank.Algorithms.Strings
                 {
                     right = right.Remove(i, 1);
                     total++;
-                    i--;
                 }
                 else
                 {
                     left = left.Remove(index, 1);
                     right = right.Remove(i, 1);
-                    i--;
                 }
+
+                i--;
             }
 
             return total;
