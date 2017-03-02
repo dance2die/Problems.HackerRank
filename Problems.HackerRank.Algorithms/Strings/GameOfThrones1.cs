@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
 INPUT: aaabbbb
@@ -32,11 +30,26 @@ namespace Problems.HackerRank.Algorithms.Strings
 
         private static string GetHasPalindromePermutation(string input)
         {
-            // if all of charactersets have even number then "YES".
-            // if all BUT one charactersets have even number then "YES".
-            // else "NO"
+            Dictionary<char, int> map = GetCharacterSetMap(input);
 
+            // If less than or equal to one odd value exists, then "YES" else "NO"
+            if (map.Count(pair => pair.Value % 2 == 1) <= 1)
+                return "YES";
             return "NO";
+        }
+
+        private static Dictionary<char, int> GetCharacterSetMap(string input)
+        {
+            Dictionary<char, int> result = new Dictionary<char, int>(input.Distinct().Count());
+
+            foreach (char c in input)
+            {
+                if (!result.ContainsKey(c))
+                    result.Add(c, 0);
+                result[c]++;
+            }
+
+            return result;
         }
     }
 }
