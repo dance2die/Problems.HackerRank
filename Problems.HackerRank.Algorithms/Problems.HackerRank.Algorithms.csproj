@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Strings.GameOfThrones1</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Strings.StringConstruction</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -98,6 +98,7 @@
     <Compile Include="Strings\PalindromeIndex.cs" />
     <Content Include="Strings\PalindromeIndexes_TestCase05_Answer.txt" />
     <Compile Include="Strings\Pangrams.cs" />
+    <Compile Include="Strings\StringConstruction.cs" />
     <Compile Include="Strings\SuperReducedStringMain.cs" />
     <Compile Include="Strings\Later\TwoCharacters.cs" />
     <Compile Include="Strings\TheLoveLetterMystery.cs" />
