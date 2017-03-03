@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Strings.StringConstruction</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.AcmIcpcTeam</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -52,6 +52,7 @@
     <Compile Include="BitManipulation\MaximizingXor.cs" />
     <Compile Include="BitManipulation\SumVsXor.cs" />
     <Compile Include="DynamicProgramming\FibonacciModified.cs" />
+    <Compile Include="Implementation\AcmIcpcTeam.cs" />
     <Compile Include="Implementation\AngryProfessor.cs" />
     <Compile Include="Implementation\BeautifulDayAtTheMovies.cs" />
     <Compile Include="Implementation\BetweenTwoSets.cs" />
