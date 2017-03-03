@@ -47,7 +47,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int maximum = 0;
             
-            for (int i = 0; i < topics.Length - 2; i++)
+            for (int i = 0; i < topics.Length - 1; i++)
             {
                 var topic = topics[i];
 
@@ -75,17 +75,19 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static int GetMaximumTeams(string[] topics, int maximumTopics)
         {
             int count = 0;
-            for (int i = 0; i < topics.Length - 2; i++)
+            for (int i = 0; i < topics.Length - 1; i++)
             {
                 var topic = topics[i];
 
                 for (int j = 1; j < topic.Length - 1; j++)
                 {
-                    var nextTopic = topics[i + 1];
+                    var nextTopic = topics[j];
                     int currMaximum = 0;
                     for (int k = 0; k < topic.Length; k++)
                     {
-                        if (topic[k] == nextTopic[k] && topic[k] == 1)
+                        int left = int.Parse(topic[k].ToString());
+                        int right = int.Parse(nextTopic[k].ToString());
+                        if ((left | right) == 1)
                             currMaximum++;
                     }
 
