@@ -55,7 +55,7 @@ namespace Problems.HackerRank.Algorithms.Strings
 
         private static void PrintCosts(List<int> costs)
         {
-            costs.ForEach(cost => Console.WriteLine(cost));
+            costs.ForEach(Console.WriteLine);
         }
     }
 }
