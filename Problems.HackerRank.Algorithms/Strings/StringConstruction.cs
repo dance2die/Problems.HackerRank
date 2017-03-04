@@ -28,6 +28,19 @@ namespace Problems.HackerRank.Algorithms.Strings
             PrintCosts(costs);
         }
 
+        private static IEnumerable<int> GetCosts(List<string> lines)
+        {
+            foreach (var line in lines)
+            {
+                yield return GetCost2(line);
+            }
+        }
+
+        private static int GetCost2(string line)
+        {
+            return line.Distinct().Count();
+        }
+
         private static int GetCost(string line)
         {
             HashSet<char> map = new HashSet<char>();
@@ -43,14 +56,6 @@ namespace Problems.HackerRank.Algorithms.Strings
             }
 
             return totalCost;
-        }
-
-        private static IEnumerable<int> GetCosts(List<string> lines)
-        {
-            foreach (var line in lines)
-            {
-                yield return GetCost(line);
-            }
         }
 
         private static void PrintCosts(List<int> costs)
