@@ -1,5 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
+/*
+INPUT:
+2
+abcd
+abab
+OUTPUT:
+4
+2
+ */
 namespace Problems.HackerRank.Algorithms.Strings
 {
     /// <summary>
@@ -10,11 +21,41 @@ namespace Problems.HackerRank.Algorithms.Strings
     {
         public static void Main()
         {
-            int n = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < n; i++)
+            var lines = Enumerable.Range(0, int.Parse(Console.ReadLine()))
+                .Select(_ => Console.ReadLine()).ToList();
+            var costs = GetCosts(lines).ToList();
+
+            PrintCosts(costs);
+        }
+
+        private static int GetCost(string line)
+        {
+            HashSet<char> map = new HashSet<char>();
+            int totalCost = 0;
+
+            foreach (char c in line)
             {
-                string s = Console.ReadLine();
+                if (!map.Contains(c))
+                {
+                    map.Add(c);
+                    totalCost++;
+                }
             }
+
+            return totalCost;
+        }
+
+        private static IEnumerable<int> GetCosts(List<string> lines)
+        {
+            foreach (var line in lines)
+            {
+                yield return GetCost(line);
+            }
+        }
+
+        private static void PrintCosts(List<int> costs)
+        {
+            costs.ForEach(cost => Console.WriteLine(cost));
         }
     }
 }
