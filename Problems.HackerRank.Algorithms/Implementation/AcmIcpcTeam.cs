@@ -148,7 +148,10 @@ namespace Problems.HackerRank.Algorithms.Implementation
             //int maximumTopics = GetMaximumTopics(topics);
             //int maximumTeams = GetMaximumTeams(topics, maximumTopics);
 
-            List<int> counts = new List<int>();
+            //List<int> counts = new List<int>();
+            Dictionary<int, int> countMap = new Dictionary<int, int>();
+
+            int maximumTopics = 0;
             for (int i = 0; i < topics.Length - 1; i++)
             {
                 for (int j = 1; j < topics.Length; j++)
@@ -157,12 +160,20 @@ namespace Problems.HackerRank.Algorithms.Implementation
                     var topic2 = topics[j];
 
                     var topicCount = GetCombinedTopicCount(topic1, topic2);
-                    counts.Add(topicCount);
+                    //counts.Add(topicCount);
+
+                    if (!countMap.ContainsKey(topicCount))
+                        countMap.Add(topicCount, 0);
+                    countMap[topicCount]++;
+
+                    if (maximumTopics < topicCount)
+                        maximumTopics = topicCount;
                 }
             }
 
-            int maximumTopics = counts.Max();
-            int maximumTeams = counts.Count(value => value == maximumTopics);
+            //int maximumTopics = counts.Max();
+            //int maximumTeams = counts.Count(value => value == maximumTopics);
+            int maximumTeams = countMap[maximumTopics];
 
             return Tuple.Create(maximumTopics, maximumTeams);
         }
