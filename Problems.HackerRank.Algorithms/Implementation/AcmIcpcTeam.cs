@@ -145,8 +145,24 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         private static Tuple<int, int> GetMaximums(string[] topics)
         {
-            int maximumTopics = GetMaximumTopics(topics);
-            int maximumTeams = GetMaximumTeams(topics, maximumTopics);
+            //int maximumTopics = GetMaximumTopics(topics);
+            //int maximumTeams = GetMaximumTeams(topics, maximumTopics);
+
+            List<int> counts = new List<int>();
+            for (int i = 0; i < topics.Length - 1; i++)
+            {
+                for (int j = 1; j < topics.Length; j++)
+                {
+                    var topic1 = topics[i];
+                    var topic2 = topics[j];
+
+                    var topicCount = GetCombinedTopicCount(topic1, topic2);
+                    counts.Add(topicCount);
+                }
+            }
+
+            int maximumTopics = counts.Max();
+            int maximumTeams = counts.Count(value => value == maximumTopics);
 
             return Tuple.Create(maximumTopics, maximumTeams);
         }
@@ -155,20 +171,14 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int maximum = 0;
             
-            for (int i = 0; i < topics.Length - 2; i++)
+            for (int i = 0; i < topics.Length - 1; i++)
             {
-                for (int j = 1; j < topics.Length - 1; j++)
+                for (int j = 1; j < topics.Length; j++)
                 {
-                    int topicCount = 0;
-
                     var topic1 = topics[i];
                     var topic2 = topics[j];
-                    for (int k = 0; k < topic1.Length; k++)
-                    {
-                        if (topic1[k] == '1' || topic2[k] == '1')
-                            topicCount++;
-                    }
 
+                    var topicCount = GetCombinedTopicCount(topic1, topic2);
                     if (topicCount > maximum)
                         maximum = topicCount;
                 }
@@ -182,26 +192,32 @@ namespace Problems.HackerRank.Algorithms.Implementation
             int count = 0;
             for (int i = 0; i < topics.Length - 1; i++)
             {
-                var topic = topics[i];
-
-                for (int j = 1; j < topic.Length - 1; j++)
+                for (int j = 1; j < topics.Length; j++)
                 {
-                    var nextTopic = topics[j];
-                    int currMaximum = 0;
-                    for (int k = 0; k < topic.Length; k++)
-                    {
-                        int left = int.Parse(topic[k].ToString());
-                        int right = int.Parse(nextTopic[k].ToString());
-                        if ((left | right) == 1)
-                            currMaximum++;
-                    }
+                    var topic1 = topics[i];
+                    var topic2 = topics[j];
 
-                    if (currMaximum == maximumTopics)
+                    var topicCount = GetCombinedTopicCount(topic1, topic2);
+                    if (topicCount == maximumTopics)
                         count++;
                 }
+
             }
 
             return count;
+        }
+
+        private static int GetCombinedTopicCount(string topic1, string topic2)
+        {
+            int topicCount = 0;
+
+            for (int k = 0; k < topic1.Length; k++)
+            {
+                if (topic1[k] == '1' || topic2[k] == '1')
+                    topicCount++;
+            }
+
+            return topicCount;
         }
     }
 }
