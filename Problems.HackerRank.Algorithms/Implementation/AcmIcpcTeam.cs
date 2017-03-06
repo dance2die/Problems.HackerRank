@@ -154,7 +154,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
             int maximumTopics = 0;
             for (int i = 0; i < topics.Length - 1; i++)
             {
-                for (int j = 1; j < topics.Length; j++)
+                for (int j = i + 1; j < topics.Length; j++)
                 {
                     var topic1 = topics[i];
                     var topic2 = topics[j];
