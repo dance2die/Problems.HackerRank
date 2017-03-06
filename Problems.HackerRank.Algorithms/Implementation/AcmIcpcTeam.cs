@@ -166,47 +166,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
             return Tuple.Create(maximumTopics, maximumTeams);
         }
-
-        private static int GetMaximumTopics(string[] topics)
-        {
-            int maximum = 0;
-            
-            for (int i = 0; i < topics.Length - 1; i++)
-            {
-                for (int j = 1; j < topics.Length; j++)
-                {
-                    var topic1 = topics[i];
-                    var topic2 = topics[j];
-
-                    var topicCount = GetCombinedTopicCount(topic1, topic2);
-                    if (topicCount > maximum)
-                        maximum = topicCount;
-                }
-            }
-
-            return maximum;
-        }
-
-        private static int GetMaximumTeams(string[] topics, int maximumTopics)
-        {
-            int count = 0;
-            for (int i = 0; i < topics.Length - 1; i++)
-            {
-                for (int j = 1; j < topics.Length; j++)
-                {
-                    var topic1 = topics[i];
-                    var topic2 = topics[j];
-
-                    var topicCount = GetCombinedTopicCount(topic1, topic2);
-                    if (topicCount == maximumTopics)
-                        count++;
-                }
-
-            }
-
-            return count;
-        }
-
+        
         private static int GetCombinedTopicCount(string topic1, string topic2)
         {
             int topicCount = 0;
