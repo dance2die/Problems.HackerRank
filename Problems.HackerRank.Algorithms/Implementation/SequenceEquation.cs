@@ -23,6 +23,15 @@ namespace Problems.HackerRank.Algorithms.Implementation
     {
         public static void Main()
         {
+            Console.ReadLine(); // Ignore elemnt count
+            var split = Console.ReadLine().Split(' ');
+            var sequences = Array.ConvertAll(split, int.Parse);
+
+            PrintSequences(sequences);
+        }
+
+        private static void PrintSequences(int[] sequences)
+        {
             
         }
     }
