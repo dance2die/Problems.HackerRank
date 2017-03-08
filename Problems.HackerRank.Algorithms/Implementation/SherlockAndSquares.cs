@@ -40,18 +40,22 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int count = 0;
 
-            HashSet<int> processed = new HashSet<int>();
-            for (int i = (int)Math.Sqrt(testCase.Item1); i <= Math.Sqrt(testCase.Item2); i++)
+            var start = (int)Math.Sqrt(testCase.Item1);
+            var end = Math.Sqrt(testCase.Item2);
+
+            for (int i = start; i <= end; i++)
             {
                 var power = i * i;
-                if (testCase.Item1 <= power && power <= testCase.Item2)
-                {
-                    processed.Add(i);
+                if (IsInRange(testCase, power))
                     count++;
-                }
             }
 
             return count;
+        }
+
+        private static bool IsInRange(Tuple<int, int> testCase, int power)
+        {
+            return testCase.Item1 <= power && power <= testCase.Item2;
         }
 
         private static IEnumerable<Tuple<int, int>> GetCases(int caseCount)
