@@ -22,7 +22,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
         public static void Main()
         {
             int caseCount = int.Parse(Console.ReadLine());
-            IEnumerable<Tuple<int, int>> cases = GetCases(caseCount);
+            IEnumerable<Tuple<int, int>> cases = GetCases(caseCount).ToList();
 
             List<int> squareCounts = GetSquareCounts(cases).ToList();
             squareCounts.ForEach(Console.WriteLine);
@@ -40,38 +40,18 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int count = 0;
 
-            HashSet<int> set = new HashSet<int>(Enumerable.Range(testCase.Item1, testCase.Item2 - testCase.Item1 + 1));
-            var copySet = new HashSet<int>(set);
-
-            foreach (int value in set)
+            HashSet<int> processed = new HashSet<int>();
+            for (int i = (int)Math.Sqrt(testCase.Item1); i <= Math.Sqrt(testCase.Item2); i++)
             {
-                if (IsSquareNumber(value))
+                var power = i * i;
+                if (testCase.Item1 <= power && power <= testCase.Item2)
                 {
-                    copySet.Remove(value);
+                    processed.Add(i);
                     count++;
-
-                    // remove power of value
-                    for (int i = value; i < set.Count; i++)
-                    {
-                        count += copySet.RemoveWhere(val => val == value * value);
-                    }
                 }
             }
 
-            //for (int i = testCase.Item1; i <= testCase.Item2; i++)
-            //{
-            //    if (IsSquareNumber(i))
-            //        count++;
-            //}
-
             return count;
-        }
-
-        // http://stackoverflow.com/a/343862/4035
-        private static bool IsSquareNumber(int value)
-        {
-            var sqrt = (long)Math.Sqrt(value);
-            return sqrt * sqrt == value;
         }
 
         private static IEnumerable<Tuple<int, int>> GetCases(int caseCount)
