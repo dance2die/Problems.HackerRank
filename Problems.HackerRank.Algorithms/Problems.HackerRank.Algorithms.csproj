@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.SherlockAndSquares</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.SequenceEquation</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -66,6 +66,7 @@
     <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\RepeatedString.cs" />
     <Compile Include="Implementation\Cheated\SaveThePrisoner.cs" />
+    <Compile Include="Implementation\SequenceEquation.cs" />
     <Compile Include="Implementation\SherlockAndSquares.cs" />
     <Compile Include="Implementation\SockMerchant.cs" />
     <Compile Include="Implementation\TheHurdleRace.cs" />
