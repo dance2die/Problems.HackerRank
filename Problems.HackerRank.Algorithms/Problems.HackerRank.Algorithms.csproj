@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.AcmIcpcTeam</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.TheHurdleRace</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -67,6 +67,7 @@
     <Compile Include="Implementation\RepeatedString.cs" />
     <Compile Include="Implementation\Cheated\SaveThePrisoner.cs" />
     <Compile Include="Implementation\SockMerchant.cs" />
+    <Compile Include="Implementation\TheHurdleRace.cs" />
     <Compile Include="Implementation\UtopianTree.cs" />
     <Compile Include="Implementation\ViralAdvertising.cs" />
     <Compile Include="Program.cs" />
