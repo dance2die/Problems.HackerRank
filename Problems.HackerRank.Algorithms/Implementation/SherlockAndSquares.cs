@@ -40,11 +40,29 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int count = 0;
 
-            for (int i = testCase.Item1; i <= testCase.Item2; i++)
+            HashSet<int> set = new HashSet<int>(Enumerable.Range(testCase.Item1, testCase.Item2 - testCase.Item1 + 1));
+            var copySet = new HashSet<int>(set);
+
+            foreach (int value in set)
             {
-                if (IsSquareNumber(i))
+                if (IsSquareNumber(value))
+                {
+                    copySet.Remove(value);
                     count++;
+
+                    // remove power of value
+                    for (int i = value; i < set.Count; i++)
+                    {
+                        count += copySet.RemoveWhere(val => val == value * value);
+                    }
+                }
             }
+
+            //for (int i = testCase.Item1; i <= testCase.Item2; i++)
+            //{
+            //    if (IsSquareNumber(i))
+            //        count++;
+            //}
 
             return count;
         }
@@ -52,7 +70,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
         // http://stackoverflow.com/a/343862/4035
         private static bool IsSquareNumber(int value)
         {
-            var sqrt = (long) Math.Sqrt(value);
+            var sqrt = (long)Math.Sqrt(value);
             return sqrt * sqrt == value;
         }
 
