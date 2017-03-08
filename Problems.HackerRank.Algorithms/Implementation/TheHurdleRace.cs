@@ -30,9 +30,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static int GetMaxBeverageCount(int k, int[] heights)
         {
             int max = heights.Max();
-            if (k > max)
-                return 0;
-            return max - k;
+            return Math.Max(max - k, 0);
         }
     }
 }
