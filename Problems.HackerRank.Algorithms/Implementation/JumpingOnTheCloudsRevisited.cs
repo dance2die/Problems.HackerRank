@@ -5,6 +5,11 @@ INPUT:
 8 2
 0 0 1 0 0 1 1 0
 OUTPUT: 92
+
+INPUT:
+19 19
+1 1 0 1 0 1 0 1 0 1 0 1 1 0 1 1 1 1 1
+OUTPUT: 97
  */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
@@ -33,14 +38,15 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
             Func<int, bool> isThunderCloud = val => val == 1;
 
-            for (int i = 0; i < energy; i+=k, energy--)
+            var nextIndex = 0;
+            do
             {
-                if (isThunderCloud(a[i]))
+                nextIndex = (nextIndex + k) % n;
+                if (isThunderCloud(a[nextIndex]))
                     energy -= 2;
 
-                if (i > 0 && (i + k) % n == 0)
-                    return --energy;
-            }
+                energy--;
+            } while (nextIndex > 0);
 
             return energy;
         }
