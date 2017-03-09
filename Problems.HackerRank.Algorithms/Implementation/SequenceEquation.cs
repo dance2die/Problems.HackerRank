@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
 INPUT:
@@ -32,7 +29,24 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         private static void PrintSequences(int[] sequences)
         {
-            
+            Dictionary<int, int> map = GetMap(sequences);
+
+            for (int i = 1; i <= sequences.Length; i++)
+            {
+                var key1 = map[i];
+                var key2 = map[key1];
+                Console.WriteLine(key2);
+            }
+        }
+
+        private static Dictionary<int, int> GetMap(int[] sequences)
+        {
+            var result = new Dictionary<int, int>(sequences.Length);
+            for (int i = 1; i <= sequences.Length; i++)
+            {
+                result.Add(sequences[i - 1], i);
+            }
+            return result;
         }
     }
 }
