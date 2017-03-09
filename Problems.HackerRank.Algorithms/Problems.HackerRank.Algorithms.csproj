@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.JumpingOnTheCloudsRevisited</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.FindDigits</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -60,6 +60,7 @@
     <Compile Include="Implementation\DesignerPdfViewer.cs" />
     <Compile Include="Implementation\DivisibleSumPairs.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
+    <Compile Include="Implementation\FindDigits.cs" />
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
     <Compile Include="Implementation\JumpingOnTheCloudsRevisited.cs" />
     <Compile Include="Implementation\Kangaroo.cs" />
