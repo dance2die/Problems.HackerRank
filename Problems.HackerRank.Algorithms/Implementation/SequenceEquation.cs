@@ -30,12 +30,9 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static void PrintSequences(int[] sequences)
         {
             Dictionary<int, int> map = GetMap(sequences);
-
             for (int i = 1; i <= sequences.Length; i++)
             {
-                var key1 = map[i];
-                var key2 = map[key1];
-                Console.WriteLine(key2);
+                Console.WriteLine(map[map[i]]);
             }
         }
 
