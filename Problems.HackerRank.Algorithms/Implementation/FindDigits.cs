@@ -32,8 +32,23 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             foreach (int number in numbers)
             {
-                yield return GetEvenlyDivisibleNumberCount(number);
+                yield return GetEvenlyDivisibleNumberCount2(number);
             }
+        }
+
+        private static int GetEvenlyDivisibleNumberCount2(int number)
+        {
+            int r = number;
+            int counter = 0;
+
+            while (r > 0)
+            {
+                if (r % 10 != 0 && number % (r % 10) == 0) counter++;
+
+                r /= 10;
+            }
+
+            return counter;
         }
 
         private static int GetEvenlyDivisibleNumberCount(int number)
