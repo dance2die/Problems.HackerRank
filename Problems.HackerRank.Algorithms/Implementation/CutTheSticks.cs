@@ -39,6 +39,9 @@ namespace Problems.HackerRank.Algorithms.Implementation
             sticksCut.ForEach(Console.WriteLine);
         }
 
+        /// <summary>
+        /// Reimplemented using Algorithm in Editorial.
+        /// </summary>
         private static IEnumerable<int> GetSticksCut2(List<int> sticks)
         {
             var val = Enumerable.Repeat(0, 1001).ToList();
