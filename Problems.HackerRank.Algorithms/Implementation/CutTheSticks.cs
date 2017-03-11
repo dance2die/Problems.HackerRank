@@ -35,8 +35,32 @@ namespace Problems.HackerRank.Algorithms.Implementation
             string[] tempA = Console.ReadLine().Split(' ');
             List<int> sticks = Array.ConvertAll(tempA, int.Parse).ToList();
 
-            List<int> sticksCut = GetSticksCut(sticks).ToList();
+            List<int> sticksCut = GetSticksCut2(sticks).ToList();
             sticksCut.ForEach(Console.WriteLine);
+        }
+
+        private static IEnumerable<int> GetSticksCut2(List<int> sticks)
+        {
+            var val = Enumerable.Repeat(0, 1001).ToList();
+            foreach (int stick in sticks)
+            {
+                val[stick]++;
+            }
+
+            int counter = sticks.Count;
+            List<int> ans = new List<int>(counter) {counter};
+
+            foreach (int i in val)
+            {
+                if (i > 0)
+                {
+                    counter -= i;
+                    if (counter > 0)
+                        ans.Add(counter);
+                }
+            }
+
+            return ans;
         }
 
         private static IEnumerable<int> GetSticksCut(List<int> sticks)
