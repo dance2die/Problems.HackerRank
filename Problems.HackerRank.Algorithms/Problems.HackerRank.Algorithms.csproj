@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.LibraryFine</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.CutTheSticks</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
