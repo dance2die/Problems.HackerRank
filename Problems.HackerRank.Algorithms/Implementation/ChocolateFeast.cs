@@ -53,24 +53,17 @@ namespace Problems.HackerRank.Algorithms.Implementation
             int c = testCase.Item2;
             int m = testCase.Item3;
 
-            int leftOver = 0;
-            int wrap = n / c;
-            int totalWrap = wrap;
+            int chocolates = n / c;
+            int wrappers = chocolates;
 
-            int currentWrap = (leftOver + wrap) / m;
-            leftOver = wrap % m;
-            if (leftOver == 0)
-                return totalWrap + currentWrap;
-
-            while (leftOver > 0)
+            while (wrappers >= m)
             {
-                currentWrap = (leftOver + currentWrap) / m;
-                leftOver = wrap / m;
-                wrap = currentWrap;
-                totalWrap += wrap;
+                int currentChocolate = wrappers / m;
+                wrappers = currentChocolate + (wrappers % m);
+                chocolates += currentChocolate;
             }
 
-            return totalWrap;
+            return chocolates;
         }
     }
 }
