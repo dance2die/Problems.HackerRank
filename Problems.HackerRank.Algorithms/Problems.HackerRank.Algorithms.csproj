@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.FindDigits</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ChocolateFeast</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -57,6 +57,8 @@
     <Compile Include="Implementation\BeautifulDayAtTheMovies.cs" />
     <Compile Include="Implementation\BetweenTwoSets.cs" />
     <Compile Include="Implementation\BonAppetit.cs" />
+    <Compile Include="Implementation\Cheated\ChocolateFeast.cs" />
+    <Compile Include="Implementation\CutTheSticks.cs" />
     <Compile Include="Implementation\DesignerPdfViewer.cs" />
     <Compile Include="Implementation\DivisibleSumPairs.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
     <Compile Include="Implementation\JumpingOnTheCloudsRevisited.cs" />
     <Compile Include="Implementation\Kangaroo.cs" />
+    <Compile Include="Implementation\LibraryFine.cs" />
     <Compile Include="Implementation\MiniMaxSum.cs" />
     <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\RepeatedString.cs" />
