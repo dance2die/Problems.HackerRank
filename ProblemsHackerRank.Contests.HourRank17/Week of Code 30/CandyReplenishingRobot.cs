@@ -28,6 +28,29 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_30
             int t = Convert.ToInt32(tokens_n[1]);
             string[] temp = Console.ReadLine().Split(' ');
             int[] c = Array.ConvertAll(temp, int.Parse);
+
+            int candieCount = GetReplenishedCandieCount(n, t, c);
+            Console.WriteLine(candieCount);
+        }
+
+        private static int GetReplenishedCandieCount(int totalCandie, int minutes, int[] takeAways)
+        {
+            int candieCountInBowl = totalCandie;
+            int candiesAdded = 0;
+
+            for (int i = 0; i < minutes - 1; i++)
+            {
+                candieCountInBowl -= takeAways[i];
+                if (candieCountInBowl < THREASHOLD)
+                {
+                    int candieToAdd = totalCandie - candieCountInBowl;
+                    candiesAdded += candieToAdd;
+
+                    candieCountInBowl = totalCandie;
+                }
+            }
+
+            return candiesAdded;
         }
     }
 }
