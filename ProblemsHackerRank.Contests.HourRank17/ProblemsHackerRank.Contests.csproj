@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_30.FindTheMinimumNumber</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_30.MelodiousPassword</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
