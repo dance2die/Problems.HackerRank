@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_30.CandyReplenishingRobot</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_30.FindTheMinimumNumber</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,6 +48,8 @@
     <Compile Include="RookieRank\BirthdayCakeCandles.cs" />
     <Compile Include="RookieRank\CountingValleys.cs" />
     <Compile Include="Week of Code 30\CandyReplenishingRobot.cs" />
+    <Compile Include="Week of Code 30\FindTheMinimumNumber.cs" />
+    <Compile Include="Week of Code 30\MelodiousPassword.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
