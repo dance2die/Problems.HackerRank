@@ -53,24 +53,15 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_30
 
         private static void PrintPasswords2(int n)
         {
-            //List<string> vowels = GetV(n).ToList();
-            //vowels.ForEach(s =>
-            //{
-            //    if (s.Length == n)
-            //        Console.WriteLine(s);
-            //});
+            List<string> vowels = GetV(n).ToList();
+            vowels.ForEach(s =>
+            {
+                if (s.Length == n)
+                    Console.WriteLine(s);
+            });
 
-            //List<string> consonants = GetC(n).ToList();
-            //consonants.ForEach(s =>
-            //{
-            //    if (s.Length == n)
-            //        Console.WriteLine(s);
-            //});
-
-            List<string> combos = new List<string>();
-            combos.AddRange(GetV(n));
-            combos.AddRange(GetC(n));
-            combos.ForEach(s =>
+            List<string> consonants = GetC(n).ToList();
+            consonants.ForEach(s =>
             {
                 if (s.Length == n)
                     Console.WriteLine(s);
@@ -92,7 +83,7 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_30
                 {
                     foreach (string vowel in _vowels)
                     {
-                        foreach (string consonant in GetV(n - 1))
+                        foreach (string consonant in GetC(n - 1))
                         {
                             yield return consonant + vowel;
                         }
@@ -102,7 +93,7 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_30
                 {
                     foreach (var consonant in _consonants)
                     {
-                        foreach (string v in GetV(n - 1))
+                        foreach (string v in GetC(n - 1))
                         {
                             yield return v + consonant;
                         }
