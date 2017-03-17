@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 
+/*
+INPUT:
+5 3
+250 501 5000 5 4
+0 4 5 0
+0 4 10 0
+0 4 3 2
+OUTPUT:
+3
+2
+2
+ */
 namespace ProblemsHackerRank.Contests.Week_of_Code_30
 {
     /// <summary>
@@ -19,13 +31,29 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_30
             int[] a = Array.ConvertAll(temp, int.Parse);
 
             List<Query> queries = GetQueries(q).ToList();
-            List<int> matchCounts = GetMatchCounts(a, queries);
+            List<int> matchCounts = GetMatchCounts(a, queries).ToList();
             matchCounts.ForEach(Console.WriteLine);
         }
 
-        private static List<int> GetMatchCounts(int[] a, List<Query> queries)
+        private static IEnumerable<int> GetMatchCounts(int[] a, List<Query> queries)
         {
-            return null;
+            foreach (Query query in queries)
+            {
+                yield return GetMatchCount(a, query);
+            }
+        }
+
+        private static int GetMatchCount(int[] a, Query query)
+        {
+            int count = 0;
+
+            for (int i = query.Left; i <= query.Right; i++)
+            {
+                if (a[i] % query.X == query.Y)
+                    count++;
+            }
+
+            return count;
         }
 
         private static IEnumerable<Query> GetQueries(int q)
@@ -43,7 +71,7 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_30
             }
         }
     }
-}
+
 
     internal class Query
     {
