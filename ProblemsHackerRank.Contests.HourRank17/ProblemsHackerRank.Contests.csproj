@@ -50,6 +50,7 @@
     <Compile Include="Week of Code 30\CandyReplenishingRobot.cs" />
     <Compile Include="Week of Code 30\FindTheMinimumNumber.cs" />
     <Compile Include="Week of Code 30\MelodiousPassword.cs" />
+    <Compile Include="Week of Code 30\RangeModularQueries.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
