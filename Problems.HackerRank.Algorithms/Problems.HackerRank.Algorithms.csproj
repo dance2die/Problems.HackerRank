@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ChocolateFeast</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.TaumAndBday</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -74,6 +74,7 @@
     <Compile Include="Implementation\SequenceEquation.cs" />
     <Compile Include="Implementation\SherlockAndSquares.cs" />
     <Compile Include="Implementation\SockMerchant.cs" />
+    <Compile Include="Implementation\TaumAndBday.cs" />
     <Compile Include="Implementation\TheHurdleRace.cs" />
     <Compile Include="Implementation\UtopianTree.cs" />
     <Compile Include="Implementation\ViralAdvertising.cs" />
@@ -118,6 +119,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Problems.HackerRank.DataStructure\Problems.HackerRank.DataStructure.csproj">
+      <Project>{EA8687DD-7BEA-4071-9EFC-5F66EF0ADFDB}</Project>
+      <Name>Problems.HackerRank.DataStructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestGround\TestGround.csproj">
       <Project>{D33E8825-1F7D-4464-90F2-954D2DB4935B}</Project>
       <Name>TestGround</Name>
