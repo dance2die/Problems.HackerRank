@@ -40,7 +40,6 @@ namespace Problems.HackerRank.Algorithms.Implementation
             if (2 <= number && number <= 8) return false;
 
             int squared = number * number;
-            //List<int> digits = GetDigits(squared).ToList();
             Tuple<int, int> separated = GetLeftRightNumbers(squared);
 
             return separated.Item1 + separated.Item2 == number;
@@ -56,27 +55,5 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
             return Tuple.Create(left, right);
         }
-
-        //private static Tuple<int, int> GetLeftRightNumbers(List<int> digits)
-        //{
-        //    int middleIndex = digits.Count / 2;
-        //    int left = digits.GetRange(0, middleIndex).Select();
-        //}
-
-        //private static IEnumerable<int> GetDigits(int squared)
-        //{
-        //    Stack<int> stack = new Stack<int>();
-        //    int number = squared;
-
-        //    while (number > 0)
-        //    {
-        //        int digit = number % 10;
-        //        stack.Push(digit);
-
-        //        number /= 10;
-        //    }
-
-        //    return stack.ToList();
-        //}
     }
 }
