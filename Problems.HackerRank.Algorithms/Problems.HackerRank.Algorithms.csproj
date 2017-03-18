@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.BeautifulTriplets</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ServiceLane</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -75,6 +75,7 @@
     <Compile Include="Implementation\RepeatedString.cs" />
     <Compile Include="Implementation\Cheated\SaveThePrisoner.cs" />
     <Compile Include="Implementation\SequenceEquation.cs" />
+    <Compile Include="Implementation\ServiceLane.cs" />
     <Compile Include="Implementation\SherlockAndSquares.cs" />
     <Compile Include="Implementation\SockMerchant.cs" />
     <Compile Include="Implementation\TaumAndBday.cs" />
