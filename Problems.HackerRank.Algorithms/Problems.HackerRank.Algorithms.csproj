@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ModifiedKaprekarNumbers</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.DrawingBook</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,6 +61,7 @@
     <Compile Include="Implementation\CutTheSticks.cs" />
     <Compile Include="Implementation\DesignerPdfViewer.cs" />
     <Compile Include="Implementation\DivisibleSumPairs.cs" />
+    <Compile Include="Implementation\DrawingBook.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
     <Compile Include="Implementation\FindDigits.cs" />
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
