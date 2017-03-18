@@ -109,6 +109,14 @@
     <Compile Include="Strings\MakingAnagrams.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\PalindromeIndex.cs" />
+    <Content Include="Implementation\BeautifulTriplets_data1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Implementation\BeautifulTriplets_data1_answer.txt" />
+    <Content Include="Implementation\BeautifulTriplets_data2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Implementation\BeautifulTriplets_data2_answer.txt" />
     <Content Include="Strings\PalindromeIndexes_TestCase05_Answer.txt" />
     <Compile Include="Strings\Pangrams.cs" />
     <Compile Include="Strings\StringConstruction.cs" />
