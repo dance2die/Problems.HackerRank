@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.DrawingBook</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.BeautifulTriplets</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,6 +55,7 @@
     <Compile Include="Implementation\AcmIcpcTeam.cs" />
     <Compile Include="Implementation\AngryProfessor.cs" />
     <Compile Include="Implementation\BeautifulDayAtTheMovies.cs" />
+    <Compile Include="Implementation\BeautifulTriplets.cs" />
     <Compile Include="Implementation\BetweenTwoSets.cs" />
     <Compile Include="Implementation\BonAppetit.cs" />
     <Compile Include="Implementation\Cheated\ChocolateFeast.cs" />
