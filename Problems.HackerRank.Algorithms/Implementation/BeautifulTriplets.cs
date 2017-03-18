@@ -45,6 +45,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         private static int GetBeautifulTripletCount(int[] a, int difference)
         {
+            // HashSet has O(1) while array has O(N) so using HashSet here.
             HashSet<int> set = new HashSet<int>(a);
             int count = 0;
 
