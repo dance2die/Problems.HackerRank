@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ServiceLane</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.LisasWorkbook</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -69,6 +69,7 @@
     <Compile Include="Implementation\JumpingOnTheCloudsRevisited.cs" />
     <Compile Include="Implementation\Kangaroo.cs" />
     <Compile Include="Implementation\LibraryFine.cs" />
+    <Compile Include="Implementation\LisasWorkbook.cs" />
     <Compile Include="Implementation\MiniMaxSum.cs" />
     <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\ModifiedKaprekarNumbers.cs" />
