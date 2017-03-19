@@ -17,6 +17,11 @@ INPUT: case #5
 40 7
 1 10 12 4 11 6 8 15 23 24 23 24 39 34 50 3 58 62 71 79 95 100 2 2 100 100 100 100 100 100 1 100 100 100 100 100 3 100 100 100
 OUTPUT: 12
+
+INPUT: case #6
+1 1
+100
+OUTPUT: 100
  */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
@@ -54,6 +59,9 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
                     if (page == i)
                         specialPageCount++;
+
+                    if (maxProblemsPerPage == 1)
+                        page++;
                 }
 
                 page++;
