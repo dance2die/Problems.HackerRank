@@ -49,9 +49,13 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static int GetMinimumBetween(int[] widths, int i, int j)
         {
             int minimum = int.MaxValue;
+            const int lowest = 1;
 
             for (int k = i; k <= j ; k++)
             {
+                if (widths[k] == lowest)
+                    return lowest;
+
                 if (widths[k] <= minimum)
                     minimum = widths[k];
             }
