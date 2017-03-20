@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 /*
@@ -23,10 +24,16 @@ namespace Problems.HackerRank.Algorithms.Implementation
     {
         public static void Main(string[] args)
         {
-            string[] firstLine = Console.ReadLine().Split(' ');
+            //string[] firstLine = Console.ReadLine().Split(' ');
+            //int cityCount = int.Parse(firstLine[0]);
+            //int spaceStationCount = int.Parse(firstLine[1]);
+            //var spaceStationIndexes = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+
+            string[] lines = File.ReadAllLines(@".\implementation\FlatlandSpaceStations_data15.txt");
+            string[] firstLine = lines[0].Split(' ');
             int cityCount = int.Parse(firstLine[0]);
             int spaceStationCount = int.Parse(firstLine[1]);
-            var spaceStationIndexes = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+            var spaceStationIndexes = lines[1].Split(' ').Select(int.Parse).ToList();
 
             int maxDistance = GetMaximumDistance(cityCount, spaceStationIndexes);
             Console.WriteLine(maxDistance);
