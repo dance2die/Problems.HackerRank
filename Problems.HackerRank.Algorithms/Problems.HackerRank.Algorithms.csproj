@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.LisasWorkbook</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.FlatlandSpaceStations</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -65,6 +65,7 @@
     <Compile Include="Implementation\DrawingBook.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
     <Compile Include="Implementation\FindDigits.cs" />
+    <Compile Include="Implementation\FlatlandSpaceStations.cs" />
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
     <Compile Include="Implementation\JumpingOnTheCloudsRevisited.cs" />
     <Compile Include="Implementation\Kangaroo.cs" />
