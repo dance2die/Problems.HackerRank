@@ -89,26 +89,29 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         private static Tuple<int?, int?> GetSurroundingSpaceStations(int i, Dictionary<int, bool> spaceStationMap)
         {
-            int? leftIndex = null;
-            for (int j = i; j >= 0; j--)
-            {
-                if (spaceStationMap[j])
-                {
-                    leftIndex = j;
-                    break;
-                }
-            }
+            //int? leftIndex = null;
+            //for (int j = i; j >= 0; j--)
+            //{
+            //    if (spaceStationMap[j])
+            //    {
+            //        leftIndex = j;
+            //        break;
+            //    }
+            //}
 
-            int? rightIndex = null;
-            int upto = spaceStationMap.Max(pair => pair.Key);
-            for (int j = i; j <= upto; j++)
-            {
-                if (spaceStationMap[j])
-                {
-                    rightIndex = j;
-                    break;
-                }
-            }
+            //int? rightIndex = null;
+            //int upto = spaceStationMap.Max(pair => pair.Key);
+            //for (int j = i; j <= upto; j++)
+            //{
+            //    if (spaceStationMap[j])
+            //    {
+            //        rightIndex = j;
+            //        break;
+            //    }
+            //}
+
+            int? leftIndex = spaceStationMap.Where(pair => pair.Value && pair.Key <= i).DefaultIfEmpty().Max(pair => pair.Key);
+            int? rightIndex = spaceStationMap.Where(pair => pair.Value && pair.Key >= i).DefaultIfEmpty().Min(pair => pair.Key);
 
             return Tuple.Create(leftIndex, rightIndex);
         }
