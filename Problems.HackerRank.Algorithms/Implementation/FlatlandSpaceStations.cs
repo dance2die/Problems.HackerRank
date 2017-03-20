@@ -24,16 +24,16 @@ namespace Problems.HackerRank.Algorithms.Implementation
     {
         public static void Main(string[] args)
         {
-            //string[] firstLine = Console.ReadLine().Split(' ');
-            //int cityCount = int.Parse(firstLine[0]);
-            //int spaceStationCount = int.Parse(firstLine[1]);
-            //var spaceStationIndexes = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
-
-            string[] lines = File.ReadAllLines(@".\implementation\FlatlandSpaceStations_data15.txt");
-            string[] firstLine = lines[0].Split(' ');
+            string[] firstLine = Console.ReadLine().Split(' ');
             int cityCount = int.Parse(firstLine[0]);
             int spaceStationCount = int.Parse(firstLine[1]);
-            var spaceStationIndexes = lines[1].Split(' ').Select(int.Parse).ToList();
+            var spaceStationIndexes = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+
+            //string[] lines = File.ReadAllLines(@".\implementation\FlatlandSpaceStations_data15.txt");
+            //string[] firstLine = lines[0].Split(' ');
+            //int cityCount = int.Parse(firstLine[0]);
+            //int spaceStationCount = int.Parse(firstLine[1]);
+            //var spaceStationIndexes = lines[1].Split(' ').Select(int.Parse).ToList();
 
             int maxDistance = GetMaximumDistance(cityCount, spaceStationIndexes);
             Console.WriteLine(maxDistance);
@@ -41,10 +41,12 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         private static int GetMaximumDistance(int cityCount, IList<int> spaceStationIndexes)
         {
+            Dictionary<int, bool> stationMap = GetSpaceStationMap(cityCount, spaceStationIndexes);
+
             int maxDistance = 0;
             for (int i = 0; i < cityCount; i++)
             {
-                int distance = GetMinimumDistance(i, spaceStationIndexes);
+                int distance = GetMinimumDistance(i, stationMap);
                 if (distance > maxDistance)
                     maxDistance = distance;
             }
@@ -52,16 +54,63 @@ namespace Problems.HackerRank.Algorithms.Implementation
             return maxDistance;
         }
 
-        private static int GetMinimumDistance(int i, IList<int> spaceStationIndexes)
+        private static Dictionary<int, bool> GetSpaceStationMap(int cityCount, IList<int> spaceStationIndexes)
         {
-            int minDistance = int.MaxValue;
-            foreach (var spaceStationIndex in spaceStationIndexes)
+            Dictionary<int, bool> map = new Dictionary<int, bool>(cityCount);
+            for (int i = 0; i < cityCount; i++)
             {
-                int distance = Math.Abs(spaceStationIndex - i);
-                if (distance < minDistance)
-                    minDistance = distance;
+                map.Add(i, false);
             }
-            return minDistance;
+
+            foreach (int spaceStationIndex in spaceStationIndexes)
+            {
+                map[spaceStationIndex] = true;
+            }
+
+            return map;
+        }
+
+        private static int GetMinimumDistance(int i, Dictionary<int, bool> spaceStationMap)
+        {
+            //int minDistance = int.MaxValue;
+            //foreach (var spaceStationIndex in spaceStationIndexes)
+            //{
+            //    int distance = Math.Abs(spaceStationIndex - i);
+            //    if (distance < minDistance)
+            //        minDistance = distance;
+            //}
+            //return minDistance;
+
+            Tuple<int?, int?> surroundingSpaceStations = GetSurroundingSpaceStations(i, spaceStationMap);
+            int previousDistance = i - surroundingSpaceStations.Item1 ?? 0;
+            int nextDistance = surroundingSpaceStations.Item2 - i ?? 0;
+            return Math.Min(previousDistance, nextDistance);
+        }
+
+        private static Tuple<int?, int?> GetSurroundingSpaceStations(int i, Dictionary<int, bool> spaceStationMap)
+        {
+            int? leftIndex = null;
+            for (int j = i; j >= 0; j--)
+            {
+                if (spaceStationMap[j])
+                {
+                    leftIndex = j;
+                    break;
+                }
+            }
+
+            int? rightIndex = null;
+            int upto = spaceStationMap.Max(pair => pair.Key);
+            for (int j = i; j <= upto; j++)
+            {
+                if (spaceStationMap[j])
+                {
+                    rightIndex = j;
+                    break;
+                }
+            }
+
+            return Tuple.Create(leftIndex, rightIndex);
         }
     }
 }
