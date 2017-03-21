@@ -9,10 +9,16 @@ INPUT:
 0 4
 OUTPUT: 2
 
-INPUT:
+INPUT: test case #1
 6 6
 0 1 2 4 3 5
 OUTPUT: 0
+
+INPUT: test case #2
+20 5
+13 1 11 10 6
+OUTPUT: 6
+
  */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
@@ -52,7 +58,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
             }
 
             // take care of the trailing non-space stations
-            int trailingDistance = (cityCount - spaceStationIndexes[spaceStationIndexes.Count - 1]) / 2;
+            int trailingDistance = cityCount - spaceStationIndexes[spaceStationIndexes.Count - 1] - 1;
             if (trailingDistance > maximumDistance)
                 maximumDistance = trailingDistance;
 
