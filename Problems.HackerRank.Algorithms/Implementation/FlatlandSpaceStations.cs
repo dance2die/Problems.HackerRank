@@ -35,18 +35,38 @@ namespace Problems.HackerRank.Algorithms.Implementation
             //int spaceStationCount = int.Parse(firstLine[1]);
             //var spaceStationIndexes = lines[1].Split(' ').Select(int.Parse).ToList();
 
-            int maxDistance = GetMaximumDistance(cityCount, spaceStationIndexes);
+            int maxDistance = GetMaximumDistance2(cityCount, spaceStationIndexes);
             Console.WriteLine(maxDistance);
+        }
+
+        private static int GetMaximumDistance2(int cityCount, List<int> spaceStationIndexes)
+        {
+            spaceStationIndexes.Sort();
+
+            int maximumDistance = 0;
+            for (int i = 0; i < spaceStationIndexes.Count - 1; i++)
+            {
+                int distance = (spaceStationIndexes[i + 1] - spaceStationIndexes[i]) / 2;
+                if (distance > maximumDistance)
+                    maximumDistance = distance;
+            }
+
+            // take care of the trailing non-space stations
+            int trailingDistance = (cityCount - spaceStationIndexes[spaceStationIndexes.Count - 1]) / 2;
+            if (trailingDistance > maximumDistance)
+                maximumDistance = trailingDistance;
+
+            return maximumDistance;
         }
 
         private static int GetMaximumDistance(int cityCount, IList<int> spaceStationIndexes)
         {
             Dictionary<int, bool> stationMap = GetSpaceStationMap(cityCount, spaceStationIndexes);
-
             int maxDistance = 0;
             for (int i = 0; i < cityCount; i++)
             {
-                int distance = GetMinimumDistance(i, stationMap);
+                //int distance = GetMinimumDistance2(i, stationMap);
+                int distance = GetMinimumDistance(i, spaceStationIndexes);
                 if (distance > maxDistance)
                     maxDistance = distance;
             }
@@ -70,21 +90,22 @@ namespace Problems.HackerRank.Algorithms.Implementation
             return map;
         }
 
-        private static int GetMinimumDistance(int i, Dictionary<int, bool> spaceStationMap)
+        //private static int GetMinimumDistance(int i, Dictionary<int, bool> spaceStationMap)
+        private static int GetMinimumDistance(int i, IList<int> spaceStationIndexes)
         {
-            //int minDistance = int.MaxValue;
-            //foreach (var spaceStationIndex in spaceStationIndexes)
-            //{
-            //    int distance = Math.Abs(spaceStationIndex - i);
-            //    if (distance < minDistance)
-            //        minDistance = distance;
-            //}
-            //return minDistance;
+            int minDistance = int.MaxValue;
+            foreach (var spaceStationIndex in spaceStationIndexes)
+            {
+                int distance = Math.Abs(spaceStationIndex - i);
+                if (distance < minDistance)
+                    minDistance = distance;
+            }
+            return minDistance;
 
-            Tuple<int?, int?> surroundingSpaceStations = GetSurroundingSpaceStations(i, spaceStationMap);
-            int previousDistance = i - surroundingSpaceStations.Item1 ?? 0;
-            int nextDistance = surroundingSpaceStations.Item2 - i ?? 0;
-            return Math.Min(previousDistance, nextDistance);
+            //Tuple<int?, int?> surroundingSpaceStations = GetSurroundingSpaceStations(i, spaceStationMap);
+            //int previousDistance = i - surroundingSpaceStations.Item1 ?? 0;
+            //int nextDistance = surroundingSpaceStations.Item2 - i ?? 0;
+            //return Math.Min(previousDistance, nextDistance);
         }
 
         private static Tuple<int?, int?> GetSurroundingSpaceStations(int i, Dictionary<int, bool> spaceStationMap)
