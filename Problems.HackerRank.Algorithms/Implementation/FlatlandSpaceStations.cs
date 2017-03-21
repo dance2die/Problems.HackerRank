@@ -19,6 +19,11 @@ INPUT: test case #2
 13 1 11 10 6
 OUTPUT: 6
 
+INPUT: test case #6
+95 19
+68 81 46 54 30 11 19 23 22 12 38 91 48 75 26 86 29 83 62
+OUTPUT: 11
+
  */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
@@ -49,10 +54,10 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             spaceStationIndexes.Sort();
 
-            int maximumDistance = 0;
-            for (int i = 0; i < spaceStationIndexes.Count - 1; i++)
+            int maximumDistance = spaceStationIndexes[0];
+            for (int i = 1; i < spaceStationIndexes.Count; i++)
             {
-                int distance = (spaceStationIndexes[i + 1] - spaceStationIndexes[i]) / 2;
+                int distance = (spaceStationIndexes[i] - spaceStationIndexes[i - 1]) / 2;
                 if (distance > maximumDistance)
                     maximumDistance = distance;
             }
