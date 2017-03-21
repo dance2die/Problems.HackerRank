@@ -65,7 +65,7 @@
     <Compile Include="Implementation\DrawingBook.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
     <Compile Include="Implementation\FindDigits.cs" />
-    <Compile Include="Implementation\FlatlandSpaceStations.cs" />
+    <Compile Include="Implementation\Cheated\FlatlandSpaceStations.cs" />
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
     <Compile Include="Implementation\JumpingOnTheCloudsRevisited.cs" />
     <Compile Include="Implementation\Kangaroo.cs" />
@@ -120,10 +120,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Implementation\BeautifulTriplets_data2_answer.txt" />
-    <Content Include="Implementation\FlatlandSpaceStations_data15.txt">
+    <Content Include="Implementation\Cheated\FlatlandSpaceStations_data15.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Implementation\FlatlandSpaceStations_data15_answer.txt" />
+    <Content Include="Implementation\Cheated\FlatlandSpaceStations_data15_answer.txt" />
     <Content Include="Strings\PalindromeIndexes_TestCase05_Answer.txt" />
     <Compile Include="Strings\Pangrams.cs" />
     <Compile Include="Strings\StringConstruction.cs" />
