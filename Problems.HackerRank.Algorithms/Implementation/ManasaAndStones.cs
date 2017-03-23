@@ -44,22 +44,24 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static List<int> GetLastStones(ManasaStone manasaStone)
         {
             int accum = 0;
-            var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1).ToList();
-            var diff2 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff2).ToList();
-            diff1.AddRange(diff2);
+            var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1, manasaStone.Diff2).ToList();
             return diff1;
         }
 
-        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff)
+        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2)
         {
-            if (stoneCount <= 0)
+            if (stoneCount <= 1)
             {
                 yield return accum;
             }
             else
             {
-                var diffSum = GetLastStones(accum + diff, stoneCount - 1, diff).ToList();
-                foreach (int sum in diffSum)
+                var diffSum1 = GetLastStones(accum + diff1, stoneCount - 1, diff1, diff2).ToList();
+                var diffSum2 = GetLastStones(accum + diff2, stoneCount - 1, diff2, diff2).ToList();
+
+                diffSum1.AddRange(diffSum2);
+
+                foreach (int sum in diffSum1)
                     yield return sum;
             }
         }
