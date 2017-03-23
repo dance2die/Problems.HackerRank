@@ -46,18 +46,14 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int steps = 0;
 
-            while (!IsEveryElementEven(a))
+            for (int i = 0; i < a.Length - 1; i++)
             {
-                for (int i = 0; i < a.Length - 1; i++)
+                if (IsOdd(a[i]))
                 {
-                    if (IsOdd(a[i]))
-                    {
-                        a[i]++;
-                        a[i + 1]++;
+                    a[i]++;
+                    a[i + 1]++;
 
-                        steps += 2;
-                        break;
-                    }
+                    steps += 2;
                 }
             }
 
