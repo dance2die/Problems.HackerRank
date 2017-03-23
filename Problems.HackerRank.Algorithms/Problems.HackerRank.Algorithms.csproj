@@ -58,6 +58,7 @@
     <Compile Include="Implementation\BeautifulTriplets.cs" />
     <Compile Include="Implementation\BetweenTwoSets.cs" />
     <Compile Include="Implementation\BonAppetit.cs" />
+    <Compile Include="Implementation\CavityMap.cs" />
     <Compile Include="Implementation\Cheated\ChocolateFeast.cs" />
     <Compile Include="Implementation\CutTheSticks.cs" />
     <Compile Include="Implementation\DesignerPdfViewer.cs" />
