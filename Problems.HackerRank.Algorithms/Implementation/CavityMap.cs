@@ -24,11 +24,23 @@ namespace Problems.HackerRank.Algorithms.Implementation
         public static void Main(string[] args)
         {
             int n = Convert.ToInt32(Console.ReadLine());
-            string[] grid = new string[n];
-            for (int grid_i = 0; grid_i < n; grid_i++)
+            string[,] matrix = GetMatrix(n);
+        }
+
+        private static string[,] GetMatrix(int n)
+        {
+            string[,] result = new string[n, n];
+
+            for (int i = 0; i < n; i++)
             {
-                grid[grid_i] = Console.ReadLine();
+                var line = Console.ReadLine();
+                for (int j = 0; j < line.Length; j++)
+                {
+                    result[i, j] = line[j].ToString();
+                }
             }
+
+            return result;
         }
     }
 }
