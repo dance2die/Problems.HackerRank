@@ -26,11 +26,10 @@ namespace Problems.HackerRank.Algorithms.Implementation
             int n = Convert.ToInt32(Console.ReadLine());
             string[,] matrix = GetMatrix(n);
 
-            UpdateCavities(matrix);
             PrintMatrix(matrix);
         }
 
-        private static void UpdateCavities(string[,] matrix)
+        private static void PrintMatrix(string[,] matrix)
         {
             const string cavityValue = "X";
             const int lowestValue = -1;
@@ -42,36 +41,35 @@ namespace Problems.HackerRank.Algorithms.Implementation
                 return good ? value : lowestValue;
             };
 
-            for (int i = 1; i < matrix.GetLength(0) - 1; i++)
+            int outerLength = matrix.GetLength(0);
+            int innerLength = matrix.GetLength(1);
+            for (int i = 0; i < outerLength; i++)
             {
-                for (int j = 1; j < matrix.GetLength(1) - 1; j++)
+                for (int j = 0; j < innerLength; j++)
                 {
-                    // Check for left and right values
-                    int left = getValue(matrix[i, j - 1]);
-                    int right = getValue(matrix[i, j + 1]);
-
-                    // Check for up and down values
-                    int up = getValue(matrix[i - 1, j]);
-                    int down = getValue(matrix[i + 1, j]);
-
                     int currentValue = int.Parse(matrix[i, j]);
-                    if (currentValue > left && currentValue > right && currentValue > up && currentValue > down)
+
+                    if (i == 0 || j == 0 || i == outerLength - 1 || j == innerLength - 1)
                     {
-                        matrix[i, j] = cavityValue;
-                        break;
+                        Console.Write(currentValue);
+                    }
+                    else
+                    {
+                        // Check for left and right values
+                        int left = getValue(matrix[i, j - 1]);
+                        int right = getValue(matrix[i, j + 1]);
+
+                        // Check for up and down values
+                        int up = getValue(matrix[i - 1, j]);
+                        int down = getValue(matrix[i + 1, j]);
+
+                        if (currentValue > left && currentValue > right && currentValue > up && currentValue > down)
+                            Console.Write(cavityValue);
+                        else
+                            Console.Write(currentValue);
                     }
                 }
-            }
-        }
 
-        private static void PrintMatrix(string[,] matrix)
-        {
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    Console.Write(matrix[i, j]);
-                }
                 Console.WriteLine();
             }
         }
