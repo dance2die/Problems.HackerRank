@@ -25,8 +25,8 @@ namespace Problems.HackerRank.Algorithms.Implementation
     {
         public static void Main()
         {
-            int testCaseCount = int.Parse(Console.ReadLine());
-            List<ManasaStone> manasaStones = GetManasaStones(testCaseCount).ToList();
+            int T = int.Parse(Console.ReadLine());
+            List<ManasaStone> manasaStones = GetManasaStones(T).ToList();
             List<string> values = GetLastStoneList(manasaStones).ToList();
 
             values.ForEach(Console.WriteLine);
