@@ -26,8 +26,41 @@ namespace Problems.HackerRank.Algorithms.Implementation
             int n = Convert.ToInt32(Console.ReadLine());
             string[,] matrix = GetMatrix(n);
 
-            //UpdateCavities(matrix);
+            UpdateCavities(matrix);
             PrintMatrix(matrix);
+        }
+
+        private static void UpdateCavities(string[,] matrix)
+        {
+            const string cavityValue = "X";
+            const int lowestValue = -1;
+
+            Func<string, int> getValue = text =>
+            {
+                int value;
+                bool good = int.TryParse(text, out value);
+                return good ? value : lowestValue;
+            };
+
+            for (int i = 1; i < matrix.GetLength(0) - 1; i++)
+            {
+                for (int j = 1; j < matrix.GetLength(1) - 1; j++)
+                {
+                    // Check for left and right values
+                    int left = getValue(matrix[i, j - 1]);
+                    int right = getValue(matrix[i, j + 1]);
+
+                    // Check for up and down values
+                    int up = getValue(matrix[i - 1, j]);
+                    int down = getValue(matrix[i + 1, j]);
+
+                    int currentValue = int.Parse(matrix[i, j]);
+                    if (currentValue >= left && currentValue >= right && currentValue >= up && currentValue >= down)
+                    {
+                        matrix[i, j] = cavityValue;
+                    }
+                }
+            }
         }
 
         private static void PrintMatrix(string[,] matrix)
