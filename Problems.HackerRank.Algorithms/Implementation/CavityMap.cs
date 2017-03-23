@@ -25,6 +25,21 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int n = Convert.ToInt32(Console.ReadLine());
             string[,] matrix = GetMatrix(n);
+
+            //UpdateCavities(matrix);
+            PrintMatrix(matrix);
+        }
+
+        private static void PrintMatrix(string[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j]);
+                }
+                Console.WriteLine();
+            }
         }
 
         private static string[,] GetMatrix(int n)
