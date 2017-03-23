@@ -58,6 +58,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
                     if (currentValue > left && currentValue > right && currentValue > up && currentValue > down)
                     {
                         matrix[i, j] = cavityValue;
+                        break;
                     }
                 }
             }
