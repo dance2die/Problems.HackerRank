@@ -73,6 +73,7 @@
     <Compile Include="Implementation\Kangaroo.cs" />
     <Compile Include="Implementation\LibraryFine.cs" />
     <Compile Include="Implementation\LisasWorkbook.cs" />
+    <Compile Include="Implementation\ManasaAndStones.cs" />
     <Compile Include="Implementation\MiniMaxSum.cs" />
     <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\ModifiedKaprekarNumbers.cs" />
