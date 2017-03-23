@@ -55,7 +55,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
                     int down = getValue(matrix[i + 1, j]);
 
                     int currentValue = int.Parse(matrix[i, j]);
-                    if (currentValue >= left && currentValue >= right && currentValue >= up && currentValue >= down)
+                    if (currentValue > left && currentValue > right && currentValue > up && currentValue > down)
                     {
                         matrix[i, j] = cavityValue;
                     }
