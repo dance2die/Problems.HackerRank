@@ -44,11 +44,12 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static List<int> GetLastStones(ManasaStone manasaStone)
         {
             int accum = 0;
-            var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1, manasaStone.Diff2).ToList();
+            Dictionary<int, int> memoization = new Dictionary<int, int>();
+            var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1, manasaStone.Diff2, memoization).ToList();
             return diff1;
         }
 
-        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2)
+        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2, IDictionary<int, int> memoization)
         {
             if (stoneCount <= 1)
             {
@@ -56,8 +57,11 @@ namespace Problems.HackerRank.Algorithms.Implementation
             }
             else
             {
-                var diffSum1 = GetLastStones(accum + diff1, stoneCount - 1, diff1, diff2).ToList();
-                var diffSum2 = GetLastStones(accum + diff2, stoneCount - 1, diff2, diff2).ToList();
+                var nextSum1 = accum + diff1;
+                var nextSum2 = accum + diff2;
+
+                var diffSum1 = GetLastStones(nextSum1, stoneCount - 1, diff1, diff2, memoization).ToList();
+                var diffSum2 = GetLastStones(nextSum2, stoneCount - 1, diff2, diff2, memoization).ToList();
 
                 diffSum1.AddRange(diffSum2);
 
