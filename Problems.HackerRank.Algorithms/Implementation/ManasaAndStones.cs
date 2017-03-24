@@ -75,59 +75,40 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static List<int> GetLastStones(ManasaStone manasaStone)
         {
             int accum = 0;
-            Dictionary<Tuple<int, int, int, int>, int> memoization = new Dictionary<Tuple<int, int, int, int>, int>();
+            List<int> memoization = new List<int>();
             var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1, manasaStone.Diff2, memoization).ToList();
             return diff1;
         }
 
-        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2, Dictionary<Tuple<int, int, int, int>, int> memoization)
+        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2, List<int> memoization)
         {
-            var tuple1 = Tuple.Create(stoneCount, diff1, diff2, accum);
-            var tuple2 = Tuple.Create(stoneCount, diff2, diff1, accum);
-
-            if (memoization.ContainsKey(tuple1))
+            if (stoneCount <= 2)
             {
-                yield return memoization[tuple1];
-            }
-            else if (memoization.ContainsKey(tuple2))
-            {
-                yield return memoization[tuple2];
+                yield return accum + diff1;
+                yield return accum + diff2;
             }
             else
             {
-                if (stoneCount <= 1)
-                {
-                    var tuple = Tuple.Create(stoneCount, diff1, diff2, accum);
-                    if (!memoization.ContainsKey(tuple))
-                        memoization.Add(tuple, accum);
+                var nextStoneCount = stoneCount - 1;
 
-                    yield return accum;
+                var nextSum1 = accum + diff1;
+                var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2, memoization).ToList();
+                foreach (int sum1 in diffSum1)
+                {
+                    yield return sum1;
                 }
-                else
+
+                var nextSum2 = accum + diff2;
+                var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2, memoization).ToList();
+                foreach (int sum2 in diffSum2)
                 {
-                    var nextStoneCount = stoneCount - 1;
+                    yield return sum2;
+                }
 
-                    var nextSum1 = accum + diff1;
-                    var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2, memoization).ToList();
-                    foreach (int sum1 in diffSum1)
-                    {
-                        var nextTuple1 = Tuple.Create(nextStoneCount, diff1, diff2, sum1);
-                        if (!memoization.ContainsKey(nextTuple1))
-                            memoization.Add(nextTuple1, sum1);
-
-                        yield return sum1;
-                    }
-
-                    var nextSum2 = accum + diff2;
-                    var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2, memoization).ToList();
-                    foreach (int sum2 in diffSum2)
-                    {
-                        var nextTuple2 = Tuple.Create(nextStoneCount, diff2, diff1, sum2);
-                        if (!memoization.ContainsKey(nextTuple2))
-                            memoization.Add(nextTuple2, sum2);
-
-                        yield return sum2;
-                    }
+                if (nextStoneCount == 2)
+                {
+                    memoization.Add(nextSum1);
+                    memoization.Add(nextSum2);
                 }
             }
         }
