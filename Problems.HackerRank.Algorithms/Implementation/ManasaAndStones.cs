@@ -99,36 +99,50 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static List<int> GetLastStones(ManasaStone manasaStone)
         {
             int accum = 0;
-            var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1, manasaStone.Diff2).ToList();
+            Dictionary<Tuple<int, int, int, int>, int> memo = new Dictionary<Tuple<int, int, int, int>, int>();
+            var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1, manasaStone.Diff2, memo).ToList();
             return diff1;
         }
 
-        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2)
+        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2, Dictionary<Tuple<int, int, int, int>, int> memo)
         {
             var nextSum1 = accum + diff1;
             var nextSum2 = accum + diff2;
+
+            var key = Tuple.Create(accum, stoneCount, diff1, diff2);
 
             if (stoneCount <= 2)
             {
                 yield return nextSum1;
                 yield return nextSum2;
             }
+            else if (memo.ContainsKey(key))
+            {
+                yield return memo[key];
+            }
             else
             {
-                var nextStoneCount = stoneCount - 1;
-
-                //var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2).ToList();
-                var diffSum1 = new HashSet<int>(GetLastStones(nextSum1, nextStoneCount, diff1, diff2));
-                foreach (int sum1 in diffSum1)
+                if (stoneCount > 2)
                 {
-                    yield return sum1;
-                }
+                    var nextStoneCount = stoneCount - 1;
 
-                //var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2).ToList();
-                var diffSum2 = new HashSet<int>(GetLastStones(nextSum2, nextStoneCount, diff1, diff2));
-                foreach (int sum2 in diffSum2)
-                {
-                    yield return sum2;
+                    var diffSum1 = new HashSet<int>(GetLastStones(nextSum1, nextStoneCount, diff1, diff2, memo));
+                    foreach (int sum1 in diffSum1)
+                    {
+                        var k = Tuple.Create(nextSum1, nextStoneCount, diff1, diff2);
+                        if (!memo.ContainsKey(k)) memo.Add(k, sum1);
+
+                        yield return sum1;
+                    }
+
+                    var diffSum2 = new HashSet<int>(GetLastStones(nextSum2, nextStoneCount, diff1, diff2, memo));
+                    foreach (int sum2 in diffSum2)
+                    {
+                        var k = Tuple.Create(nextSum2, nextStoneCount, diff1, diff2);
+                        if (!memo.ContainsKey(k)) memo.Add(k, sum2);
+
+                        yield return sum2;
+                    }
                 }
             }
         }
