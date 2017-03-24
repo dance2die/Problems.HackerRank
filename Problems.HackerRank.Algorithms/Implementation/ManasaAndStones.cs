@@ -90,7 +90,8 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             foreach (ManasaStone manasaStone in manasaStones)
             {
-                List<int> stones = GetLastStones(manasaStone).OrderBy(val => val).Distinct().ToList();
+                var ordered = GetLastStones(manasaStone).OrderBy(val => val);
+                List<int> stones = ordered.Distinct().ToList();
                 yield return string.Join(" ", stones.Select(val => val.ToString()).ToArray());
             }
         }
@@ -116,13 +117,15 @@ namespace Problems.HackerRank.Algorithms.Implementation
             {
                 var nextStoneCount = stoneCount - 1;
 
-                var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2).ToList();
+                //var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2).ToList();
+                var diffSum1 = new HashSet<int>(GetLastStones(nextSum1, nextStoneCount, diff1, diff2));
                 foreach (int sum1 in diffSum1)
                 {
                     yield return sum1;
                 }
 
-                var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2).ToList();
+                //var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2).ToList();
+                var diffSum2 = new HashSet<int>(GetLastStones(nextSum2, nextStoneCount, diff1, diff2));
                 foreach (int sum2 in diffSum2)
                 {
                     yield return sum2;
