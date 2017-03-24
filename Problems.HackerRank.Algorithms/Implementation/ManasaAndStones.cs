@@ -17,6 +17,13 @@ OUTPUT:
 
 INPUT:
 1
+4
+10
+100
+OUTPUT: 30 120 210 300
+
+INPUT:
+1
 3
 1
 2
@@ -45,6 +52,22 @@ OUTPUT:
 1800
 803 812 821 830 839 848 857 866 875 884 893 902
 12 32 52 72 92
+
+INPUT:
+1
+58
+24
+69
+OUTPUT:
+1368 1413 1458 1503 1548 1593 1638 1683 1728 1773 1818 1863 1908 1953 1998 2043 2088 2133 2178 2223 2268 2313 2358 2403 2448 2493 2538 2583 2628 2673 2718 2763 2808 2853 2898 2943 2988 3033 3078 3123 3168 3213 3258 3303 3348 3393 3438 3483 3528 3573 3618 3663 3708 3753 3798 3843 3888 3933
+
+
+INPUT:
+1
+5
+3
+23
+OUTPUT: 12 32 52 72 92
  */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
@@ -82,33 +105,43 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2, List<int> memoization)
         {
+            var nextSum1 = accum + diff1;
+            var nextSum2 = accum + diff2;
+
             if (stoneCount <= 2)
             {
-                yield return accum + diff1;
-                yield return accum + diff2;
+                yield return nextSum1;
+                yield return nextSum2;
             }
             else
             {
                 var nextStoneCount = stoneCount - 1;
 
-                var nextSum1 = accum + diff1;
-                var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2, memoization).ToList();
-                foreach (int sum1 in diffSum1)
-                {
-                    yield return sum1;
-                }
-
-                var nextSum2 = accum + diff2;
-                var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2, memoization).ToList();
-                foreach (int sum2 in diffSum2)
-                {
-                    yield return sum2;
-                }
-
-                if (nextStoneCount == 2)
+                if (memoization.Contains(nextSum1))
                 {
                     memoization.Add(nextSum1);
+                }
+
+                if (memoization.Contains(nextSum2))
+                {
                     memoization.Add(nextSum2);
+                }
+                else
+                {
+                    memoization.Add(accum);
+                    //memoization.Add(accum);
+
+                    var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2, memoization).ToList();
+                    foreach (int sum1 in diffSum1)
+                    {
+                        yield return sum1;
+                    }
+
+                    var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2, memoization).ToList();
+                    foreach (int sum2 in diffSum2)
+                    {
+                        yield return sum2;
+                    }
                 }
             }
         }
