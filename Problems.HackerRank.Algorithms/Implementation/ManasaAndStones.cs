@@ -126,7 +126,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
                 {
                     var nextStoneCount = stoneCount - 1;
 
-                    var diffSum1 = new HashSet<int>(GetLastStones(nextSum1, nextStoneCount, diff1, diff2, memo));
+                    var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2, memo);
                     foreach (int sum1 in diffSum1)
                     {
                         var k = Tuple.Create(nextSum1, nextStoneCount, diff1, diff2);
@@ -135,7 +135,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
                         yield return sum1;
                     }
 
-                    var diffSum2 = new HashSet<int>(GetLastStones(nextSum2, nextStoneCount, diff1, diff2, memo));
+                    var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2, memo);
                     foreach (int sum2 in diffSum2)
                     {
                         var k = Tuple.Create(nextSum2, nextStoneCount, diff1, diff2);
