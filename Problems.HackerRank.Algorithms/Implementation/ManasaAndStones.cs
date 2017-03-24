@@ -98,12 +98,11 @@ namespace Problems.HackerRank.Algorithms.Implementation
         private static List<int> GetLastStones(ManasaStone manasaStone)
         {
             int accum = 0;
-            List<int> memoization = new List<int>();
-            var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1, manasaStone.Diff2, memoization).ToList();
+            var diff1 = GetLastStones(accum, manasaStone.StoneCount, manasaStone.Diff1, manasaStone.Diff2).ToList();
             return diff1;
         }
 
-        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2, List<int> memoization)
+        private static IEnumerable<int> GetLastStones(int accum, int stoneCount, int diff1, int diff2)
         {
             var nextSum1 = accum + diff1;
             var nextSum2 = accum + diff2;
@@ -117,31 +116,16 @@ namespace Problems.HackerRank.Algorithms.Implementation
             {
                 var nextStoneCount = stoneCount - 1;
 
-                if (memoization.Contains(nextSum1))
+                var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2).ToList();
+                foreach (int sum1 in diffSum1)
                 {
-                    memoization.Add(nextSum1);
+                    yield return sum1;
                 }
 
-                if (memoization.Contains(nextSum2))
+                var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2).ToList();
+                foreach (int sum2 in diffSum2)
                 {
-                    memoization.Add(nextSum2);
-                }
-                else
-                {
-                    memoization.Add(accum);
-                    //memoization.Add(accum);
-
-                    var diffSum1 = GetLastStones(nextSum1, nextStoneCount, diff1, diff2, memoization).ToList();
-                    foreach (int sum1 in diffSum1)
-                    {
-                        yield return sum1;
-                    }
-
-                    var diffSum2 = GetLastStones(nextSum2, nextStoneCount, diff1, diff2, memoization).ToList();
-                    foreach (int sum2 in diffSum2)
-                    {
-                        yield return sum2;
-                    }
+                    yield return sum2;
                 }
             }
         }
