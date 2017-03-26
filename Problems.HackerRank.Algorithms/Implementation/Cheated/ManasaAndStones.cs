@@ -105,9 +105,36 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int T = int.Parse(Console.ReadLine());
             List<ManasaStone> manasaStones = GetManasaStones(T).ToList();
-            List<string> values = GetLastStoneList(manasaStones).ToList();
+            List<string> values = GetLastStoneList2(manasaStones).ToList();
 
             values.ForEach(Console.WriteLine);
+        }
+
+        private static IEnumerable<string> GetLastStoneList2(List<ManasaStone> manasaStones)
+        {
+            foreach (ManasaStone manasaStone in manasaStones)
+            {
+                int stoneCount = manasaStone.StoneCount - 1;
+                int min = Math.Min(manasaStone.Diff1, manasaStone.Diff2) * stoneCount;
+                int max = Math.Max(manasaStone.Diff1, manasaStone.Diff2) * stoneCount;
+                int diff = Math.Abs(manasaStone.Diff2 - manasaStone.Diff1);
+
+                if (diff == 0)
+                {
+                    yield return min.ToString();
+                }
+                else
+                {
+                    List<int> stones = new List<int>(manasaStone.StoneCount);
+                    while (min <= max)
+                    {
+                        stones.Add(min);
+                        min += diff;
+                    }
+
+                    yield return string.Join(" ", stones.ToArray());
+                }
+            }
         }
 
         private static IEnumerable<string> GetLastStoneList(List<ManasaStone> manasaStones)
