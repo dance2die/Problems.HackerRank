@@ -5,6 +5,7 @@ INPUT: 4 OUTPUT 6
 INPUT: 7 OUTPUT 3
 INPUT: 52 OUTPUT 42
 INPUT: 93 OUTPUT 1
+INPUT: 1000000000000 OUTPUT: 649267441662
  */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
@@ -18,7 +19,7 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         public static void Main()
         {
-            long t = Convert.ToInt32(Console.ReadLine());
+            long t = Convert.ToInt64(Console.ReadLine());
             long counter = GetCounter(t);
             Console.WriteLine(counter);
         }
