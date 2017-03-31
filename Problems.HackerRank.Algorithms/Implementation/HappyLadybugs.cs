@@ -18,6 +18,25 @@ YES
 NO
 YES
 YES
+
+INPUT:
+5
+1
+_
+4
+RBRB
+4
+RRRR
+3
+BBB
+4
+BBB_
+OUTPUT:
+YES
+NO
+YES
+YES
+YES
  */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
@@ -51,8 +70,39 @@ namespace Problems.HackerRank.Algorithms.Implementation
             if ("_" == new string(game.Distinct().ToArray())) return true;
 
             // if there is a letter with only one instance, then no.
+            // Cheated this logic from discussion
             var hasOneInstance = game.ToCharArray().Where(c => c != '_').GroupBy(c => c).Select(g => g.Count()).Any(count => count == 1);
             if (hasOneInstance) return false;
+
+            // If there is no empty space,
+            //  if happy, then true
+            //  if not happy reutrn false
+            if (game.IndexOf("_") == -1) return IsHappy(game);
+
+            return true;
+        }
+
+        private static bool IsHappy(string game)
+        {
+            HashSet<char> alreadySeen = new HashSet<char>();
+            char prev = game[0];
+
+            for (int i = 0; i < game.Length; i++)
+            {
+                var c = game[i];
+                if (prev != c)
+                {
+                    if (alreadySeen.Contains(c))
+                        return false;
+                }
+                else
+                {
+                    if (!alreadySeen.Contains(c))
+                        alreadySeen.Add(c);
+                }
+
+                prev = c;
+            }
 
             return true;
         }
