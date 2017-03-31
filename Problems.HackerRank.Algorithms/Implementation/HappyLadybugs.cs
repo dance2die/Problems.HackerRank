@@ -31,6 +31,30 @@ namespace Problems.HackerRank.Algorithms.Implementation
         {
             int caseCount = int.Parse(Console.ReadLine());
             List<string> games = GetGames(caseCount).ToList();
+
+            List<string> result = AreGamesPlayable(games).ToList();
+            result.ForEach(Console.WriteLine);
+        }
+
+        private static IEnumerable<string> AreGamesPlayable(List<string> games)
+        {
+            foreach (string game in games)
+            {
+                yield return IsGamePlayable(game) ? "YES" : "NO";
+            }
+        }
+
+        private static bool IsGamePlayable(string game)
+        {
+            // edge cases
+            // if only empty spaces, then true
+            if ("_" == new string(game.Distinct().ToArray())) return true;
+
+            // if there is a letter with only one instance, then no.
+            var hasOneInstance = game.ToCharArray().Where(c => c != '_').GroupBy(c => c).Select(g => g.Count()).Any(count => count == 1);
+            if (hasOneInstance) return false;
+
+            return true;
         }
 
         private static IEnumerable<string> GetGames(int caseCount)
