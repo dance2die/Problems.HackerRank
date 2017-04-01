@@ -85,6 +85,7 @@
     <Compile Include="Implementation\ServiceLane.cs" />
     <Compile Include="Implementation\SherlockAndSquares.cs" />
     <Compile Include="Implementation\SockMerchant.cs" />
+    <Compile Include="Implementation\StrangeCounter.cs" />
     <Compile Include="Implementation\TaumAndBday.cs" />
     <Compile Include="Implementation\TheHurdleRace.cs" />
     <Compile Include="Implementation\UtopianTree.cs" />
