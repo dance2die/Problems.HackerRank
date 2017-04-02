@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.HappyLadybugs</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ElectronicsShop</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
