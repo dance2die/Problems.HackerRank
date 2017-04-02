@@ -119,6 +119,9 @@
     <Compile Include="Strings\MakingAnagrams.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\PalindromeIndex.cs" />
+    <Content Include="Implementation\ElectronicsShop_data8.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Implementation\BeautifulTriplets_data1.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -131,6 +134,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Implementation\Cheated\FlatlandSpaceStations_data15_answer.txt" />
+    <Content Include="Implementation\ElectronicsShop_data8_answer.txt" />
     <Content Include="Strings\PalindromeIndexes_TestCase05_Answer.txt" />
     <Compile Include="Strings\Pangrams.cs" />
     <Compile Include="Strings\StringConstruction.cs" />
