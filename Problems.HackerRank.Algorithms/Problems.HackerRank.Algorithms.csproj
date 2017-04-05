@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ElectronicsShop</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.CatsAndAMouse</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -58,6 +58,7 @@
     <Compile Include="Implementation\BeautifulTriplets.cs" />
     <Compile Include="Implementation\BetweenTwoSets.cs" />
     <Compile Include="Implementation\BonAppetit.cs" />
+    <Compile Include="Implementation\CatsAndAMouse.cs" />
     <Compile Include="Implementation\CavityMap.cs" />
     <Compile Include="Implementation\Cheated\ChocolateFeast.cs" />
     <Compile Include="Implementation\CutTheSticks.cs" />
