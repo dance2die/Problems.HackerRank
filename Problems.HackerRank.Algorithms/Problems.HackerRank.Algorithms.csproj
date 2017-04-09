@@ -54,7 +54,7 @@
     <Compile Include="DynamicProgramming\FibonacciModified.cs" />
     <Compile Include="Implementation\AcmIcpcTeam.cs" />
     <Compile Include="Implementation\AngryProfessor.cs" />
-    <Compile Include="Implementation\AppleaNDOrange.cs" />
+    <Compile Include="Implementation\AppleAndOrange.cs" />
     <Compile Include="Implementation\BeautifulDayAtTheMovies.cs" />
     <Compile Include="Implementation\BeautifulTriplets.cs" />
     <Compile Include="Implementation\BetweenTwoSets.cs" />
