@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_30.RangeModularQueries</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_31.BeautifulWord</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -51,6 +51,7 @@
     <Compile Include="Week of Code 30\FindTheMinimumNumber.cs" />
     <Compile Include="Week of Code 30\MelodiousPassword.cs" />
     <Compile Include="Week of Code 30\RangeModularQueries.cs" />
+    <Compile Include="Week of Code 31\BeautifulWord.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
