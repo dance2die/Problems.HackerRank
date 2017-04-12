@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
 INPUT:
@@ -47,19 +45,22 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_31
         {
             int playCount = 0;
             var l = game.ToList();
+
+            var prevPosition = 0;
+
             for (int i = 1; i < l.Count - 1; i++)
             {
                 if (l.Count <= 2) break;
 
                 var left = l[i - 1];
-                var value = l[i];
                 var right = l[i + 1];
 
                 if (left == 0 && right == 0)
                 {
                     l.RemoveAt(i);
                     playCount++;
-                    i = 0;
+                    i = prevPosition;
+                    prevPosition = Math.Min(i, prevPosition);
                 }
             }
 
