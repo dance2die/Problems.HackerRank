@@ -53,6 +53,7 @@
     <Compile Include="Week of Code 30\RangeModularQueries.cs" />
     <Compile Include="Week of Code 31\AccurateSorting.cs" />
     <Compile Include="Week of Code 31\BeautifulWord.cs" />
+    <Compile Include="Week of Code 31\ZeroOneGame.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
