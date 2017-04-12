@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_31.BeautifulWord</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_31.AccurateSorting</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

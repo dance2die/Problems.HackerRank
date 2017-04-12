@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 
+/*
+INPUT:
+2
+4
+1 0 3 2
+3
+2 1 0
+OUTPUT:
+Yes
+No
+ */
 namespace ProblemsHackerRank.Contests.Week_of_Code_31
 {
     /// <summary>
@@ -29,7 +40,29 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_31
 
         private static string GetSwappableValue(int[] a)
         {
+            var original = a.ToList();
+
+            for (int i = 0; i < a.Length - 1; i++)
+            {
+                var left = a[i];
+                var right = a[i + 1];
+                if ((left - right) == 1)
+                {
+                    Swap(a, i, i + 1);
+                }
+            }
+
+            original.Sort();
+            if (original.SequenceEqual(a))
+                return "Yes";
             return "No";
+        }
+
+        private static void Swap(int[] a, int i1, int i2)
+        {
+            var temp = a[i1];
+            a[i1] = a[i2];
+            a[i2] = temp;
         }
 
         private static IEnumerable<int[]> GetTestCases(int q)
