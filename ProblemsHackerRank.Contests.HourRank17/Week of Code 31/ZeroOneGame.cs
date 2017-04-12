@@ -45,7 +45,25 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_31
 
         private static string GetWinner(int[] game)
         {
-            return "";
+            int playCount = 0;
+            var l = game.ToList();
+            for (int i = 1; i < l.Count - 1; i++)
+            {
+                if (l.Count <= 2) break;
+
+                var left = l[i - 1];
+                var value = l[i];
+                var right = l[i + 1];
+
+                if (left == 0 && right == 0)
+                {
+                    l.RemoveAt(i);
+                    playCount++;
+                    i = 0;
+                }
+            }
+
+            return playCount % 2 == 1 ? "Alice" : "Bob";
         }
 
         private static IEnumerable<int[]> GetTestCases(int testCaseCount)
