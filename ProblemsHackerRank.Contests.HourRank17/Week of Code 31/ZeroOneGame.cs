@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
 INPUT:
@@ -26,7 +24,7 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_31
     /// </summary>
     public class ZeroOneGame
     {
-        public static void Main(String[] args)
+        public static void Main()
         {
             int gameCount = Convert.ToInt32(Console.ReadLine());
             List<int[]> games = GetTestCases(gameCount).ToList();
@@ -52,7 +50,6 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_31
                 if (l.Count <= 2) break;
 
                 var left = l[i - 1];
-                var value = l[i];
                 var right = l[i + 1];
 
                 if (left == 0 && right == 0)
