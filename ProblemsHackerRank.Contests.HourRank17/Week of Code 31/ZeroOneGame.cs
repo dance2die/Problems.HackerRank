@@ -45,6 +45,9 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_31
         {
             int playCount = 0;
             var l = game.ToList();
+
+            var prevPosition = 0;
+
             for (int i = 1; i < l.Count - 1; i++)
             {
                 if (l.Count <= 2) break;
@@ -56,7 +59,8 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_31
                 {
                     l.RemoveAt(i);
                     playCount++;
-                    i = 0;
+                    i = prevPosition;
+                    prevPosition = Math.Min(i, prevPosition);
                 }
             }
 
