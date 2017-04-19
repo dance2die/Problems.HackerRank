@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.MigratoryBirds</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ExtraLongFactorials</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -71,6 +71,7 @@
     <Compile Include="Implementation\DrawingBook.cs" />
     <Compile Include="Implementation\ElectronicsShop.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
+    <Compile Include="Implementation\ExtraLongFactorials.cs" />
     <Compile Include="Implementation\FairRations.cs" />
     <Compile Include="Implementation\FindDigits.cs" />
     <Compile Include="Implementation\Cheated\FlatlandSpaceStations.cs" />
