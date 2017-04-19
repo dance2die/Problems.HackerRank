@@ -34,14 +34,14 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
         private static int GetMostCommonBirdCount2(int[] types)
         {
-            Dictionary<int, int> typeMap = new Dictionary<int, int>
+            Dictionary<int, int> frequencies = new Dictionary<int, int>
             {
                 {1, 0},{2, 0},{3, 0},{4, 0},{5, 0}
             };
 
             foreach (int type in types)
             {
-                typeMap[type]++;
+                frequencies[type]++;
             }
 
             //int max = typeMap.Max(pair => pair.Value);
@@ -53,9 +53,9 @@ namespace Problems.HackerRank.Algorithms.Implementation
             //return typeMap[0];
 
             int maxType = 1;
-            for (int i = 1; i <= typeMap.Count; i++)
+            for (int i = 1; i <= frequencies.Count; i++)
             {
-                if (typeMap[i] > typeMap[maxType])
+                if (frequencies[i] > frequencies[maxType])
                     maxType = i;
             }
 
