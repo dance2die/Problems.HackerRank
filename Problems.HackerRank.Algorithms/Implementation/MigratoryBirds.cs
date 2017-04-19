@@ -44,14 +44,22 @@ namespace Problems.HackerRank.Algorithms.Implementation
                 typeMap[type]++;
             }
 
-            int max = typeMap.Max(pair => pair.Value);
-            foreach (KeyValuePair<int, int> pair in typeMap)
+            //int max = typeMap.Max(pair => pair.Value);
+            //foreach (KeyValuePair<int, int> pair in typeMap)
+            //{
+            //    if (pair.Value == max)
+            //        return pair.Key;
+            //}
+            //return typeMap[0];
+
+            int maxType = 1;
+            for (int i = 1; i <= typeMap.Count; i++)
             {
-                if (pair.Value == max)
-                    return pair.Key;
+                if (typeMap[i] > typeMap[maxType])
+                    maxType = i;
             }
 
-            return typeMap[0];
+            return maxType;
         }
 
         private static int GetMostCommonBirdCount(int[] types)
