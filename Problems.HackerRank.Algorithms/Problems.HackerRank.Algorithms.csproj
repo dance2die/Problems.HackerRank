@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.BirthdayCakeCandles</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Strings.HackerRankInAString</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -121,6 +121,7 @@
     <Compile Include="Strings\FunnyString.cs" />
     <Compile Include="Strings\GameOfThrones1.cs" />
     <Compile Include="Strings\Gemstones.cs" />
+    <Compile Include="Strings\HackerRankInAString.cs" />
     <Compile Include="Strings\MakingAnagrams.cs" />
     <Compile Include="Strings\MarsExploration.cs" />
     <Compile Include="Strings\PalindromeIndex.cs" />
