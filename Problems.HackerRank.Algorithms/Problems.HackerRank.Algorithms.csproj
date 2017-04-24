@@ -59,7 +59,9 @@
     <Compile Include="Implementation\BeautifulTriplets.cs" />
     <Compile Include="Implementation\BetweenTwoSets.cs" />
     <Compile Include="Implementation\BirthdayCakeCandles.cs" />
+    <Compile Include="Implementation\BirthdayChocolate.cs" />
     <Compile Include="Implementation\BonAppetit.cs" />
+    <Compile Include="Implementation\BreakingTheRecords.cs" />
     <Compile Include="Implementation\CatsAndAMouse.cs" />
     <Compile Include="Implementation\CavityMap.cs" />
     <Compile Include="Implementation\Cheated\ChocolateFeast.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Implementation\DrawingBook.cs" />
     <Compile Include="Implementation\ElectronicsShop.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
+    <Compile Include="Implementation\ExtraLongFactorials.cs" />
     <Compile Include="Implementation\FairRations.cs" />
     <Compile Include="Implementation\FindDigits.cs" />
     <Compile Include="Implementation\Cheated\FlatlandSpaceStations.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Implementation\LisasWorkbook.cs" />
     <Compile Include="Implementation\Cheated\ManasaAndStones.cs" />
     <Compile Include="Implementation\MatrixLayerRotation.cs" />
+    <Compile Include="Implementation\MigratoryBirds.cs" />
     <Compile Include="Implementation\MiniMaxSum.cs" />
     <Compile Include="Implementation\MinimumDistances.cs" />
     <Compile Include="Implementation\ModifiedKaprekarNumbers.cs" />
