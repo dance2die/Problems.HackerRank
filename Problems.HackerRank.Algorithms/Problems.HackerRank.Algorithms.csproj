@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Strings.HackerRankInAString</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Strings.WeightedUniformStrings</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -152,6 +152,7 @@
     <Compile Include="Strings\Later\TwoCharacters.cs" />
     <Compile Include="Strings\TheLoveLetterMystery.cs" />
     <Compile Include="Strings\TwoStrings.cs" />
+    <Compile Include="Strings\WeightedUniformStrings.cs" />
     <Compile Include="WarmUp\CircularArrayRotationMain.cs" />
   </ItemGroup>
   <ItemGroup>
