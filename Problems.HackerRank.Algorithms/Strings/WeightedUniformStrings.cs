@@ -80,14 +80,7 @@ namespace Problems.HackerRank.Algorithms.Strings
 
 		private static int GetTextWeight(string text)
 		{
-			int sum = 0;
-
-			foreach (char c in text)
-			{
-				sum += GetCharacterWeight(c);
-			}
-
-			return sum;
+			return GetCharacterWeight(text[0]) * text.Length;
 		}
 
 		private static int GetCharacterWeight(char c)
