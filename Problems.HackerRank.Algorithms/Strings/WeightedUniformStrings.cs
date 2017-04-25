@@ -57,15 +57,18 @@ namespace Problems.HackerRank.Algorithms.Strings
 		private static HashSet<int> GetTextWeightMap(string text)
 		{
 			var result = new HashSet<int>();
-			var previousValue = "";
+			var previousValue = '1';
 			var buffer = new StringBuilder();
 
-			foreach (string currentValue in text.Select(c => c.ToString()))
+			foreach (char currentValue in text)
 			{
 				if (currentValue == previousValue)
 					buffer.Append(currentValue);
 				else
-					buffer = new StringBuilder(currentValue);
+				{
+					buffer.Clear();
+					buffer.Append(currentValue);
+				}
 
 				result.Add(GetTextWeight(buffer.ToString()));
 
