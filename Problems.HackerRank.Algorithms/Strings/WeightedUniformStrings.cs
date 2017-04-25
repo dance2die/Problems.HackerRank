@@ -40,7 +40,7 @@ namespace Problems.HackerRank.Algorithms.Strings
 
 		private static IEnumerable<string> GetQueryAnswers(string text, IEnumerable<int> queries)
 		{
-			Dictionary<string, int> weightMap = GetTextWeightMap(text);
+			HashSet<int> weightMap = GetTextWeightMap(text);
 
 			foreach (int query in queries)
 			{
@@ -48,9 +48,14 @@ namespace Problems.HackerRank.Algorithms.Strings
 			}
 		}
 
-		private static Dictionary<string, int> GetTextWeightMap(string text)
+		private static string GetQueryAnswer(HashSet<int> weightMap, int query)
 		{
-			Dictionary<string, int> result = new Dictionary<string, int>();
+			return weightMap.Contains(query) ? "Yes" : "No";
+		}
+
+		private static HashSet<int> GetTextWeightMap(string text)
+		{
+			HashSet<int> result = new HashSet<int>();
 			string prev = "";
 			string curr = "";
 
@@ -61,8 +66,7 @@ namespace Problems.HackerRank.Algorithms.Strings
 				else
 					curr = c;
 
-				if (!result.ContainsKey(curr))
-					result.Add(curr, GetTextWeight(curr));
+				result.Add(GetTextWeight(curr));
 
 				prev = c;
 			}
@@ -86,11 +90,6 @@ namespace Problems.HackerRank.Algorithms.Strings
 		{
 			int asciiOffset = 96;
 			return c - asciiOffset;
-		}
-
-		private static string GetQueryAnswer(Dictionary<string, int> weightMap, int query)
-		{
-			return weightMap.ContainsValue(query) ? "Yes" : "No";
 		}
 
 		private static IEnumerable<int> GetQueries(int n)
