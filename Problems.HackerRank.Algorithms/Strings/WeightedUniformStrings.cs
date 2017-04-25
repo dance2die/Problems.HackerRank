@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 /*
 INPUT:
@@ -55,20 +56,20 @@ namespace Problems.HackerRank.Algorithms.Strings
 
 		private static HashSet<int> GetTextWeightMap(string text)
 		{
-			HashSet<int> result = new HashSet<int>();
-			string prev = "";
-			string curr = "";
+			var result = new HashSet<int>();
+			var previousValue = "";
+			var buffer = new StringBuilder();
 
-			foreach (string c in text.Select(c => c.ToString()))
+			foreach (string currentValue in text.Select(c => c.ToString()))
 			{
-				if (c == prev)
-					curr += c;
+				if (currentValue == previousValue)
+					buffer.Append(currentValue);
 				else
-					curr = c;
+					buffer = new StringBuilder(currentValue);
 
-				result.Add(GetTextWeight(curr));
+				result.Add(GetTextWeight(buffer.ToString()));
 
-				prev = c;
+				previousValue = currentValue;
 			}
 
 			return result;
