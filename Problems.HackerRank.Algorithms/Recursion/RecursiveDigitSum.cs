@@ -21,5 +21,24 @@ namespace Problems.HackerRank.Algorithms.Recursion
 		{
 			
 		}
-	}
+
+        /// <summary>
+        /// https://www.slightedgecoder.com/2017/03/11/parsing-number-digits/
+        /// </summary>
+        private static List<int> GetDigits(int val)
+        {
+            Stack<int> stack = new Stack<int>();
+
+            int number = val;
+            while (number > 0)
+            {
+                var digit = number % 10;
+                stack.Push(digit);
+
+                number /= 10;
+            }
+
+            return stack.ToList();
+        }
+    }
 }
