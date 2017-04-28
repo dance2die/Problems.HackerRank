@@ -19,7 +19,9 @@ namespace Problems.HackerRank.Algorithms.Recursion
 	{
 		public static void Main(string[] args)
 		{
-			
+		    var inputs = Console.ReadLine().Split(' ');
+		    int n = int.Parse(inputs[0]);
+		    int k = int.Parse(inputs[1]);
 		}
 
         /// <summary>
