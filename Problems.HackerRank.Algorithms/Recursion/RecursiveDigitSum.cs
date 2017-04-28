@@ -11,6 +11,10 @@ OUTPUT: 3
 INPUT:
 593 10
 OUTPUT: 8
+
+INPUT:
+861568688536788 100000
+OUTPUT: 3
  */
 namespace Problems.HackerRank.Algorithms.Recursion
 {
@@ -23,8 +27,8 @@ namespace Problems.HackerRank.Algorithms.Recursion
 		public static void Main(string[] args)
 		{
 		    var inputs = Console.ReadLine().Split(' ');
-		    int n = int.Parse(inputs[0]);
-		    int k = int.Parse(inputs[1]);
+            var n = BigInteger.Parse(inputs[0]);
+            var k = int.Parse(inputs[1]);
 
 		    BigInteger p = GetComputeDigit(n, k);
             BigInteger superDigit = GetSuperDigit(p);
@@ -44,7 +48,7 @@ namespace Problems.HackerRank.Algorithms.Recursion
 	        return digits[0];
 	    }
 
-	    private static BigInteger GetComputeDigit(int n, int k)
+	    private static BigInteger GetComputeDigit(BigInteger n, int k)
 	    {
 	        string value = string.Join("", Enumerable.Repeat(n.ToString(), k));
 	        return BigInteger.Parse(value);
