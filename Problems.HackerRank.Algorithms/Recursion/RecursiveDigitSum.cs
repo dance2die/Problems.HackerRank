@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 
 /*
 INPUT:
@@ -27,50 +25,36 @@ namespace Problems.HackerRank.Algorithms.Recursion
 		public static void Main(string[] args)
 		{
 		    var inputs = Console.ReadLine().Split(' ');
-            var n = BigInteger.Parse(inputs[0]);
+            var n = inputs[0];
             var k = int.Parse(inputs[1]);
 
-		    BigInteger p = GetComputeDigit(n, k);
-            BigInteger superDigit = GetSuperDigit(p);
+            string p = GetComputeDigit(n, k);
+            var superDigit = GetSuperDigit(p);
 
-		    Console.WriteLine(superDigit);
-		}
-
-	    private static BigInteger GetSuperDigit(BigInteger p)
-	    {
-	        var digits = GetDigits(p);
-	        while (digits.Count > 1)
-	        {
-	            var sum = digits.Aggregate<BigInteger, BigInteger>(0, (total, next) => total + next);
-                digits = GetDigits(sum);
-            }
-
-	        return digits[0];
-	    }
-
-	    private static BigInteger GetComputeDigit(BigInteger n, int k)
-	    {
-	        string value = string.Join("", Enumerable.Repeat(n.ToString(), k));
-	        return BigInteger.Parse(value);
-	    }
-
-	    /// <summary>
-        /// https://www.slightedgecoder.com/2017/03/11/parsing-number-digits/
-        /// </summary>
-        private static List<BigInteger> GetDigits(BigInteger val)
-        {
-            var stack = new Stack<BigInteger>();
-
-            BigInteger number = val;
-            while (number > 0)
-            {
-                BigInteger digit = number % 10;
-                stack.Push(digit);
-
-                number /= 10;
-            }
-
-            return stack.ToList();
+            Console.WriteLine(superDigit);
         }
+
+        private static string GetSuperDigit(string p)
+        {
+            if (p.Length == 1)
+                return p;
+
+            return GetSuperDigit(GetSum(p).ToString());
+        }
+
+	    private static long GetSum(string text)
+	    {
+	        long sum = 0;
+	        foreach (char c in text)
+	        {
+	            sum += long.Parse(c.ToString());
+	        }
+	        return sum;
+;	    }
+
+	    private static string GetComputeDigit(string n, int k)
+	    {
+	        return string.Join("", Enumerable.Repeat(n, k));
+	    }
     }
 }
