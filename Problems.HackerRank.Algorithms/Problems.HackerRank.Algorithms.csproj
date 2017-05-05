@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.DayOfTheProgrammer</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.FormingAMagicSquare</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -76,6 +76,7 @@
     <Compile Include="Implementation\FairRations.cs" />
     <Compile Include="Implementation\FindDigits.cs" />
     <Compile Include="Implementation\Cheated\FlatlandSpaceStations.cs" />
+    <Compile Include="Implementation\FormingAMagicSquare.cs" />
     <Compile Include="Implementation\GradingStudents.cs" />
     <Compile Include="Implementation\HappyLadybugs.cs" />
     <Compile Include="Implementation\JumpingOnTheClouds.cs" />
