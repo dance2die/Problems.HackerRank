@@ -1,9 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+/*
+INPUT: test case #2
+4 5 8
+2 4 1
+1 9 7
+OUTPUT: 14
+ */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
 	/// <summary>
@@ -27,23 +30,38 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
 		private static int GetCost(int[][] matrix)
 		{
-			int[][] validMatrix =
+			//int[][] validMatrix =
+			//{
+			//	new[] {4, 9, 2}, new[] {3, 5, 7}, new[] {8, 1, 6},
+			//};
+			int[][][] validMatrix =
 			{
-				new[] {4, 9, 2},
-				new[] {3, 5, 7},
-				new[] {8, 1, 6},
+				new [] { new[] {8, 1, 6}, new[] {3, 5, 7}, new[] {4, 9, 2} },
+				new [] { new[] {6, 1, 8}, new[] {7, 5, 3}, new[] {2, 9, 4} },
+				new [] { new[] {8, 3, 4}, new[] {1, 5, 9}, new[] {6, 7, 2} },
+				new [] { new[] {4, 3, 8}, new[] {9, 5, 1}, new[] {2, 7, 6} },
+				new [] { new[] {6, 7, 2}, new[] {1, 5, 9}, new[] {8, 3, 4} },
+				new [] { new[] {2, 7, 6}, new[] {9, 5, 1}, new[] {4, 3, 8} },
+				new [] { new[] {4, 9, 2}, new[] {3, 5, 7}, new[] {8, 1, 6} },
+				new [] { new[] {2, 9, 4}, new[] {7, 5, 3}, new[] {6, 1, 8} },
 			};
 
-			int cost = 0;
-			for (int i = 0; i < matrix.Length; i++)
+			int minCost = int.MaxValue;
+			for (int i = 0; i < validMatrix.Length; i++)
 			{
-				for (int j = 0; j < matrix[i].Length; j++)
+				int cost = 0;
+				for (int j = 0; j < validMatrix[i].Length; j++)
 				{
-					cost += Math.Abs(matrix[i][j] - validMatrix[i][j]);
+					for (int k = 0; k < validMatrix[i][j].Length; k++)
+					{
+						cost += Math.Abs(matrix[j][k] - validMatrix[i][j][k]);
+					}
 				}
+				if (cost < minCost)
+					minCost = cost;
 			}
 
-			return cost;
+			return minCost;
 		}
 	}
 }
