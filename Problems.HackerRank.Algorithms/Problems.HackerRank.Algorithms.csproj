@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Recursion.RecursiveDigitSum</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.DayOfTheProgrammer</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -66,6 +66,7 @@
     <Compile Include="Implementation\CavityMap.cs" />
     <Compile Include="Implementation\Cheated\ChocolateFeast.cs" />
     <Compile Include="Implementation\CutTheSticks.cs" />
+    <Compile Include="Implementation\DayOfTheProgrammer.cs" />
     <Compile Include="Implementation\DesignerPdfViewer.cs" />
     <Compile Include="Implementation\DivisibleSumPairs.cs" />
     <Compile Include="Implementation\DrawingBook.cs" />
