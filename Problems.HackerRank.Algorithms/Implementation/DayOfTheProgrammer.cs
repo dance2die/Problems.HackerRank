@@ -7,6 +7,14 @@ OUTPUT: 13.09.2017
 
 INPUT: 2016
 OUTPUT: 12.09.2016
+
+INPUT: test case #48
+1700
+OUTPUT: 12.09.1700
+
+INPUT: test case #59
+1918
+OUTPUT: 26.09.1918
  */
 namespace Problems.HackerRank.Algorithms.Implementation
 {
@@ -30,6 +38,8 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
 			int sum = sevenMonths.Sum() + februaryDays;
 			int daysLeft = 256 - sum;
+			if (year == 1918)
+				daysLeft += 13;
 
 			return $"{daysLeft}.09.{year}";
 		}
@@ -43,9 +53,16 @@ namespace Problems.HackerRank.Algorithms.Implementation
 
 		private static bool IsLeapYear(int year)
 		{
-			if (year % 400 == 0) return true;
-			if (year % 100 == 0) return false;
-			if (year % 4 == 0) return true;
+			if (year < 1919)
+			{
+				if (year % 4 == 0) return true;
+			}
+			else
+			{
+				if (year % 400 == 0) return true;
+				if (year % 100 == 0) return false;
+				if (year % 4 == 0) return true;
+			}
 
 			return false;
 		}
