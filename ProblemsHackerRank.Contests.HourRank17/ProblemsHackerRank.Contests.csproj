@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_31.ZeroOneGame</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.RookieRank_3.FindTheBug</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="HourRank17\TheHurdleRace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RookieRank 3\FindTheBug.cs" />
     <Compile Include="RookieRank\BirthdayCakeCandles.cs" />
     <Compile Include="RookieRank\CountingValleys.cs" />
     <Compile Include="Week of Code 30\CandyReplenishingRobot.cs" />
