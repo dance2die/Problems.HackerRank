@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 /*
 INPUT:
@@ -60,16 +61,23 @@ namespace ProblemsHackerRank.Contests.RookieRank_3
 
 	/// <summary>
 	/// https://www.coursera.org/learn/algorithms-part1/lecture/ZgecU/quick-union
+	/// then improved using
+	/// https://www.coursera.org/learn/algorithms-part1/lecture/RZW72/quick-union-improvements
 	/// </summary>
 	internal class QuickUnionUF
 	{
 		private readonly int[] _id;
+		private readonly int[] _size;
 
 		public QuickUnionUF(int n)
 		{
 			_id = new int[n + 1];
+			_size = new int[n + 1];
 			for (int i = 0; i < n; i++)
+			{
 				_id[i] = i;
+				_size[i] = 1;
+			}
 		}
 
 		private int GetRoot(int i)
@@ -88,13 +96,22 @@ namespace ProblemsHackerRank.Contests.RookieRank_3
 		{
 			int i = GetRoot(p);
 			int j = GetRoot(q);
-			_id[i] = j;
+			if (i == j) return;
+			if (_size[i] < _size[j])
+			{
+				_id[i] = j;
+				_size[j] += _size[i];
+			}
+			else
+			{
+				_id[j] = i;
+				_size[i] += _size[j];
+			}
 		}
 
 		public int GetMaximumConnectedRoute()
 		{
-			Console.WriteLine(_id);
-			return 0;
+			return _size.Max();
 		}
 	}
 }
