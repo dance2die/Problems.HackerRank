@@ -18,6 +18,11 @@ INPUT: test case #2
 6
 8786531805757441 230677884929 1817524031489 7781447890698241 25646965377 1845642452993
 OUTPUT: 7791384336505984
+
+INPUT: #3
+10
+3741039095644161 129755978241 640424193025 2187964615950337 8146770730811393 1121690921598977 126749818497 9702157959364609 4058290446925825 2964749385465857
+OUTPUT: 26340064033781408
  */
 namespace ProblemsHackerRank.Contests.RookieRank_3
 {
@@ -78,13 +83,12 @@ namespace ProblemsHackerRank.Contests.RookieRank_3
 
 		private static long GetMaxScore(long[] arr)
 		{
-			Queue<long> q = new Queue<long>(arr);
 			var scores = new long[arr.Length];
 			long runningSum = 0;
 
 			for (int i = 0; i < arr.Length; i++)
 			{
-				var a = q.Dequeue();
+				var a = arr[i];
 				scores[i] = runningSum % a;
 				runningSum += a;
 			}
