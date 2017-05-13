@@ -46,4 +46,39 @@ namespace ProblemsHackerRank.Contests.RookieRank_3
 			
 		}
 	}
+
+	/// <summary>
+	/// https://www.coursera.org/learn/algorithms-part1/lecture/ZgecU/quick-union
+	/// </summary>
+	internal class QuickUnionUF
+	{
+		private readonly int[] _id;
+
+		public QuickUnionUF(int n)
+		{
+			_id = new int[n];
+			for (int i = 0; i < n; i++)
+			{
+				_id[i] = i;
+			}
+		}
+
+		private int GetRoot(int i)
+		{
+			while (i != _id[i]) i = _id[i];
+			return i;
+		}
+
+		public bool IsConnected(int p, int q)
+		{
+			return GetRoot(p) == GetRoot(q);
+		}
+
+		public void Union(int p, int q)
+		{
+			int i = GetRoot(p);
+			int j = GetRoot(q);
+			_id[i] = j;
+		}
+	}
 }
