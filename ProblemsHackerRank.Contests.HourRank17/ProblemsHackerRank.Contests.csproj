@@ -30,11 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.RookieRank_3.MaximalTourism</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.RookieRank_3.MaxScore</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +49,7 @@
     <Compile Include="RookieRank 3\ComparingTimes.cs" />
     <Compile Include="RookieRank 3\FindTheBug.cs" />
     <Compile Include="RookieRank 3\MaximalTourism.cs" />
+    <Compile Include="RookieRank 3\MaxScore.cs" />
     <Compile Include="RookieRank\BirthdayCakeCandles.cs" />
     <Compile Include="RookieRank\CountingValleys.cs" />
     <Compile Include="Week of Code 30\CandyReplenishingRobot.cs" />
