@@ -28,24 +28,69 @@ namespace ProblemsHackerRank.Contests.RookieRank_3
 			int n = Convert.ToInt32(Console.ReadLine());
 			string[] a_temp = Console.ReadLine().Split(' ');
 			long[] a = Array.ConvertAll(a_temp, Int64.Parse);
-			BigInteger maxScore = GetMaxScore(a);
+			BigInteger maxScore = GetMaxScoreForAllPermutations(a);
 			Console.WriteLine(maxScore);
 		}
 
-		public static BigInteger GetMaxScore(long[] arr)
+		public static BigInteger GetMaxScoreForAllPermutations(long[] arr)
+		{
+			var perms = GetPermutations(arr, 0, arr.Length - 1);
+
+			long maxScore = 0;
+			foreach (IEnumerable<long> longs in perms)
+			{
+				var perm = longs.ToArray();
+				long score = GetMaxScore(perm);
+				if (score > maxScore)
+					maxScore = score;
+			}
+
+			return maxScore;
+		}
+
+		private static IEnumerable<IEnumerable<T>> GetPermutations<T>(IList<T> list, int startIndex, int permutationCount)
+		{
+			if (startIndex == permutationCount)
+			{
+				yield return list;
+			}
+			else
+			{
+				for (int i = startIndex; i <= permutationCount; i++)
+				{
+					Swap(list, startIndex, i);
+
+					List<T> listCopy = list.ToList();
+					foreach (IEnumerable<T> permutation in GetPermutations(listCopy, startIndex + 1, permutationCount))
+					{
+						yield return permutation;
+					}
+				}
+			}
+		}
+
+		private static void Swap<T>(IList<T> list, int index1, int index2)
+		{
+			var temp = list[index1];
+			list[index1] = list[index2];
+			list[index2] = temp;
+		}
+
+		private static long GetMaxScore(long[] arr)
 		{
 			Queue<long> q = new Queue<long>(arr);
-			var scores = new BigInteger[arr.Length];
+			var scores = new long[arr.Length];
 			long runningSum = 0;
 
 			for (int i = 0; i < arr.Length; i++)
 			{
 				var a = q.Dequeue();
-				scores[i] = new BigInteger(runningSum % a);
+				scores[i] = runningSum % a;
 				runningSum += a;
 			}
 
-			return scores.Aggregate(0, (BigInteger acc, BigInteger next) => acc + next);
+			return scores.Sum();
+
 		}
 	}
 }
