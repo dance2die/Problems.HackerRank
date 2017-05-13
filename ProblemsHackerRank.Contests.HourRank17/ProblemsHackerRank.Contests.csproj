@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.RookieRank_3.ComparingTimes</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.RookieRank_3.MaximalTourism</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

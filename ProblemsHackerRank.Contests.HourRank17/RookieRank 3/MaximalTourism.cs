@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /*
 INPUT:
@@ -30,20 +26,35 @@ namespace ProblemsHackerRank.Contests.RookieRank_3
 			string[] tokens = Console.ReadLine().Split(' ');
 			int n = Convert.ToInt32(tokens[0]);
 			int m = Convert.ToInt32(tokens[1]);
-			int[][] route = new int[m][];
+			int[][] routes = new int[m][];
 			for (int i = 0; i < m; i++)
 			{
 				string[] tempRoute = Console.ReadLine().Split(' ');
-				route[i] = Array.ConvertAll(tempRoute, int.Parse);
+				routes[i] = Array.ConvertAll(tempRoute, int.Parse);
 			}
 
-			int count = GetMaximumTourism(n, route);
+			int count = GetMaximumTourism(n, routes);
 			Console.WriteLine(count);
 		}
 
-		private static int GetMaximumTourism(int n, int[][] route)
+		private static int GetMaximumTourism(int n, int[][] routes)
 		{
-			
+			QuickUnionUF uf = GetQuickUnion(n, routes);
+			return uf.GetMaximumConnectedRoute();
+		}
+
+		private static QuickUnionUF GetQuickUnion(int n, int[][] routes)
+		{
+			QuickUnionUF uf = new QuickUnionUF(n);
+
+			foreach (int[] route in routes)
+			{
+				int p = route[0];
+				int q = route[1];
+				uf.Union(p, q);
+			}
+
+			return uf;
 		}
 	}
 
@@ -56,16 +67,15 @@ namespace ProblemsHackerRank.Contests.RookieRank_3
 
 		public QuickUnionUF(int n)
 		{
-			_id = new int[n];
+			_id = new int[n + 1];
 			for (int i = 0; i < n; i++)
-			{
 				_id[i] = i;
-			}
 		}
 
 		private int GetRoot(int i)
 		{
-			while (i != _id[i]) i = _id[i];
+			while (i != _id[i])
+				i = _id[i];
 			return i;
 		}
 
@@ -79,6 +89,12 @@ namespace ProblemsHackerRank.Contests.RookieRank_3
 			int i = GetRoot(p);
 			int j = GetRoot(q);
 			_id[i] = j;
+		}
+
+		public int GetMaximumConnectedRoute()
+		{
+			Console.WriteLine(_id);
+			return 0;
 		}
 	}
 }
