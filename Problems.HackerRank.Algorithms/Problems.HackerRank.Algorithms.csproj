@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.FormingAMagicSquare</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ClimbingTheLeaderboard</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -65,6 +65,7 @@
     <Compile Include="Implementation\CatsAndAMouse.cs" />
     <Compile Include="Implementation\CavityMap.cs" />
     <Compile Include="Implementation\Cheated\ChocolateFeast.cs" />
+    <Compile Include="Implementation\ClimbingTheLeaderboard.cs" />
     <Compile Include="Implementation\CutTheSticks.cs" />
     <Compile Include="Implementation\DayOfTheProgrammer.cs" />
     <Compile Include="Implementation\DesignerPdfViewer.cs" />
