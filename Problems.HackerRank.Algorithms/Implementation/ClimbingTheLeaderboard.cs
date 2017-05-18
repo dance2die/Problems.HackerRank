@@ -35,8 +35,16 @@ namespace Problems.HackerRank.Algorithms.Implementation
 		{
 			foreach (var alicesScore in alicesScores)
 			{
-				yield return GetRank(scores, alicesScore);
+				yield return GetRank2(scores, alicesScore);
 			}
+		}
+
+		private static int GetRank2(int[] scores, int alicesScore)
+		{
+			// Aggregate scores.
+			List<int> allScores = new List<int>(scores.Distinct()) { alicesScore };
+			var rank = allScores.OrderByDescending(a => a).ToList().FindIndex(a => a == alicesScore) + 1;
+			return rank;
 		}
 
 		private static int GetRank(int[] scores, int alicesScore)
