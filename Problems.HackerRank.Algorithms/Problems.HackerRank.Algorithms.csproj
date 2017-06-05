@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Problems.HackerRank.Algorithms.Implementation.ClimbingTheLeaderboard</StartupObject>
+    <StartupObject>Problems.HackerRank.Algorithms.Implementation.Encryption</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -72,6 +72,7 @@
     <Compile Include="Implementation\DivisibleSumPairs.cs" />
     <Compile Include="Implementation\DrawingBook.cs" />
     <Compile Include="Implementation\ElectronicsShop.cs" />
+    <Compile Include="Implementation\Encryption.cs" />
     <Compile Include="Implementation\EqualizeTheArray.cs" />
     <Compile Include="Implementation\ExtraLongFactorials.cs" />
     <Compile Include="Implementation\FairRations.cs" />
