@@ -7,6 +7,11 @@ INPUT:
 5 4 3 2 1
 1 2 3 4 5
 OUTPUT: 2
+
+2
+2 1
+1 2
+OUTPUT: 2
  */
 namespace ProblemsHackerRank.Contests.Week_of_Code_33
 {
@@ -19,8 +24,10 @@ namespace ProblemsHackerRank.Contests.Week_of_Code_33
 			int[] ar1 = Array.ConvertAll(ar1_temp, Int32.Parse);
 			string[] ar2_temp = Console.ReadLine().Split(' ');
 			int[] ar2 = Array.ConvertAll(ar2_temp, Int32.Parse);
-			int result = SumTwinArrays(ar1, ar2);
-			Console.WriteLine(result);
+			int result1 = SumTwinArrays(ar1, ar2);
+			int result2 = SumTwinArrays(ar2, ar1);
+
+			Console.WriteLine(Math.Min(result1, result2));
 		}
 
 		public static int SumTwinArrays(int[] a1, int[] a2)
