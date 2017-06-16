@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_33.TwinArrays</StartupObject>
+    <StartupObject>ProblemsHackerRank.Contests.Week_of_Code_33.PatternCount</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -59,6 +59,7 @@
     <Compile Include="Week of Code 31\AccurateSorting.cs" />
     <Compile Include="Week of Code 31\BeautifulWord.cs" />
     <Compile Include="Week of Code 31\ZeroOneGame.cs" />
+    <Compile Include="Week of Code 33\PatternCount.cs" />
     <Compile Include="Week of Code 33\TwinArrays.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
